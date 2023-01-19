@@ -4,7 +4,9 @@ import sanityClient from "../../client";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { Footer } from "../Footer/Footer";
 
-export const Home = () => {
+import "./Home.scss";
+
+export const Home = ({ setLogo }) => {
   const [home, setHome] = useState(null);
   const [aboutVid, setAboutVid] = useState(null);
 
@@ -17,6 +19,7 @@ export const Home = () => {
           hero,
           cards,
           homeAbout,
+          logo
       }`
       )
 
@@ -24,14 +27,16 @@ export const Home = () => {
         let [newData] = data;
         setHome(newData);
         setAboutVid(newData.homeAbout.videoUrl);
+        setLogo(newData.logo);
       })
       .catch(console.error);
   }, [home?.homeAbout.videoUrl]);
-  console.log(aboutVid);
+
   if (!home) return <div>Loading...</div>;
   return (
     <div>
       <MyVideo url={aboutVid} />
+      <Footer logo={home.logo} />
     </div>
   );
 };

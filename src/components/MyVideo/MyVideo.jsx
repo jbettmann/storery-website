@@ -1,31 +1,18 @@
 import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
+import { getYoutubeVideoId } from "../../Functions/Functions";
 
 export const MyVideo = ({ url }) => {
-  const [newURL, setURL] = useState(url);
-
-  function getYoutubeVideoId(urls) {
-    let videoId;
-    let ampersandPosition = videoId?.indexOf("&");
-    if (urls.includes("v=")) {
-      videoId = urls.split("v=")[1];
-    } else {
-      videoId = urls.split("/")[3];
-    }
-    if (ampersandPosition && ampersandPosition != -1) {
-      videoId = videoId.substring(0, ampersandPosition);
-    }
-    return setURL(videoId);
-  }
+  const [newUrl, setNewUrl] = useState(url);
 
   useEffect(() => {
-    getYoutubeVideoId(url);
+    setNewUrl(getYoutubeVideoId(url));
   }, []);
 
   return (
     <div className="player">
       {url ? (
-        <YouTube videoId={newURL} />
+        <YouTube videoId={newUrl} />
       ) : (
         <p>Your browser does not support the video</p>
       )}

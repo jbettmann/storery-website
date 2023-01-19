@@ -1,21 +1,31 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./navbar.css";
+import { urlFor } from "../../Functions/Functions";
 
-export const NavBar = ({ nav }) => {
+export const NavBar = ({ nav, logo }) => {
   const firstHalf = nav.slice(0, nav.length / 2);
   const lastHalf = nav.slice(nav.length / 2);
   return (
     <header>
-      <nav>
+      <nav className="flex">
         {firstHalf.map((item) => {
-          return <NavLink to={`/${item.slug.current}`}>{item.title}</NavLink>;
+          return (
+            <NavLink className="flex-auto w-auto" to={`/${item.slug.current}`}>
+              {item.title}
+            </NavLink>
+          );
         })}
 
-        <NavLink to="/">LOGO</NavLink>
+        <NavLink className="flex-auto w-auto" to="/">
+          <img src={urlFor(logo.asset._ref)} alt="Storey Real Estate Logo" />
+        </NavLink>
 
         {lastHalf.map((item) => {
-          return <NavLink to={`/${item.slug.current}`}>{item.title}</NavLink>;
+          return (
+            <NavLink className="flex-auto w-auto" to={`/${item.slug.current}`}>
+              {item.title}
+            </NavLink>
+          );
         })}
       </nav>
       {/* <div className="inline-flex py-3 px-3 my-6">

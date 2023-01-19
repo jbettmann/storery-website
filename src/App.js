@@ -36,7 +36,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  console.log(nav);
   return (
     <Router>
       <NavBar nav={nav} />
@@ -48,7 +47,6 @@ function App() {
         <Route element={<About />} path={`/${about.slug.current}`} />
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
         <Route element={<Contact />} path={`/${contact.slug.current}`} />
-        {/* <Route element={<Project />} path="/project" /> */}
       </Routes>
     </Router>
   );

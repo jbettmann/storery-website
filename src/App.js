@@ -19,6 +19,7 @@ function App() {
     { slug: { current: "" } },
     { slug: { current: "" } },
   ]);
+  const [logo, setLogo] = useState("");
 
   const [buySell, invest, remodel, about, resources, contact] = [...nav];
 
@@ -38,9 +39,9 @@ function App() {
 
   return (
     <Router>
-      <NavBar nav={nav} />
+      <NavBar nav={nav} logo={logo} />
       <Routes>
-        <Route element={<Home />} exact path="/" />
+        <Route element={<Home setLogo={setLogo} />} exact path="/" />
         <Route element={<BuySell />} path={`/${buySell.slug.current}`} />
         <Route element={<InvestmentProp />} path={`/${invest.slug.current}`} />
         <Route element={<Remodel />} path={`/${remodel.slug.current}`} />

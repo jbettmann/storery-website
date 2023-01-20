@@ -16,7 +16,6 @@ export const Footer = ({ logo }) => {
             email,
          }`
       )
-
       .then((data) => {
         let [newData] = data;
         setFooter(newData);

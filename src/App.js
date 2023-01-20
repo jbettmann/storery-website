@@ -8,6 +8,8 @@ import { BuySell } from "./components/Buy_Sell/BuySell";
 import { About } from "./components/About/About";
 import { Resources } from "./components/Resources/Resources";
 import { Contact } from "./components/Contact/Contact";
+import { Footer } from "./components/Footer/Footer";
+
 import sanityClient from "./client";
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
       .catch(console.error);
   }, []);
 
+  console.log(nav);
+
   return (
     <Router>
       <NavBar nav={nav} logo={logo} />
@@ -49,6 +53,7 @@ function App() {
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
         <Route element={<Contact />} path={`/${contact.slug.current}`} />
       </Routes>
+      <Footer logo={logo} />
     </Router>
   );
 }

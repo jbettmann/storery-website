@@ -17,7 +17,7 @@ export const NavBar = ({ nav, logo }) => {
         })}
 
         <NavLink className="flex-auto w-auto" to="/">
-          <img src={urlFor(logo.asset._ref)} alt="Storey Real Estate Logo" />
+          <img src={urlFor(logo?.asset?._ref)} alt="Storey Real Estate Logo" />
         </NavLink>
 
         {lastHalf.map((item) => {

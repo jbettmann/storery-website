@@ -25,5 +25,7 @@ export function getYoutubeVideoId(youtubeURL) {
 export function urlFor(source) {
   const builder = imageUrlBuilder(sanityClient);
 
+  if (!source) return;
+
   return builder.image(source);
 }

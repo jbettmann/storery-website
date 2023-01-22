@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 import { Divide as Hamburger } from "hamburger-react";
 
 export const NavBar = ({ nav, logo }) => {
+  // ref for hamburger menu
+  const ref = useRef(null);
+
   const [isOpen, setOpen] = useState(false);
 
   const firstHalf = nav.slice(0, nav.length / 2);
   const lastHalf = nav.slice(nav.length / 2);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setOpen(!isOpen);
   };
+
+  useEffect(() => {
+    // closes menu when clicked outside of menu
+    function handleHamMenuClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(!isOpen);
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleHamMenuClick);
+    } else {
+      document.removeEventListener("mousedown", handleHamMenuClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleHamMenuClick);
+    };
+  }, [isOpen]);
+
   return (
     <header className="mx-auto p-4">
       <nav className="sm:flex hidden">
@@ -66,7 +85,10 @@ export const NavBar = ({ nav, logo }) => {
           toggle={setOpen}
         />
         {isOpen && (
-          <div className="absolute top-[4rem] grid gap-3 z-10 bg-slate-200 p-2 rounded-lg divide-y divide-slate-600 shadow-lg">
+          <div
+            ref={ref}
+            className="absolute top-[4rem] grid gap-3 z-10 bg-slate-200 p-2 rounded-lg divide-y divide-slate-600 shadow-lg"
+          >
             {/* First half */}
             {nav.map((item, i) => {
               return (

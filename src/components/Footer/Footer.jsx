@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
 import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
 
@@ -26,7 +28,9 @@ export const Footer = ({ logo }) => {
   return (
     footer && (
       <div>
-        <img src={urlFor(logo.asset._ref)} alt="Storey Real Estate Logo" />
+        <NavLink className="" to="/">
+          <img src={urlFor(logo.asset?._ref)} alt="Storey Real Estate Logo" />
+        </NavLink>
       </div>
     )
   );

@@ -14,12 +14,15 @@ export const NavBar = ({ nav, logo }) => {
 
   const handleClick = (e) => {
     setOpen(!isOpen);
+    console.log(e.target);
   };
 
   useEffect(() => {
     // closes menu when clicked outside of menu
     function handleHamMenuClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(!isOpen);
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(!isOpen);
+      }
     }
     if (isOpen) {
       document.addEventListener("mousedown", handleHamMenuClick);
@@ -75,35 +78,36 @@ export const NavBar = ({ nav, logo }) => {
           })}
         </div>
       </nav>
-      <nav className="flex relative justify-between w-full sm:hidden">
+      <nav className="flex relative z-10 justify-between w-full sm:hidden">
         {/* Hamburger */}
         <Hamburger
           duration={0.8}
-          className=""
+          className="hamburger-menu"
           label="Show menu"
           toggled={isOpen}
           toggle={setOpen}
         />
-        {isOpen && (
-          <div
-            ref={ref}
-            className="absolute top-[4rem] grid gap-3 z-10 bg-slate-200 p-2 rounded-lg divide-y divide-slate-600 shadow-lg"
-          >
-            {/* First half */}
-            {nav.map((item, i) => {
-              return (
-                <NavLink
-                  key={i}
-                  className="text-center text-storeyGreen-100  px-1 leading-tight isOpen:translate-y-1 duration-300"
-                  to={`/${item.slug.current}`}
-                  onClick={handleClick}
-                >
-                  {item.title}
-                </NavLink>
-              );
-            })}
-          </div>
-        )}
+
+        <div
+          ref={ref}
+          className={`absolute top-[4rem] grid gap-6  bg-slate-200 p-4 rounded-lg divide-slate-600 shadow-lg w-3/4 h-screen transition-all ease-in delay-150 duration-300 ${
+            isOpen ? "translate-x-0 opacity-100" : "-translate-x-3/4 opacity-0"
+          } `}
+        >
+          {/* First half */}
+          {nav.map((item, i) => {
+            return (
+              <NavLink
+                key={i}
+                className="text-center text-storeyGreen-100 p-4 leading-tight"
+                to={`/${item.slug.current}`}
+                onClick={handleClick}
+              >
+                {item.title}
+              </NavLink>
+            );
+          })}
+        </div>
 
         {/* Logo */}
         <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">

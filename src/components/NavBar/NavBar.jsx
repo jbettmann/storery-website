@@ -12,18 +12,21 @@ export const NavBar = ({ nav, logo }) => {
   const firstHalf = nav.slice(0, nav.length / 2);
   const lastHalf = nav.slice(nav.length / 2);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setOpen(!isOpen);
-    console.log(e.target);
+    console.log(ref.current);
   };
 
   useEffect(() => {
     // closes menu when clicked outside of menu
     function handleHamMenuClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) {
+      console.log(e.target);
+      // checks if target is not the hamburger menu and IS the overflow div
+      if (ref.current && e.target.id === "hamburger-overflow") {
         setOpen(!isOpen);
       }
     }
+
     if (isOpen) {
       document.addEventListener("mousedown", handleHamMenuClick);
     } else {
@@ -36,10 +39,9 @@ export const NavBar = ({ nav, logo }) => {
 
   return (
     <header className="mx-auto p-4">
-      <nav className="sm:flex hidden">
+      <nav className="lg:flex hidden">
         <div className="w-1/3 flex flex-auto justify-around items-center">
           {/* First half */}
-
           {firstHalf.map((item, i) => {
             return (
               <NavLink
@@ -78,8 +80,9 @@ export const NavBar = ({ nav, logo }) => {
           })}
         </div>
       </nav>
-      <nav className="flex relative z-10 justify-between w-full sm:hidden">
-        {/* Hamburger */}
+
+      {/* Hamburger */}
+      <nav className="flex relative justify-between w-full lg:hidden">
         <Hamburger
           duration={0.8}
           className="hamburger-menu"
@@ -90,11 +93,11 @@ export const NavBar = ({ nav, logo }) => {
 
         <div
           ref={ref}
-          className={`absolute top-[4rem] grid gap-6  bg-slate-200 p-4 rounded-lg divide-slate-600 shadow-lg w-3/4 h-screen transition-all ease-in delay-150 duration-300 ${
+          className={`absolute z-10 top-[4rem] grid gap-6 bg-slate-200 p-4 rounded-lg divide-slate-600 shadow-lg w-3/4  transition-all ease-in delay-150 duration-300 ${
             isOpen ? "translate-x-0 opacity-100" : "-translate-x-3/4 opacity-0"
           } `}
         >
-          {/* First half */}
+          {/* full ham nav */}
           {nav.map((item, i) => {
             return (
               <NavLink
@@ -108,6 +111,13 @@ export const NavBar = ({ nav, logo }) => {
             );
           })}
         </div>
+        {/* Overflow div */}
+        {isOpen && (
+          <div
+            className="absolute w-screen h-screen"
+            id="hamburger-overflow"
+          ></div>
+        )}
 
         {/* Logo */}
         <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">

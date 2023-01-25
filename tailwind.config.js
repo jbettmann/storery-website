@@ -18,7 +18,7 @@ module.exports = {
     extend: {
       colors: {
         storeyGreen: {
-          100: "#094d26",
+          100: "#14834E",
           200: "#09f923",
         },
       },

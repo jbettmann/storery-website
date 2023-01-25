@@ -24,7 +24,7 @@ export const Footer = ({ logo }) => {
       })
       .catch(console.error);
   }, []);
-  console.log(logo);
+  // console.log(logo);
   return (
     footer && (
       <div>

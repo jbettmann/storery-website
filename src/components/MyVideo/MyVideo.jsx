@@ -10,7 +10,7 @@ export const MyVideo = ({ url }) => {
   }, []);
 
   return (
-    <div className="player">
+    <div className="w-full">
       {url ? (
         <YouTube videoId={newUrl} />
       ) : (

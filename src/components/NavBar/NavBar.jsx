@@ -35,8 +35,8 @@ export const NavBar = ({ nav, logo }) => {
   }, [isOpen]);
 
   return (
-    <header className="mx-auto p-4">
-      <nav className="lg:flex hidden">
+    <nav className="p-4">
+      <div className="lg:flex hidden ">
         <div className="w-1/3 flex flex-auto justify-around items-center">
           {/* First half */}
           {firstHalf.map((item, i) => {
@@ -76,10 +76,10 @@ export const NavBar = ({ nav, logo }) => {
             );
           })}
         </div>
-      </nav>
+      </div>
 
       {/* Hamburger Menu*/}
-      <nav className="flex relative justify-between w-full lg:hidden">
+      <div className="flex relative justify-between w-full lg:hidden">
         {/* Logo */}
         <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">
           <NavLink className="flex-auto" to="/">
@@ -129,7 +129,7 @@ export const NavBar = ({ nav, logo }) => {
             id="hamburger-overflow"
           ></div>
         )}
-      </nav>
+      </div>
       {/* <div className="inline-flex py-3 px-3 my-6">
           <SocialIcon
             url="https://twitter.com/gordev5"
@@ -153,6 +153,6 @@ export const NavBar = ({ nav, logo }) => {
             style={{ height: 35, width: 35 }}
           /> 
         </div> */}
-    </header>
+    </nav>
   );
 };

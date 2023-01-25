@@ -39,13 +39,17 @@ function App() {
       .catch(console.error);
   }, []);
 
-  console.log(nav);
+  // console.log(nav);
 
   return (
     <Router>
       <NavBar nav={nav} logo={logo} />
       <Routes>
-        <Route element={<Home setLogo={setLogo} />} exact path="/" />
+        <Route
+          element={<Home setLogo={setLogo} contact={contact.slug.current} />}
+          exact
+          path="/"
+        />
         <Route element={<BuySell />} path={`/${buySell.slug.current}`} />
         <Route element={<InvestmentProp />} path={`/${invest.slug.current}`} />
         <Route element={<Remodel />} path={`/${remodel.slug.current}`} />

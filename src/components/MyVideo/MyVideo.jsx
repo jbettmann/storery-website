@@ -3,11 +3,11 @@ import YouTube from "react-youtube";
 import { getYoutubeVideoId } from "../../Functions/Functions";
 
 export const MyVideo = ({ url }) => {
-  const [newUrl, setNewUrl] = useState(url);
+  const [newUrl, setNewUrl] = useState(null);
 
   useEffect(() => {
     setNewUrl(getYoutubeVideoId(url));
-  }, []);
+  }, [newUrl]);
 
   return (
     <div className="w-full">

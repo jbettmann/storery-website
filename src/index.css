@@ -10,5 +10,9 @@
     font-family: 'Titillium Web', sans-serif;
     
   }
+
+  iframe {
+    @apply w-1/2
+  }
 }
 

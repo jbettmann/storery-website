@@ -14,19 +14,16 @@ export const NavBar = ({ nav, logo }) => {
 
   const handleClick = () => {
     setOpen(!isOpen);
-    console.log(ref.current);
   };
 
   useEffect(() => {
     // closes menu when clicked outside of menu
     function handleHamMenuClick(e) {
-      console.log(e.target);
       // checks if target is not the hamburger menu and IS the overflow div
       if (ref.current && e.target.id === "hamburger-overflow") {
         setOpen(!isOpen);
       }
     }
-
     if (isOpen) {
       document.addEventListener("mousedown", handleHamMenuClick);
     } else {
@@ -81,8 +78,20 @@ export const NavBar = ({ nav, logo }) => {
         </div>
       </nav>
 
-      {/* Hamburger */}
+      {/* Hamburger Menu*/}
       <nav className="flex relative justify-between w-full lg:hidden">
+        {/* Logo */}
+        <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">
+          <NavLink className="flex-auto" to="/">
+            <img
+              className="flex-auto"
+              src={urlFor(logo?.asset?._ref)}
+              alt="Storey Real Estate Logo"
+            />
+          </NavLink>
+        </div>
+
+        {/* Hamburger Icon */}
         <Hamburger
           duration={0.8}
           className="hamburger-menu"
@@ -90,11 +99,12 @@ export const NavBar = ({ nav, logo }) => {
           toggled={isOpen}
           toggle={setOpen}
         />
-
         <div
           ref={ref}
-          className={`absolute z-10 top-[4rem] grid gap-6 bg-slate-200 p-4 rounded-lg divide-slate-600 shadow-lg w-3/4  transition-all ease-in delay-150 duration-300 ${
-            isOpen ? "translate-x-0 opacity-100" : "-translate-x-3/4 opacity-0"
+          className={`fixed z-10 top-0 left-0 grid gap-6 bg-slate-100 p-4 rounded-lg shadow-inner w-3/4 h-screen transition-all duration-300 ease-out ${
+            isOpen
+              ? "translate-x-0 opacity-100 "
+              : "-translate-x-full opacity-0"
           } `}
         >
           {/* full ham nav */}
@@ -111,24 +121,14 @@ export const NavBar = ({ nav, logo }) => {
             );
           })}
         </div>
+
         {/* Overflow div */}
         {isOpen && (
           <div
-            className="absolute w-screen h-screen"
+            className="fixed top-0 left-0 w-screen h-screen bg-slate-500 opacity-30 duration-300"
             id="hamburger-overflow"
           ></div>
         )}
-
-        {/* Logo */}
-        <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">
-          <NavLink className="flex-auto" to="/">
-            <img
-              className="flex-auto"
-              src={urlFor(logo?.asset?._ref)}
-              alt="Storey Real Estate Logo"
-            />
-          </NavLink>
-        </div>
       </nav>
       {/* <div className="inline-flex py-3 px-3 my-6">
           <SocialIcon

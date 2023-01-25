@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply bg-slate-100 w-screen;
+    @apply bg-slate-100 w-screen h-screen;
     font-family: 'Titillium Web', sans-serif;
     
   }

@@ -52,35 +52,35 @@ export const Home = ({ setLogo, contact }) => {
             alt="Beautiful sunny brick home surrounded by green trees that Storey owns"
             className="mx-auto -translate-y-1/4 md:-translate-y-1/4 lg:-translate-y-1/3 2xl:-translate-y-1/2 w-full brightness-50 "
           />
+          <article className="absolute top-0 left-0 w-full h-full px-6 flex flex-col text-center justify-center items-center flex-auto">
+            {home.hero.title.split("\n").map((t) => (
+              <h1 className="mb-0">{t}</h1>
+            ))}
+            <h5>{home.hero.body}</h5>
+            <NavLink
+              className="btn mt-8"
+              to={`/${contact}`}
+              aria-label="Request a Call link"
+            >
+              Request A Call
+            </NavLink>
+          </article>
         </div>
-        <article className="absolute top-0 left-0 w-full h-full px-6 flex flex-col text-center justify-center items-center ">
-          {home.hero.title.split("\n").map((t) => (
-            <h1 className="mb-0">{t}</h1>
-          ))}
-          <h5>{home.hero.body}</h5>
-          <NavLink
-            className="btn mt-8"
-            to={`/${contact}`}
-            aria-label="Request a Call link"
-          >
-            Request A Call
-          </NavLink>
-        </article>
       </header>
 
       {/* Cards */}
       {cards && (
-        <section className="flex gap-20 mx-9 justify-center">
+        <section className="flex flex-col items-center lg:flex-row gap-10 mx-9 justify-center">
           {cards.map((card, i) => {
             return (
               <div
                 key={i}
-                className=" bg-white text-center max-w-2xl h-auto p-10"
+                className=" bg-white text-center w-96 flex-auto max-w-2xl h-[526px] py-8 2xl:p-16 px-6 flex flex-col items-center justify-between"
               >
                 <img
                   src={urlFor(card?.mainImage.asset._ref)}
-                  alt=""
-                  className="mx-auto"
+                  alt={card.slug?.current}
+                  className="mx-auto w-52 h-52"
                 />
                 <h1>{card.title}</h1>
                 <p>{card?.body}</p>

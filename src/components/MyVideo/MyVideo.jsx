@@ -10,7 +10,7 @@ export const MyVideo = ({ url }) => {
   }, [newUrl]);
 
   return (
-    <div className="w-full">
+    <div className="w-full md:flex justify-center p-3">
       {url ? (
         <YouTube videoId={newUrl} />
       ) : (

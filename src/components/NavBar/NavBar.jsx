@@ -12,6 +12,13 @@ export const NavBar = ({ nav, logo }) => {
   const firstHalf = nav.slice(0, nav.length / 2);
   const lastHalf = nav.slice(nav.length / 2);
 
+  // Applied when nav link is Active
+  let activeStyle = {
+    backgroundColor: "#E5F1E0",
+    borderRadius: "6px",
+    padding: "16px 12px",
+  };
+
   const handleClick = () => {
     setOpen(!isOpen);
   };
@@ -35,7 +42,7 @@ export const NavBar = ({ nav, logo }) => {
   }, [isOpen]);
 
   return (
-    <nav className="p-4">
+    <nav className="p-4 bg-white">
       <div className="lg:flex hidden ">
         <div className="w-1/3 flex flex-auto justify-around items-center">
           {/* First half */}
@@ -43,7 +50,8 @@ export const NavBar = ({ nav, logo }) => {
             return (
               <NavLink
                 key={i}
-                className="flex-auto text-center flex-wrap text-storeyGreen-100 items-center px-1 leading-tight"
+                className={`flex-auto text-center flex-wrap text-storeyGreen-100 items-center px-1 leading-tight`}
+                style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
                 {item.title}
@@ -54,7 +62,7 @@ export const NavBar = ({ nav, logo }) => {
 
         {/* Logo */}
         <div className="flex justify-center flex-auto w-1/3 px-1 ">
-          <NavLink className="" to="/">
+          <NavLink className="" to="/" end>
             <img
               src={urlFor(logo?.asset?._ref)}
               alt="Storey Real Estate Logo"
@@ -69,6 +77,7 @@ export const NavBar = ({ nav, logo }) => {
               <NavLink
                 key={i}
                 className="text-center flex-wrap text-yellow-600"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
                 {item.title}
@@ -130,29 +139,6 @@ export const NavBar = ({ nav, logo }) => {
           ></div>
         )}
       </div>
-      {/* <div className="inline-flex py-3 px-3 my-6">
-          <SocialIcon
-            url="https://twitter.com/gordev5"
-            className="mr-4"
-            target="_blank"
-            fgColor="#fff"
-            style={{ height: 35, width: 35 }}
-          />
-          <SocialIcon
-            url="https://github.com/jbettmann/"
-            className="mr-4"
-            target="_blank"
-            fgColor="#fff"
-            style={{ height: 35, width: 35 }}
-          />
-          <SocialIcon
-            url="https://www.linkedin.com/in/jordan-bettmann/"
-            className="mr-4"
-            target="_blank"
-            fgColor="#fff"
-            style={{ height: 35, width: 35 }}
-          /> 
-        </div> */}
     </nav>
   );
 };

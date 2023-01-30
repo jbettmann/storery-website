@@ -54,7 +54,7 @@ export const Home = ({ setLogo, contact }) => {
           />
           <article className="absolute top-0 left-0 w-full h-full px-6 flex flex-col text-center justify-center items-center flex-auto">
             {home.hero.title.split("\n").map((t) => (
-              <h1 className="mb-0">{t}</h1>
+              <h1 className="mb-0 text-2xl md:text-4xl ">{t}</h1>
             ))}
             <h5>{home.hero.body}</h5>
             <NavLink
@@ -85,7 +85,7 @@ export const Home = ({ setLogo, contact }) => {
                 <h1>{card.title}</h1>
                 <p>{card?.body}</p>
                 <NavLink
-                  className="btn"
+                  className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
                   // to={`/${contact}`}
                   aria-label="Request a Call link"
                 >
@@ -98,14 +98,14 @@ export const Home = ({ setLogo, contact }) => {
       )}
 
       {/* Get To Know Us*/}
-      <section className="mx-auto my-10">
+      <section className="flex flex-col items-center">
         <h1>{home.homeAbout.title}</h1>
-        <p>{home.homeAbout?.body}</p>
+        <p className="max-w-2xl text-center">{home.homeAbout?.body}</p>
         <MyVideo url={aboutVid} />
       </section>
 
       {/* Espanol Language */}
-      <section className="mx-auto my-10 w-2/3 bg-white">
+      <section className="mx-auto p-6 text-center w-fit bg-white">
         <h1>{home.language.title}</h1>
         <p>{home.language.body}</p>
       </section>

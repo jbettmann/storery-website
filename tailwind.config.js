@@ -19,8 +19,12 @@ module.exports = {
       colors: {
         storeyGreen: {
           100: "#14834E",
-          200: "#09f923",
+          200: "#1fa465",
+          300: "#0c4c26",
         },
+      },
+      screens: {
+        xs: "240px",
       },
     },
   },

@@ -7,14 +7,14 @@
 
 @layer base {
   html {
-    @apply bg-slate-100  h-screen pt-5;
+    @apply bg-slate-100  h-screen;
     font-family: 'Lato', sans-serif;
     font-family: 'Roboto', sans-serif;
     
   }
   h1 {
     font-family: 'Roboto', sans-serif;
-    @apply text-xl md:text-4xl font-bold mb-3 
+    @apply text-4xl font-bold mb-3 
   }
 
   h5 {
@@ -24,17 +24,35 @@
   p {
     @apply p-3 mb-3
   }
-
+  
   section {
     @apply mb-14
   }
 
   iframe {
-    @apply w-1/2
+    @apply w-full  md:w-[640px] md:h-[360px]
+  }
+
+  footer {
+    @apply bg-white flex flex-col items-center pt-6 pr-6 pb-0 pl-6 text-center
+  }
+
+  .nav-active {
+    @apply bg-[#E5F1E0] rounded-md py-4 px-3
   }
 
   .btn {
     @apply text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md 
+  }
+  .btn:hover {
+    @apply underline decoration-solid
+  }
+  .btn:focus {
+    @apply underline decoration-solid bg-[#084126]
+  }
+
+  .footer-links {
+    @apply hover:underline hover:text-storeyGreen-200 decoration-solid decoration-storeyGreen-200
   }
 }
 

@@ -35,12 +35,12 @@ export const Footer = ({ logo }) => {
         </NavLink>
 
         {/* Social Icons */}
-        <div className="flex justify-center my-2">
+        <div className="flex justify-center my-2 flex-wrap">
           {social.map((link) => (
             <SocialIcon
               key={link._key}
               url={link.url}
-              className="m-3 flex-auto w-12 h-12"
+              className="m-3"
               target="_blank"
               bgColor="#0c4c26"
               fgColor="#fff"

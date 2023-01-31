@@ -44,13 +44,13 @@ export const NavBar = ({ nav, logo }) => {
   return (
     <nav className="p-4 bg-white">
       <div className="lg:flex hidden ">
-        <div className="w-1/3 flex flex-auto justify-around items-center">
+        <div className="w-1/3 flex flex-auto justify-around items-center text-storeyGreen-100">
           {/* First half */}
           {firstHalf.map((item, i) => {
             return (
               <NavLink
                 key={i}
-                className={`flex-auto text-center flex-wrap text-storeyGreen-100 items-center px-1 leading-tight`}
+                className={`text-center flex-wrap  px-4 py-3 `}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
@@ -71,12 +71,15 @@ export const NavBar = ({ nav, logo }) => {
         </div>
 
         {/* Second Half */}
-        <div className="w-1/3 flex flex-auto justify-around items-center px-1">
+        <div className="w-1/3 flex flex-auto justify-around items-center px-1 text-storeyGreen-100">
           {lastHalf.map((item, i) => {
+            console.log(item);
             return (
               <NavLink
                 key={i}
-                className="text-center flex-wrap text-yellow-600"
+                className={`text-center flex-wrap px-4 py-3 ${
+                  item.slug.current.includes("contact") ? "btn" : ""
+                }`}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
@@ -110,7 +113,7 @@ export const NavBar = ({ nav, logo }) => {
         />
         <div
           ref={ref}
-          className={`fixed z-10 top-0 left-0 grid gap-6 bg-slate-100 p-4 rounded-lg shadow-inner w-3/4 h-screen transition-all duration-300 ease-out ${
+          className={`fixed z-10 top-0 left-0 grid gap-6 bg-slate-100 p-4  shadow-inner w-3/4 h-screen transition-all duration-300 ease-out ${
             isOpen
               ? "translate-x-0 opacity-100 "
               : "-translate-x-full opacity-0"
@@ -121,7 +124,7 @@ export const NavBar = ({ nav, logo }) => {
             return (
               <NavLink
                 key={i}
-                className="text-center text-storeyGreen-100 p-4 leading-tight"
+                className="text-center text-storeyGreen-100 p-4 mt-4"
                 to={`/${item.slug.current}`}
                 onClick={handleClick}
               >

@@ -75,22 +75,24 @@ export const Home = ({ setLogo, contact }) => {
             return (
               <div
                 key={i}
-                className=" bg-white text-center w-96 flex-auto max-w-2xl h-[526px] py-8 2xl:p-16 px-6 flex flex-col items-center justify-between"
+                className=" bg-white sm:text-left lg:text-center text-center w-full flex-auto max-w-2xl  sm:h-auto lg:h-[526px] h-auto py-8 2xl:p-16 px-6 flex sm:flex-row lg:flex-col flex-col items-center lg:justify-between justify-between"
               >
                 <img
                   src={urlFor(card?.mainImage.asset._ref)}
                   alt={card.slug?.current}
-                  className="mx-auto w-52 h-52"
+                  className="mx-auto w-52 flex-auto"
                 />
-                <h1>{card.title}</h1>
-                <p>{card?.body}</p>
-                <NavLink
-                  className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-                  // to={`/${contact}`}
-                  aria-label="Request a Call link"
-                >
-                  {card.button}
-                </NavLink>
+                <div className="flex flex-col flex-initial h-full sm:items-start lg:justify-between justify-between lg:items-center items-center p-3 lg:p-0">
+                  <h1>{card.title}</h1>
+                  <p className="pl-0">{card?.body}</p>
+                  <NavLink
+                    className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
+                    // to={`/${contact}`}
+                    aria-label="Request a Call link"
+                  >
+                    {card.button}
+                  </NavLink>
+                </div>
               </div>
             );
           })}

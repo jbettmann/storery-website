@@ -15,8 +15,8 @@ export const NavBar = ({ nav, logo }) => {
   // Applied when nav link is Active
   let activeStyle = {
     backgroundColor: "#E5F1E0",
+    color: "#14834E",
     borderRadius: "6px",
-    padding: "16px 12px",
   };
 
   const handleClick = () => {
@@ -73,7 +73,6 @@ export const NavBar = ({ nav, logo }) => {
         {/* Second Half */}
         <div className="w-1/3 flex flex-auto justify-around items-center px-1 text-storeyGreen-100">
           {lastHalf.map((item, i) => {
-            console.log(item);
             return (
               <NavLink
                 key={i}

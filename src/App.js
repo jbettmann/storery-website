@@ -25,7 +25,17 @@ function App() {
 
   const [buySell, invest, remodel, about, resources, contact] = [...nav];
 
+  const getLogo = async () => {
+    const logoUrl = `*[_type == 'home']{
+      logo,  
+      }`;
+    const res = await sanityClient.fetch(logoUrl);
+    const data = res[0];
+    setLogo(data);
+  };
+
   useEffect(() => {
+    getLogo();
     sanityClient
       .fetch(
         `*[_type == 'nav']{
@@ -39,14 +49,14 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // console.log(nav);
+  console.log({ nav, logo });
 
   return (
     <Router>
-      <NavBar nav={nav} logo={logo} />
+      <NavBar nav={nav} logo={logo.logo} />
       <Routes>
         <Route
-          element={<Home setLogo={setLogo} contact={contact.slug.current} />}
+          element={<Home logo={logo} contact={contact.slug.current} />}
           exact
           path="/"
         />
@@ -57,7 +67,7 @@ function App() {
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
         <Route element={<Contact />} path={`/${contact.slug.current}`} />
       </Routes>
-      <Footer logo={logo} />
+      <Footer logo={logo.logo} />
     </Router>
   );
 }

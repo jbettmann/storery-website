@@ -37,10 +37,6 @@
     @apply bg-white flex flex-col items-center pt-6 pr-6 pb-0 pl-6 text-center
   }
 
-  .nav-active {
-    @apply bg-[#E5F1E0] rounded-md py-4 px-3
-  }
-
   .btn {
     @apply text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md 
   }

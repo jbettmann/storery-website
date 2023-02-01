@@ -7,7 +7,7 @@ import { MyVideo } from "../MyVideo/MyVideo";
 
 import "./Home.scss";
 
-export const Home = ({ setLogo, contact }) => {
+export const Home = ({ contact }) => {
   const [home, setHome] = useState(null);
   const [cards, setCards] = useState(null);
   const [aboutVid, setAboutVid] = useState(null);
@@ -26,7 +26,6 @@ export const Home = ({ setLogo, contact }) => {
           hero,
           cards,
           homeAbout,
-          logo,
           language
       }`
       )
@@ -35,7 +34,6 @@ export const Home = ({ setLogo, contact }) => {
         let [newData] = data;
         setHome(newData);
         setAboutVid(newData.homeAbout.videoUrl);
-        setLogo(newData.logo);
         setCardArry(newData.cards);
       })
       .catch(console.error);

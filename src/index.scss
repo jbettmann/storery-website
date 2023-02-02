@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500;700&display=swap");
+
+@layer base {
+  html {
+    @apply bg-slate-100  h-screen;
+    font-family: "Lato", sans-serif;
+    font-family: "Roboto", sans-serif;
+  }
+  h1 {
+    font-family: "Roboto", sans-serif;
+    @apply text-4xl font-bold mb-3;
+  }
+
+  h5 {
+    @apply mt-3 text-sm md:text-base;
+  }
+
+  p {
+    @apply p-3 mb-3;
+  }
+
+  section {
+    @apply mb-14;
+  }
+
+  iframe {
+    @apply w-full  md:w-[640px] md:h-[360px];
+  }
+
+  footer {
+    @apply bg-white flex flex-col items-center pt-6 pr-6 pb-0 pl-6 text-center;
+  }
+
+  .btn {
+    @apply text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md;
+  }
+  .btn:hover {
+    @apply underline decoration-solid;
+  }
+  .btn:focus {
+    @apply underline decoration-solid bg-[#084126];
+  }
+
+  .card {
+    @apply ease-out transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply scale-110 ease-in-out transition-all -translate-y-1 duration-300 cursor-pointer;
+    .btn {
+      @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-300;
+    }
+  }
+
+  .footer-links {
+    @apply hover:underline hover:text-storeyGreen-200 decoration-solid decoration-storeyGreen-200;
+  }
+}

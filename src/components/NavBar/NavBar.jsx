@@ -91,8 +91,9 @@ export const NavBar = ({ nav, logo }) => {
 
       {/* Hamburger Menu*/}
       <div className="flex relative justify-between w-full lg:hidden">
+        <div className="invisible w-12"></div>
         {/* Logo */}
-        <div className="flex max-w-[200px] flex-auto justify-center items-center px-1 ">
+        <div className="flex max-w-[200px] flex-auto justify-center items-center px-3 ">
           <NavLink className="flex-auto" to="/">
             <img
               className="flex-auto"
@@ -110,6 +111,7 @@ export const NavBar = ({ nav, logo }) => {
           toggled={isOpen}
           toggle={setOpen}
         />
+
         <div
           ref={ref}
           className={`fixed z-10 top-0 left-0 grid gap-6 bg-slate-100 p-4  shadow-inner w-3/4 h-screen transition-all duration-300 ease-out ${

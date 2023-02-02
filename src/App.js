@@ -49,8 +49,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  console.log({ nav, logo });
-
   return (
     <Router>
       <NavBar nav={nav} logo={logo.logo} />

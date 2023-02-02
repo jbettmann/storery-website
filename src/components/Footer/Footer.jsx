@@ -26,12 +26,12 @@ export const Footer = ({ logo }) => {
       })
       .catch(console.error);
   }, []);
-  console.log(social);
+
   return (
     footer && (
       <footer>
         <NavLink to="/" className="my-2">
-          <img src={urlFor(logo.asset?._ref)} alt="Storey Real Estate Logo" />
+          <img src={urlFor(logo?.asset._ref)} alt="Storey Real Estate Logo" />
         </NavLink>
 
         {/* Social Icons */}

@@ -15,7 +15,6 @@ export const Home = ({ contact }) => {
   const setCardArry = (cards) => {
     let [...newCards] = Object.values(cards);
     setCards(newCards.filter((doc, i) => typeof doc === "object"));
-    console.log("cards loaded");
   };
   useEffect(() => {
     sanityClient
@@ -38,7 +37,7 @@ export const Home = ({ contact }) => {
       })
       .catch(console.error);
   }, [home?.homeAbout.videoUrl]);
-  console.log(home);
+  // console.log(home);
   if (!home) return <div>Loading...</div>;
   return (
     <div>
@@ -51,8 +50,10 @@ export const Home = ({ contact }) => {
             className="mx-auto -translate-y-1/4 md:-translate-y-1/4 lg:-translate-y-1/3 2xl:-translate-y-1/2 w-full brightness-50 "
           />
           <article className="absolute top-0 left-0 w-full h-full px-6 flex flex-col text-center justify-center items-center flex-auto">
-            {home.hero.title.split("\n").map((t) => (
-              <h1 className="mb-0 text-2xl md:text-4xl ">{t}</h1>
+            {home.hero.title.split("\n").map((t, i) => (
+              <h1 key={i} className="mb-0 text-2xl md:text-4xl ">
+                {t}
+              </h1>
             ))}
             <h5>{home.hero.body}</h5>
             <NavLink
@@ -73,7 +74,7 @@ export const Home = ({ contact }) => {
             return (
               <div
                 key={i}
-                className=" bg-white sm:text-left lg:text-center text-center w-full flex-auto max-w-2xl  sm:h-auto lg:h-[526px] h-auto py-8 2xl:p-16 px-6 flex sm:flex-row lg:flex-col flex-col items-center lg:justify-between justify-between"
+                className=" bg-white sm:text-left lg:text-center text-center w-full flex-auto max-w-2xl  sm:h-auto lg:h-[526px] h-auto py-8 2xl:p-16 px-6 flex sm:flex-row lg:flex-col flex-col items-center lg:justify-between justify-between card"
               >
                 <img
                   src={urlFor(card?.mainImage.asset._ref)}
@@ -85,7 +86,7 @@ export const Home = ({ contact }) => {
                   <p className="pl-0">{card?.body}</p>
                   <NavLink
                     className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-                    // to={`/${contact}`}
+                    to={`/${card.slug.current}`}
                     aria-label="Request a Call link"
                   >
                     {card.button}

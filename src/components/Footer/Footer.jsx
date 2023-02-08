@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
+import zillow from "../../assets/icons/zillow-icon.svg";
 
 export const Footer = ({ logo }) => {
   const [footer, setFooter] = useState(null);
@@ -36,16 +37,32 @@ export const Footer = ({ logo }) => {
 
         {/* Social Icons */}
         <div className="flex justify-center my-2 flex-wrap">
-          {social.map((link) => (
-            <SocialIcon
-              key={link._key}
-              url={link.url}
-              className="m-3"
-              target="_blank"
-              bgColor="#0c4c26"
-              fgColor="#fff"
-            />
-          ))}
+          {social.map((link) =>
+            link.socialNetwork === "Zillow" ? (
+              <a
+                key={link._key}
+                href={link.url}
+                className="m-3 flex justify-center"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="social-icon"
+                  src={zillow}
+                  alt="zillow icon link"
+                />
+              </a>
+            ) : (
+              <SocialIcon
+                key={link._key}
+                url={link.url}
+                className="m-3"
+                target="_blank"
+                bgColor="#0c4c26"
+                fgColor="#fff"
+              />
+            )
+          )}
         </div>
 
         {/* Contact Info */}
@@ -60,16 +77,16 @@ export const Footer = ({ logo }) => {
               {footer.email}
             </a>
           </p>
-          <p className="md:hidden text-center">
-            {footer.name} <br />
+          <p className="text-center md:hidden ">
+            {footer.name}
+            <br />
             <a className="footer-links" href={`tel:${footer.phone}`}>
               {footer.phone}
-            </a>
-            <br />{" "}
+            </a>{" "}
+            <br />
             <a className="footer-links" href={`mailto:${footer.email}`}>
               {footer.email}
             </a>
-            <br />
           </p>
           <p className="m-0 text-sm">
             © 2023{" "}

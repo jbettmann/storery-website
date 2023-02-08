@@ -45,11 +45,11 @@
   }
 
   .card {
-    @apply ease-out transition-all duration-300;
+    @apply ease-out transition-all duration-300 drop-shadow-md;
   }
 
   .card:hover {
-    @apply scale-110 ease-in-out transition-all -translate-y-1 duration-300 cursor-pointer;
+    @apply scale-110 ease-in-out transition-all -translate-y-1 duration-300 cursor-pointer drop-shadow-lg;
     .btn {
       @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-300;
     }
@@ -57,5 +57,9 @@
 
   .footer-links {
     @apply hover:underline hover:text-storeyGreen-200 decoration-solid decoration-storeyGreen-200;
+  }
+
+  .social-icon {
+    @apply bg-white inline-block w-[50px] h-[50px]  overflow-hidden align-middle rounded-full;
   }
 }

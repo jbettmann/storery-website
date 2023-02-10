@@ -8,15 +8,13 @@ export const Contact = () => {
   }
 
   return (
-    <form
-      className=" bg-gradient-to-t from-blue-600 to-blue-400 h-[100vh] w-full flex justify-center items-center"
-      id="Contact"
+    <div
+      className="  h-[100vh] w-full flex justify-center items-center"
+      id="contact"
       onSubmit={handleSubmit}
     >
-      <div className=" bg-white/20 backdrop-blur-lg h-[450px] w-[300px] md:h-[550px] md:w-[400px] rounded-xl shadow-xl relative">
-        <div className=" text-center text-3xl font-light mt-10">
-          Send a Message
-        </div>
+      <form className="bg-white h-auto w-[300px]  md:w-[400px] rounded-xl shadow-xl p-3 ">
+        <div className=" text-center text-3xl mt-10">Send a Message</div>
         <div className=" w-full flex justify-center flex-col items-center">
           <div>
             <input
@@ -71,7 +69,7 @@ export const Contact = () => {
             </button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };

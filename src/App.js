@@ -9,8 +9,8 @@ import { About } from "./components/About/About";
 import { Resources } from "./components/Resources/Resources";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
-
-import sanityClient from "./client";
+import { getLogo } from "./Functions/Functions";
+import { getNav } from "./Functions/Functions";
 
 function App() {
   const [nav, setNav] = useState([
@@ -25,28 +25,9 @@ function App() {
 
   const [buySell, invest, remodel, about, resources, contact] = [...nav];
 
-  const getLogo = async () => {
-    const logoUrl = `*[_type == 'home']{
-      logo,  
-      }`;
-    const res = await sanityClient.fetch(logoUrl);
-    const data = res[0];
-    setLogo(data);
-  };
-
   useEffect(() => {
-    getLogo();
-    sanityClient
-      .fetch(
-        `*[_type == 'nav']{
-        title,
-        slug,
-        id,
-      }`
-      )
-      .then((d) => d.sort((a, b) => a.id - b.id))
-      .then((data) => setNav(data))
-      .catch(console.error);
+    getLogo(setLogo);
+    getNav(setNav);
   }, []);
 
   return (

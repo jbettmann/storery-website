@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
-import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
+import { getFooter } from "../../Functions/Functions";
 import zillow from "../../assets/icons/zillow-icon.svg";
 
 export const Footer = ({ logo }) => {
@@ -10,22 +10,7 @@ export const Footer = ({ logo }) => {
   const [social, setSocial] = useState(null);
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == 'footer']{
-            title,
-            socialLinks,
-            name,
-            phone,
-            email,
-         }`
-      )
-      .then((data) => {
-        let [newData] = data;
-        setFooter(newData);
-        setSocial(newData.socialLinks);
-      })
-      .catch(console.error);
+    getFooter(setFooter, setSocial);
   }, []);
 
   return (

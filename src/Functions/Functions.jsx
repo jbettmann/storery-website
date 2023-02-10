@@ -2,6 +2,7 @@ import React from "react";
 import sanityClient from "../client";
 import imageUrlBuilder from "@sanity/image-url";
 
+// Splits id from Youtube url
 export function getYoutubeVideoId(youtubeURL) {
   let videoId;
 
@@ -22,10 +23,79 @@ export function getYoutubeVideoId(youtubeURL) {
   return videoId;
 }
 
+// image conversion function for Sanity
 export function urlFor(source) {
   const builder = imageUrlBuilder(sanityClient);
 
   if (!source) return;
 
   return builder.image(source);
+}
+
+// fetch for Logo
+export async function getLogo(setLogo) {
+  const logoUrl = `*[_type == 'home']{
+    logo,  
+    }`;
+  const res = await sanityClient.fetch(logoUrl);
+  const data = res[0];
+  setLogo(data);
+}
+
+// fetch Navigation components
+export function getNav(setNav) {
+  sanityClient
+    .fetch(
+      `*[_type == 'nav']{
+    title,
+    slug,
+    id,
+  }`
+    )
+    .then((d) => d.sort((a, b) => a.id - b.id))
+    .then((data) => setNav(data))
+    .catch(console.error);
+}
+
+// fetch for Home content
+export function getHome(setHome, setAboutVid, setCardArray) {
+  sanityClient
+    .fetch(
+      `*[_type == 'home']{
+      title,
+      slug,
+      hero,
+      cards,
+      homeAbout,
+      language
+  }`
+    )
+
+    .then((data) => {
+      let [newData] = data;
+      setHome(newData);
+      setAboutVid(newData.homeAbout.videoUrl);
+      setCardArray(newData.cards);
+    })
+    .catch(console.error);
+}
+
+// fetch for Footer content
+export function getFooter(setFooter, setSocial) {
+  sanityClient
+    .fetch(
+      `*[_type == 'footer']{
+        title,
+        socialLinks,
+        name,
+        phone,
+        email,
+     }`
+    )
+    .then((data) => {
+      let [newData] = data;
+      setFooter(newData);
+      setSocial(newData.socialLinks);
+    })
+    .catch(console.error);
 }

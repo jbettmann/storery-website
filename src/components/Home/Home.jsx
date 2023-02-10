@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
-
+import { getHome } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
 
 import "./Home.scss";
@@ -12,31 +12,14 @@ export const Home = ({ contact }) => {
   const [cards, setCards] = useState(null);
   const [aboutVid, setAboutVid] = useState(null);
 
-  const setCardArry = (cards) => {
+  const setCardArray = (cards) => {
     let [...newCards] = Object.values(cards);
     setCards(newCards.filter((doc, i) => typeof doc === "object"));
   };
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == 'home']{
-          title,
-          slug,
-          hero,
-          cards,
-          homeAbout,
-          language
-      }`
-      )
+    getHome(setHome, setAboutVid, setCardArray);
+  }, []);
 
-      .then((data) => {
-        let [newData] = data;
-        setHome(newData);
-        setAboutVid(newData.homeAbout.videoUrl);
-        setCardArry(newData.cards);
-      })
-      .catch(console.error);
-  }, [home?.homeAbout.videoUrl]);
   // console.log(home);
   if (!home) return <div>Loading...</div>;
   return (

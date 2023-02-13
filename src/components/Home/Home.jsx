@@ -4,21 +4,23 @@ import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
 import { getHome } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
+import { SeHabla } from "../SeHabla/SeHabla";
 
 import "./Home.scss";
 
-export const Home = ({ contact }) => {
-  const [home, setHome] = useState(null);
+export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
   const [aboutVid, setAboutVid] = useState(null);
 
   const setCardArray = (cards) => {
+    if (!cards) return;
     let [...newCards] = Object.values(cards);
     setCards(newCards.filter((doc, i) => typeof doc === "object"));
   };
   useEffect(() => {
-    getHome(setHome, setAboutVid, setCardArray);
-  }, []);
+    setCardArray(home?.cards);
+    setSeHabla(home);
+  }, [home]);
 
   // console.log(home);
   if (!home) return <div>Loading...</div>;
@@ -55,8 +57,9 @@ export const Home = ({ contact }) => {
         <section className="flex flex-col items-center lg:flex-row gap-10 mx-9 justify-center">
           {cards.map((card, i) => {
             return (
-              <div
+              <NavLink
                 key={i}
+                to={`/${card.slug.current}`}
                 className=" bg-white sm:text-left lg:text-center text-center w-full flex-auto max-w-2xl  sm:h-auto lg:h-[526px] h-auto py-8 2xl:p-16 px-6 flex sm:flex-row lg:flex-col flex-col items-center lg:justify-between justify-between card"
               >
                 <img
@@ -75,7 +78,7 @@ export const Home = ({ contact }) => {
                     {card.button}
                   </NavLink>
                 </div>
-              </div>
+              </NavLink>
             );
           })}
         </section>
@@ -85,14 +88,11 @@ export const Home = ({ contact }) => {
       <section className="flex flex-col items-center">
         <h1>{home.homeAbout.title}</h1>
         <p className="max-w-2xl text-center">{home.homeAbout?.body}</p>
-        <MyVideo url={aboutVid} />
+        <MyVideo url={home.homeAbout.videoUrl} />
       </section>
 
       {/* Espanol Language */}
-      <section className="mx-auto p-6 text-center w-fit bg-white">
-        <h1>{home.language.title}</h1>
-        <p>{home.language.body}</p>
-      </section>
+      <SeHabla seHabla={home} />
     </div>
   );
 };

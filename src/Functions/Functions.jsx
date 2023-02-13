@@ -58,7 +58,7 @@ export function getNav(setNav) {
 }
 
 // fetch for Home content
-export function getHome(setHome, setAboutVid, setCardArray) {
+export function getHome(setHome) {
   sanityClient
     .fetch(
       `*[_type == 'home']{
@@ -74,14 +74,12 @@ export function getHome(setHome, setAboutVid, setCardArray) {
     .then((data) => {
       let [newData] = data;
       setHome(newData);
-      setAboutVid(newData.homeAbout.videoUrl);
-      setCardArray(newData.cards);
     })
     .catch(console.error);
 }
 
 // fetch for Footer content
-export function getFooter(setFooter, setSocial) {
+export function getFooter(setFooter) {
   sanityClient
     .fetch(
       `*[_type == 'footer']{
@@ -95,7 +93,6 @@ export function getFooter(setFooter, setSocial) {
     .then((data) => {
       let [newData] = data;
       setFooter(newData);
-      setSocial(newData.socialLinks);
     })
     .catch(console.error);
 }

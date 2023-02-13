@@ -9,10 +9,12 @@ import { About } from "./components/About/About";
 import { Resources } from "./components/Resources/Resources";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
-import { getLogo } from "./Functions/Functions";
+import { getFooter, getHome, getLogo } from "./Functions/Functions";
 import { getNav } from "./Functions/Functions";
 
 function App() {
+  const [logo, setLogo] = useState("");
+
   const [nav, setNav] = useState([
     { slug: { current: "" } },
     { slug: { current: "" } },
@@ -21,13 +23,17 @@ function App() {
     { slug: { current: "" } },
     { slug: { current: "" } },
   ]);
-  const [logo, setLogo] = useState("");
+  const [home, setHome] = useState(null);
+  const [footer, setFooter] = useState(null);
+  const [seHabla, setSeHabla] = useState("");
 
   const [buySell, invest, remodel, about, resources, contact] = [...nav];
 
   useEffect(() => {
     getLogo(setLogo);
     getNav(setNav);
+    getHome(setHome);
+    getFooter(setFooter);
   }, []);
 
   return (
@@ -35,7 +41,13 @@ function App() {
       <NavBar nav={nav} logo={logo.logo} />
       <Routes>
         <Route
-          element={<Home logo={logo} contact={contact.slug.current} />}
+          element={
+            <Home
+              home={home}
+              contact={contact.slug.current}
+              setSeHabla={setSeHabla}
+            />
+          }
           exact
           path="/"
         />
@@ -44,9 +56,12 @@ function App() {
         <Route element={<Remodel />} path={`/${remodel.slug.current}`} />
         <Route element={<About />} path={`/${about.slug.current}`} />
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
-        <Route element={<Contact />} path={`/${contact.slug.current}`} />
+        <Route
+          element={<Contact footer={footer} seHabla={seHabla} />}
+          path={`/${contact.slug.current}`}
+        />
       </Routes>
-      <Footer logo={logo.logo} />
+      <Footer footer={footer} logo={logo.logo} />
     </Router>
   );
 }

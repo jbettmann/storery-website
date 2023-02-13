@@ -9,9 +9,15 @@
     font-family: "Lato", sans-serif;
     font-family: "Roboto", sans-serif;
   }
+
   h1 {
     font-family: "Roboto", sans-serif;
     @apply text-4xl font-bold mb-3;
+  }
+
+  h3 {
+    font-family: inherit;
+    @apply text-3xl font-normal;
   }
 
   h5 {
@@ -28,6 +34,19 @@
 
   iframe {
     @apply w-full  md:w-[640px] md:h-[360px];
+  }
+
+  label {
+    @apply uppercase text-xs;
+  }
+
+  form {
+    @apply flex bg-white w-4/5 justify-center my-14 rounded-xl shadow-sm;
+  }
+
+  input,
+  textarea {
+    @apply shadow-inner p-3 my-1 mb-6 bg-slate-50;
   }
 
   footer {
@@ -55,11 +74,14 @@
     }
   }
 
+  .form-email-phone {
+    @apply flex flex-col;
+  }
   .footer-links {
     @apply hover:underline hover:text-storeyGreen-200 decoration-solid decoration-storeyGreen-200;
   }
 
   .social-icon {
-    @apply bg-white inline-block w-[50px] h-[50px]  overflow-hidden align-middle rounded-full;
+    @apply bg-white rounded-full;
   }
 }

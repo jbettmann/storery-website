@@ -8,8 +8,15 @@ export const Contact = ({ footer, seHabla }) => {
 
   // sizing for social icons
   const style = {
+    backgroundColor: "#fff",
+    fill: "#0c4c26",
     width: "35px",
     height: "35px",
+    zillow: {
+      width: "35px",
+      height: "35px",
+      backgroundColor: "#0c4c26",
+    },
   };
 
   console.log(seHabla);
@@ -118,8 +125,8 @@ export const Contact = ({ footer, seHabla }) => {
           <div className="h-44">
             <img src="" alt="" />
             <h5>Email</h5>
-            <a className="footer-links" href={`mailto:${footer.email}`}>
-              {footer.email}
+            <a className="footer-links" href={`mailto:${footer?.email}`}>
+              {footer?.email}
             </a>
           </div>
 

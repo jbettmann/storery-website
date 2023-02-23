@@ -38,7 +38,7 @@ export const Footer = ({ footer, logo }) => {
             </a>
           </p>
           <p className="m-0 text-sm">
-            © 2023{" "}
+            Copyright © 2023{" "}
             <a
               target="_blank"
               href="https://www.jordanbettmann.com"
@@ -46,6 +46,7 @@ export const Footer = ({ footer, logo }) => {
             >
               Jordan Bettmann
             </a>
+            All Rights Reserved.
           </p>
         </div>
       </footer>

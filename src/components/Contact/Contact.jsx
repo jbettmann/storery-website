@@ -2,6 +2,8 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { SocialLinks } from "../SocialIcon/SocialLinks";
 import { SeHabla } from "../SeHabla/SeHabla";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
 
 export const Contact = ({ footer, seHabla }) => {
   const [state, handleSubmit] = useForm("xjvdyypp");
@@ -27,9 +29,14 @@ export const Contact = ({ footer, seHabla }) => {
 
   return (
     <main className="flex flex-col items-center">
-      <h1>Contact Us</h1>
-      <form className="" onSubmit={handleSubmit} id="contact">
-        <section className="flex flex-col w-2/3 mb-0 p-6 ">
+      <h1 className="mt-14">Contact Us</h1>
+      <form
+        className="flex flex-col items-center lg:flex-row lg:items-stretch"
+        onSubmit={handleSubmit}
+        id="contact"
+      >
+        {/* Form fill out */}
+        <section className="flex flex-col w-full lg:w-2/3 mb-0 p-6 ">
           <h3 className="mb-6">Say Hello!</h3>
           <p className="text-xs m-0 px-0">
             <span className="text-red-500">*</span> REQUIRED FIELD
@@ -45,13 +52,13 @@ export const Contact = ({ footer, seHabla }) => {
             required
           />
           <ValidationError prefix="Name" field="name" errors={state.errors} />
-          <div className="flex w-full ">
-            <div className="form-email-phone w-2/3">
+          <div className="flex flex-col lg:flex-row w-full ">
+            <div className="form-email-phone w-full lg:w-2/3">
               <label htmlFor="email">
                 Email<span className="text-red-500">*</span>
               </label>
               <input
-                className="mr-6 rounded-md "
+                className="lg:mr-6 rounded-md "
                 id="email"
                 type="email"
                 placeholder="Email"
@@ -119,24 +126,32 @@ export const Contact = ({ footer, seHabla }) => {
         </section>
 
         {/* Contact Info */}
-        <section className="flex flex-col bg-storeyGreen-300 text-white p-6  mb-0">
-          <h3>Contact Storey</h3>
+        <section className="flex flex-col bg-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto rounded-b-xl lg:rounded-r-xl">
+          <h3 className="mb-9">Contact Storey</h3>
           {/* Email */}
-          <div className="h-44">
-            <img src="" alt="" />
-            <h5>Email</h5>
+          <div className="flex items-start gap-3 mb-7">
             <a className="footer-links" href={`mailto:${footer?.email}`}>
-              {footer?.email}
+              <AiOutlineMail size={`2rem`} className="" />
             </a>
+            <div>
+              <h5 className="text-lg font-bold m-0 mb-2">Email</h5>
+              <a className="footer-links" href={`mailto:${footer?.email}`}>
+                {footer?.email}
+              </a>
+            </div>
           </div>
 
           {/* Phone number */}
-          <div>
-            <img src="" alt="" />
-            <h5>Phone</h5>
+          <div className="flex items-start gap-3 mb-9">
             <a className="footer-links" href={`tel:${footer.phone}`}>
-              {footer.phone}
+              <BsFillTelephoneFill size={`1.5rem`} className="mt-2" />
             </a>
+            <div>
+              <h5 className="text-lg font-bold m-0 mb-2">Phone</h5>
+              <a className="footer-links" href={`tel:${footer.phone}`}>
+                {footer.phone}
+              </a>
+            </div>
           </div>
 
           {/* Social Icons */}

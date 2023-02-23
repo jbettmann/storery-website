@@ -78,6 +78,19 @@ export function getHome(setHome) {
     .catch(console.error);
 }
 
+// fetch for Resources content
+export function getResources(setResources) {
+  sanityClient
+    .fetch(
+      `*[_type == 'resources']{
+       title,
+       resource,
+     }`
+    )
+    .then((data) => setResources(data))
+    .catch(console.error);
+}
+
 // fetch for Footer content
 export function getFooter(setFooter) {
   sanityClient

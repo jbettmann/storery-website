@@ -44,7 +44,7 @@ export const Footer = ({ footer, logo }) => {
               href="https://www.jordanbettmann.com"
               rel="noreferrer"
             >
-              Jordan Bettmann
+              Jordan Bettmann{" "}
             </a>
             All Rights Reserved.
           </p>

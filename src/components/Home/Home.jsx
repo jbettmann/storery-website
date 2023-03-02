@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import sanityClient from "../../client";
 import { urlFor } from "../../Functions/Functions";
-import { getHome } from "../../Functions/Functions";
+import { Card } from "../Card/Card";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { SeHabla } from "../SeHabla/SeHabla";
 
@@ -10,7 +9,6 @@ import "./Home.scss";
 
 export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
-  const [aboutVid, setAboutVid] = useState(null);
 
   const setCardArray = (cards) => {
     if (!cards) return;
@@ -56,30 +54,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
       {cards && (
         <section className="flex flex-col items-center lg:flex-row gap-10 mx-9 justify-center">
           {cards.map((card, i) => {
-            return (
-              <NavLink
-                key={i}
-                to={`/${card.slug.current}`}
-                className=" bg-white sm:text-left lg:text-center text-center w-full flex-auto max-w-2xl  sm:h-auto lg:h-[526px] h-auto py-8 2xl:p-16 px-6 flex sm:flex-row lg:flex-col flex-col items-center lg:justify-between justify-between card"
-              >
-                <img
-                  src={urlFor(card?.mainImage.asset._ref)}
-                  alt={card.slug?.current}
-                  className="mx-auto w-52 flex-auto"
-                />
-                <div className="flex flex-col flex-initial h-full sm:items-start lg:justify-between justify-between lg:items-center items-center p-3 lg:p-0">
-                  <h1>{card.title}</h1>
-                  <p className="pl-0">{card?.body}</p>
-                  <NavLink
-                    className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-                    to={`/${card.slug.current}`}
-                    aria-label="Request a Call link"
-                  >
-                    {card.button}
-                  </NavLink>
-                </div>
-              </NavLink>
-            );
+            return <Card card={card} i={i} />;
           })}
         </section>
       )}

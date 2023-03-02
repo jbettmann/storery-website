@@ -78,16 +78,39 @@ export function getHome(setHome) {
     .catch(console.error);
 }
 
-// fetch for Resources content
-export function getResources(setResources) {
+// fetch for Blog content
+export function getBlog(setBlog) {
   sanityClient
     .fetch(
-      `*[_type == 'resources']{
-       title,
-       resource,
-     }`
+      `*[_type == 'blog']{
+        title,
+        slug,
+        "blogAuthor": author->name,
+        
+        mainImage,
+        publishedAt,
+        body,
+        projectType,
+        tags,
+        _id,
+ 
+      }`
     )
-    .then((data) => setResources(data))
+    .then((data) => setBlog(data))
+    .catch(console.error);
+}
+
+// fetch for FAQs content
+export function getFAQ(setFAQ) {
+  sanityClient
+    .fetch(
+      `*[_type == 'faqs']{
+        title,
+        _id,
+          faq,
+      }`
+    )
+    .then((data) => setFAQ(data))
     .catch(console.error);
 }
 

@@ -21,7 +21,7 @@ export const Blog = ({ blogs }) => {
 
   // Custom styling for Blog card
   const style = {
-    card: "h-[437px] lg:w-[388px] rounded-lg py-8 px-6 max-w-lg",
+    card: "h-[437px] lg:w-[388px] rounded-lg p-2 sm:py-8 sm:px-6 max-w-lg",
     img: "",
     body: "h-2/3",
   };
@@ -77,11 +77,16 @@ export const Blog = ({ blogs }) => {
 
   useEffect(() => {
     function handleResize() {
-      setSmallScreen(window.innerWidth < 768);
+      if (window.innerWidth <= 768) {
+        setSmallScreen(window.innerWidth <= 768);
+        goToSlide(0);
+      }
+      setSmallScreen(window.innerWidth <= 768);
     }
     handleResize();
     window.addEventListener("resize", handleResize);
-    if (blogArray.current.length > 0 && !rendered) {
+
+    if (blogArray.current.length > 0) {
       goToSlide(0);
       setRendered(true);
     }
@@ -95,53 +100,55 @@ export const Blog = ({ blogs }) => {
   }
 
   return (
-    <article className="flex flex-col items-center h-auto">
+    <div className="flex flex-col items-center h-auto">
       <h1 className="mt-14">Blog</h1>
       {/* Blog Container */}
-      <div className="flex px-14 w-full relative">
+      <div className="flex p-6 sm:px-14 w-full relative">
         <SlArrowLeft
-          className="cursor-pointer absolute top-1/2 left-5 z-10"
+          className="cursor-pointer absolute top-1/2 left-1 sm:left-5 "
           onClick={prevSlide}
-          size={"2rem"}
+          size={smallScreen ? "1.2rem" : "2rem"}
         />
         {/* Blog Slider */}
-        <div className="w-full max-w-[1500px] h-[550px] mx-auto relative overflow-hidden">
+        <div className="w-full max-w-[1500px] h-[500px] md:h-[550px] mx-auto relative overflow-hidden flex justify-center">
           {!smallScreen
             ? blogsOfThree.map((group, i) => {
                 return (
-                  <div
+                  <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-10 p-14 mx-3`}
+                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-5 lg:gap-10 p-6 lg:p-14 mx-3`}
                     key={i}
                   >
                     {group.map((blog, i) => {
-                      return <Card card={blog} i={i} style={style} />;
+                      return (
+                        <Card card={blog} i={i} style={style} urlNav={`blog`} />
+                      );
                     })}
-                  </div>
+                  </article>
                 );
               })
             : blogs.map((blog, i) => {
                 return (
-                  <div
+                  <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-10 p-14 mx-3`}
+                    className={`blog-group absolute top-0 flex items-center justify-center w-full p-3 mx-3`}
                     key={i}
                   >
                     <Card card={blog} i={i} style={style} />
-                  </div>
+                  </article>
                 );
               })}
         </div>
 
         <SlArrowRight
-          className="cursor-pointer absolute top-1/2 right-5 z-10"
+          className="cursor-pointer absolute top-1/2 right-1 sm:right-5"
           onClick={nextSlide}
-          size={"2rem"}
+          size={smallScreen ? "1.2rem" : "2rem"}
         />
       </div>
 
       {/* Dots */}
       <div className="pb-4">{createDots()}</div>
-    </article>
+    </div>
   );
 };

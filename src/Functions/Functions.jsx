@@ -106,10 +106,11 @@ export function getFAQ(setFAQ) {
     .fetch(
       `*[_type == 'faqs']{
         title,
-        _id,
+        id,
           faq,
       }`
     )
+    .then((d) => d.sort((a, b) => a.id - b.id))
     .then((data) => setFAQ(data))
     .catch(console.error);
 }

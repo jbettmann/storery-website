@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 
-export const Card = ({ card, i, style }) => {
+export const Card = ({ card, i, style, urlNav }) => {
   return (
     <NavLink
       key={i}
-      to={`/${card.slug.current}`}
+      to={urlNav ? `${urlNav}/${card.slug.current}` : `/${card.slug.current}`}
       className={`card ${
         style
           ? style.card

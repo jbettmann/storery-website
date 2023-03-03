@@ -11,6 +11,7 @@ import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
 import { getFooter, getHome, getLogo } from "./Functions/Functions";
 import { getNav } from "./Functions/Functions";
+import { SingleBlog } from "./components/Blog/SingleBlog";
 
 function App() {
   const [logo, setLogo] = useState("");
@@ -56,6 +57,10 @@ function App() {
         <Route element={<Remodel />} path={`/${remodel.slug.current}`} />
         <Route element={<About />} path={`/${about.slug.current}`} />
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
+        <Route
+          element={<SingleBlog />}
+          path={`/${resources.slug.current}/blog/:slug`}
+        />
         <Route
           element={<Contact footer={footer} seHabla={seHabla} />}
           path={`/${contact.slug.current}`}

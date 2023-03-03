@@ -38,7 +38,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
                 {t}
               </h1>
             ))}
-            <h5>{home.hero.body}</h5>
+            <p className="m-0">{home.hero.body}</p>
             <NavLink
               className="btn mt-8"
               to={`/${contact}`}

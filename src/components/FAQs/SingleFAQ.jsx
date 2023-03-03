@@ -8,7 +8,7 @@ export const SingleFAQ = ({ qa }) => {
     setShowAnswer(!showAnswer);
   };
   return (
-    <div
+    <article
       onClick={handleClick}
       className="cursor-pointer p-5 flex justify-between items-center border-b border-slate-700"
     >
@@ -25,6 +25,6 @@ export const SingleFAQ = ({ qa }) => {
       ) : (
         <SlArrowUp size={`1.2rem`} />
       )}
-    </div>
+    </article>
   );
 };

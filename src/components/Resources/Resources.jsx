@@ -13,15 +13,13 @@ export const Resources = () => {
     getFAQ(setFAQ);
   }, [blogs.length]);
 
-  console.log({ blogs, faqs });
-  if (!blogs && !faqs) return <div>Loading...</div>;
-
   return (
     <section>
       <Blog blogs={blogs} />
-      <div className="bg-white w-screen h-full">
+      <div className="bg-white w-screen h-full flex flex-col items-center">
+        <h1 className="mt-14">Frequently Asked Questions</h1>
         {faqs.map((faq, i) => {
-          return <FAQ key={i} faq={faq} />;
+          return <FAQ key={i} i={i} faq={faq} />;
         })}
       </div>
     </section>

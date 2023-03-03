@@ -37,7 +37,7 @@ export const Contact = ({ footer, seHabla }) => {
       >
         {/* Form fill out */}
         <section className="flex flex-col w-full lg:w-2/3 mb-0 p-6 ">
-          <h3 className="mb-6">Say Hello!</h3>
+          <h2 className="mb-6">Say Hello!</h2>
           <p className="text-xs m-0 px-0">
             <span className="text-red-500">*</span> REQUIRED FIELD
           </p>
@@ -127,14 +127,14 @@ export const Contact = ({ footer, seHabla }) => {
 
         {/* Contact Info */}
         <section className="flex flex-col bg-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto rounded-b-xl lg:rounded-r-xl">
-          <h3 className="mb-9">Contact Storey</h3>
+          <h2 className="mb-9">Contact Storey</h2>
           {/* Email */}
           <div className="flex items-start gap-3 mb-7">
             <a className="footer-links" href={`mailto:${footer?.email}`}>
               <AiOutlineMail size={`2rem`} className="" />
             </a>
             <div>
-              <h5 className="text-lg font-bold m-0 mb-2">Email</h5>
+              <p className="text-lg font-bold p-0 m-0 mb-2">Email</p>
               <a className="footer-links" href={`mailto:${footer?.email}`}>
                 {footer?.email}
               </a>
@@ -147,7 +147,7 @@ export const Contact = ({ footer, seHabla }) => {
               <BsFillTelephoneFill size={`1.5rem`} className="mt-2" />
             </a>
             <div>
-              <h5 className="text-lg font-bold m-0 mb-2">Phone</h5>
+              <p className="text-lg font-bold p-0 m-0 mb-2">Phone</p>
               <a className="footer-links" href={`tel:${footer.phone}`}>
                 {footer.phone}
               </a>

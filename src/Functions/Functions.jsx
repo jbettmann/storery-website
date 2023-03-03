@@ -85,8 +85,24 @@ export function getBlog(setBlog) {
       `*[_type == 'blog']{
         title,
         slug,
-        "blogAuthor": author->name,
-        
+        mainImage,
+        publishedAt,
+        tags,
+      }`
+    )
+    .then((data) => setBlog(data))
+    .catch(console.error);
+}
+
+// fetch single blog post
+export function getSingleBlog(slug, setSingleBlog) {
+  sanityClient
+    .fetch(
+      `*[slug.current == "${slug}"]{
+        title,
+        slug,
+        "author": author->name,
+        "authorImage": author->image,
         mainImage,
         publishedAt,
         body,
@@ -96,7 +112,10 @@ export function getBlog(setBlog) {
  
       }`
     )
-    .then((data) => setBlog(data))
+    .then((data) => {
+      let [newData] = data;
+      setSingleBlog(newData);
+    })
     .catch(console.error);
 }
 

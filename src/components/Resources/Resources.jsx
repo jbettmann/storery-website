@@ -8,6 +8,19 @@ export const Resources = () => {
   const [blogs, setBlog] = useState(null || []);
   const [faqs, setFAQ] = useState([]);
 
+  // sorts blogs by date, news to oldest
+  const sortBlogs = () => {
+    const newArry = blogs.sort((a, b) => {
+      const aDate = new Date(a.publishedAt);
+      const bDate = new Date(b.publishedAt);
+
+      return bDate - aDate;
+    });
+
+    return newArry;
+  };
+  sortBlogs();
+
   useEffect(() => {
     getBlog(setBlog);
     getFAQ(setFAQ);

@@ -4,7 +4,6 @@ import zillow from "../../assets/icons/zillow-icon.svg";
 import zillowWhite from "../../assets/icons/zillow-icon-white.svg";
 
 export const SocialLinks = ({ social, style }) => {
-  console.log(zillow);
   return (
     // Social Icons
     <div className="flex justify-center my-2 flex-wrap">

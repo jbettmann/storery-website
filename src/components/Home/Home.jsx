@@ -5,8 +5,6 @@ import { Card } from "../Card/Card";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { SeHabla } from "../SeHabla/SeHabla";
 
-import "./Home.scss";
-
 export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
 

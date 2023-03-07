@@ -42,7 +42,7 @@ export const NavBar = ({ nav, logo }) => {
   }, [isOpen]);
 
   return (
-    <nav className="p-4 bg-white">
+    <nav className="p-4 bg-white sticky top-0 z-20">
       <div className="lg:flex hidden ">
         <div className="w-1/3 flex flex-auto justify-around items-center text-storeyGreen-100">
           {/* First half */}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import BlockContent from "@sanity/block-content-to-react";
+
 import { Card } from "../Card/Card";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Spinner } from "../Spinner/Spinner";
 
 export const Blog = ({ blogs }) => {
   const [smallScreen, setSmallScreen] = useState(false);
-  const [rendered, setRendered] = useState(false);
+
   const [activeDot, setActiveDot] = useState(0); // state for active dot
   const [curSlide, setCurSlide] = useState(0); // determines blog slide shown
   const blogArray = useRef([]); // ref to blog array
@@ -88,7 +88,6 @@ export const Blog = ({ blogs }) => {
 
     if (blogArray.current.length > 0) {
       goToSlide(0);
-      setRendered(true);
     }
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -116,7 +115,11 @@ export const Blog = ({ blogs }) => {
                 return (
                   <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-5 lg:gap-10 p-6 lg:p-14 mx-3`}
+                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-5 lg:gap-10 p-6 lg:p-14 mx-3 ${
+                      blogArray.current[i]?.style.transform === "translateX(0%)"
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
                     key={i}
                   >
                     {group.map((blog, i) => {

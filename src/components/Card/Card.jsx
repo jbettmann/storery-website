@@ -2,10 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 
-export const Card = ({ card, i, style, urlNav }) => {
+export const Card = ({ card, style, urlNav }) => {
   return (
     <NavLink
-      key={i}
       to={urlNav ? `${urlNav}/${card.slug.current}` : `/${card.slug.current}`}
       className={`card ${
         style
@@ -13,13 +12,14 @@ export const Card = ({ card, i, style, urlNav }) => {
           : "sm:flex-row lg:flex-col 2xl:p-12 px-6 sm:text-left lg:text-center lg:h-[526px] sm:h-auto"
       }`}
     >
-      <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center">
+      <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center ">
         <img
           src={urlFor(card?.mainImage.asset._ref)}
           alt={card.slug?.current}
           className={`mx-auto ${style ? style.img : " w-52 "}`}
         />
       </div>
+
       <div
         className={`flex flex-col flex-initial sm:items-start lg:justify-between justify-between lg:items-center items-center p-3 lg:p-0 ${
           style ? style.body : "h-full"
@@ -40,6 +40,17 @@ export const Card = ({ card, i, style, urlNav }) => {
         >
           {card.button ? card.button : "Read more..."}
         </NavLink>
+        {card.publishedAt ? (
+          <p className="absolute p-2 m-0 bottom-0 left-1 text-gray-500 text-xs sm:text-sm italic">
+            {new Date(card.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </p>
+        ) : (
+          ""
+        )}
       </div>
     </NavLink>
   );

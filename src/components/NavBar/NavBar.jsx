@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 import { Divide as Hamburger } from "hamburger-react";
 
-export const NavBar = ({ nav, logo }) => {
+export const NavBar = ({ nav, logo, navRef }) => {
   // ref for hamburger menu
   const ref = useRef(null);
 
@@ -42,7 +42,7 @@ export const NavBar = ({ nav, logo }) => {
   }, [isOpen]);
 
   return (
-    <nav className="p-4 bg-white sticky top-0 z-20">
+    <nav ref={navRef} className="p-4 bg-white sticky top-0 z-20">
       <div className="lg:flex hidden ">
         <div className="w-1/3 flex flex-auto justify-around items-center text-storeyGreen-100">
           {/* First half */}

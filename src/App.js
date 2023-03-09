@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./components/Home/Home";
@@ -15,6 +15,7 @@ import { SingleBlog } from "./components/Blog/SingleBlog";
 
 function App() {
   const [logo, setLogo] = useState("");
+  const navRef = useRef(null);
 
   const [nav, setNav] = useState([
     { slug: { current: "" } },
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar nav={nav} logo={logo.logo} />
+      <NavBar navRef={navRef} nav={nav} logo={logo.logo} />
       <Routes>
         <Route
           element={
@@ -58,7 +59,7 @@ function App() {
         <Route element={<About />} path={`/${about.slug.current}`} />
         <Route element={<Resources />} path={`/${resources.slug.current}`} />
         <Route
-          element={<SingleBlog />}
+          element={<SingleBlog navRef={navRef} />}
           path={`/${resources.slug.current}/blog/:slug`}
         />
         <Route

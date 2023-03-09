@@ -23,7 +23,7 @@ export const Blog = ({ blogs }) => {
   const style = {
     card: "h-[437px] lg:w-[388px] rounded-lg p-2 sm:py-8 sm:px-6 max-w-lg",
     img: "",
-    body: "h-2/3",
+    body: "h-2/3 sm:items-center",
   };
 
   // Number of dots displayed for blog slide nav
@@ -124,7 +124,12 @@ export const Blog = ({ blogs }) => {
                   >
                     {group.map((blog, i) => {
                       return (
-                        <Card card={blog} i={i} style={style} urlNav={`blog`} />
+                        <Card
+                          key={i}
+                          card={blog}
+                          style={style}
+                          urlNav={`blog`}
+                        />
                       );
                     })}
                   </article>
@@ -134,10 +139,14 @@ export const Blog = ({ blogs }) => {
                 return (
                   <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full p-3 mx-3`}
+                    className={`blog-group absolute top-0 flex items-center justify-center w-full p-3 mx-3 ${
+                      blogArray.current[i]?.style.transform === "translateX(0%)"
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
                     key={i}
                   >
-                    <Card card={blog} i={i} style={style} />
+                    <Card card={blog} style={style} urlNav={`blog`} />
                   </article>
                 );
               })}

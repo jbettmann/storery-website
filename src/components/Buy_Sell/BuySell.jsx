@@ -1,12 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getBuySell, getTestimonials, urlFor } from "../../Functions/Functions";
+import { MortgageCalc } from "../MortgageCalc/MortgageCalc";
 
 export const BuySell = () => {
+  const [buySell, setBuySell] = useState({});
+  const [active, setActive] = useState(true);
+  const [selectedObj, setSelectedObj] = useState(null);
+  const [testimonials, setTestimonials] = useState(null);
+
+  useEffect(() => {
+    getBuySell(setBuySell);
+    getTestimonials(setTestimonials);
+    console.log("Ran");
+  }, []);
+
+  useEffect(() => {
+    // Set selectedObj based on the active state
+    setSelectedObj(active ? buySell.buy : buySell.sell);
+    console.log("2  Ran");
+  }, [buySell, active]);
+
+  console.log(buySell, selectedObj);
   return (
-    <div className="border rounded-md w-64 mx-auto text-center border-slate-200/50 p-4 shadow-2xl shadow-teal-700/50">
-      <h1 className="text-3xl m-4">Title</h1>
-      <button className="rounded-xl w-auto text-center text-white p-3 focus:ring-offset-2 bg-teal-400 shadow-lg shadow-teal-600/50 transition-all ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300">
-        BuySell
-      </button>
-    </div>
+    selectedObj && (
+      <section className="">
+        <h1 className=" m-4">{buySell.buySellTitle}</h1>
+        <article>
+          <img src={urlFor(selectedObj.hero.mainImage.asset._ref)} />
+          <div>
+            <button onClick={() => setActive(!active)}>
+              {selectedObj.title}
+            </button>
+            <h5>{selectedObj.hero.description}</h5>
+            {selectedObj?.whyChecklist.checklist.map((list) => {
+              return (
+                <ul>
+                  <li>{list.item}</li>
+                </ul>
+              );
+            })}
+          </div>
+        </article>
+        {/* <MortgageCalc /> */}
+      </section>
+    )
   );
 };

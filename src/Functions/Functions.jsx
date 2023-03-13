@@ -32,16 +32,6 @@ export function urlFor(source) {
   return builder.image(source);
 }
 
-// fetch for Logo
-export async function getLogo(setLogo) {
-  const logoUrl = `*[_type == 'home']{
-    logo,  
-    }`;
-  const res = await sanityClient.fetch(logoUrl);
-  const data = res[0];
-  setLogo(data);
-}
-
 // fetch Navigation components
 export function getNav(setNav) {
   sanityClient
@@ -67,13 +57,45 @@ export function getHome(setHome) {
       hero,
       cards,
       homeAbout,
-      language
+      language,
+      logo
   }`
     )
 
     .then((data) => {
-      let [newData] = data;
-      setHome(newData);
+      setHome(data[0]);
+    })
+    .catch(console.error);
+}
+
+// fetch BuySell for BuySell page
+export function getBuySell(setBuySell) {
+  sanityClient
+    .fetch(
+      `*[_type == 'buySell']{
+        buySellTitle,
+        buy,
+        sell,
+    }`
+    )
+    .then((data) => {
+      setBuySell(data[0]);
+      // setSell(data[0].sell);
+    })
+    .catch(console.error);
+}
+
+// fetch Testimonials
+export function getTestimonials(setTestimonials) {
+  sanityClient
+    .fetch(
+      `*[_type == 'testimonials']{
+      webpageTitle,
+      testimonialList,
+  }`
+    )
+    .then((data) => {
+      setTestimonials(data[0]);
     })
     .catch(console.error);
 }
@@ -126,7 +148,7 @@ export function getFAQ(setFAQ) {
       `*[_type == 'faqs']{
         title,
         id,
-          faq,
+        faq,
       }`
     )
     .then((d) => d.sort((a, b) => a.id - b.id))

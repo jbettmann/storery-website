@@ -8,6 +8,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
   const ref = useRef(null);
 
   const [isOpen, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const firstHalf = nav.slice(0, nav.length / 2);
   const lastHalf = nav.slice(nav.length / 2);
@@ -19,33 +20,53 @@ export const NavBar = ({ nav, logo, navRef }) => {
     borderRadius: "6px",
   };
 
+  // closes menu when clicked outside of menu
+  function handleHamMenuClick(e) {
+    // checks if target is not the hamburger menu and IS the overflow div
+    if (ref.current && e.target.id === "hamburger-overflow") {
+      setOpen(!isOpen);
+    }
+  }
+  // Checks positions of nav for transparent and blur effect
+  const handleScroll = () => {
+    if (window.pageYOffset > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  // Hamburger menu opened or not
   const handleClick = () => {
     setOpen(!isOpen);
   };
 
   useEffect(() => {
-    // closes menu when clicked outside of menu
-    function handleHamMenuClick(e) {
-      // checks if target is not the hamburger menu and IS the overflow div
-      if (ref.current && e.target.id === "hamburger-overflow") {
-        setOpen(!isOpen);
-      }
-    }
+    window.addEventListener("scroll", handleScroll);
+
     if (isOpen) {
       document.addEventListener("mousedown", handleHamMenuClick);
     } else {
       document.removeEventListener("mousedown", handleHamMenuClick);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleHamMenuClick);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
 
   return (
-    <nav ref={navRef} className="p-4 bg-white sticky top-0 z-20">
+    <nav
+      onClick={handleScroll}
+      ref={navRef}
+      className={`p-4 bg-white sticky top-0 z-20 transition-colors ${
+        isScrolled ? "bg-opacity-90 backdrop-blur-sm shadow-md" : ""
+      }`}
+    >
       <div className="lg:flex hidden ">
         <div className="w-1/3 flex flex-auto justify-around items-center text-storeyGreen-100">
-          {/* First half */}
+          {/* First half of Nav*/}
           {firstHalf.map((item, i) => {
             return (
               <NavLink
@@ -70,7 +91,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
           </NavLink>
         </div>
 
-        {/* Second Half */}
+        {/* Second Half of Nav*/}
         <div className="w-1/3 flex flex-auto justify-around items-center px-1 text-storeyGreen-100">
           {lastHalf.map((item, i) => {
             return (

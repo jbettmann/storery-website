@@ -115,7 +115,7 @@ export const Blog = ({ blogs }) => {
                 return (
                   <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full gap-5 lg:gap-10 p-6 lg:p-14 mx-3 ${
+                    className={`blog-group gap-5 lg:gap-10 p-6 lg:p-14 mx-3 ${
                       blogArray.current[i]?.style.transform === "translateX(0%)"
                         ? "opacity-100"
                         : "opacity-0"
@@ -139,7 +139,7 @@ export const Blog = ({ blogs }) => {
                 return (
                   <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group absolute top-0 flex items-center justify-center w-full p-3 mx-3 ${
+                    className={`blog-group p-3 mx-3 ${
                       blogArray.current[i]?.style.transform === "translateX(0%)"
                         ? "opacity-100"
                         : "opacity-0"

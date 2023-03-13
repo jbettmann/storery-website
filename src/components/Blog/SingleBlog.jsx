@@ -30,14 +30,20 @@ export const SingleBlog = ({ navRef }) => {
         <article ref={blogSection} className="flex flex-col items-center">
           <h1 className="mt-8 text-center">{singleBlog.title}</h1>
           <div className="flex w-full sm:w-2/3 justify-between items-center m-1 sm:m-6 border-y border-gray-400">
-            <div className="flex m-2 items-center">
-              <img
-                src={urlFor(singleBlog.authorImage.asset._ref)}
-                alt={singleBlog.slug.current}
-                className=" w-8 h-8 sm:w-12 sm:h-12 rounded-full mr-3"
-              />
-              <h5 className="text-sm sm:text-base m-0">{singleBlog.author}</h5>
-            </div>
+            {singleBlog.author ? (
+              <div className="flex m-2 items-center">
+                <img
+                  src={urlFor(singleBlog.authorImage.asset._ref)}
+                  alt={singleBlog.slug.current}
+                  className=" w-8 h-8 sm:w-12 sm:h-12 rounded-full mr-3"
+                />
+                <h5 className="text-sm sm:text-base m-0">
+                  {singleBlog.author}
+                </h5>
+              </div>
+            ) : (
+              <div></div>
+            )}
             <p className="text-gray-500 m-0 text-right text-sm sm:text-base">
               {new Date(singleBlog.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",

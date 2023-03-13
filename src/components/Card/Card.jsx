@@ -5,7 +5,7 @@ import { urlFor } from "../../Functions/Functions";
 export const Card = ({ card, style, urlNav }) => {
   return (
     <NavLink
-      to={urlNav ? `${urlNav}/${card.slug.current}` : `/${card.slug.current}`}
+      to={urlNav ? `${urlNav}/${card.slug?.current}` : `/${card.slug?.current}`}
       className={`card ${
         style
           ? style.card
@@ -14,7 +14,7 @@ export const Card = ({ card, style, urlNav }) => {
     >
       <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center ">
         <img
-          src={urlFor(card?.mainImage.asset._ref)}
+          src={urlFor(card.mainImage?.asset._ref)}
           alt={card.slug?.current}
           className={`mx-auto ${style ? style.img : " w-52 "}`}
         />
@@ -35,7 +35,7 @@ export const Card = ({ card, style, urlNav }) => {
         {card.sub ? <p className="pl-0">{card.sub}</p> : null}
         <NavLink
           className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-          to={`/${card.slug.current}`}
+          to={`/${card.slug?.current}`}
           aria-label="Request a Call link"
         >
           {card.button ? card.button : "Read more..."}

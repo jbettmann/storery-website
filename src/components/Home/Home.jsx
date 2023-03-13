@@ -4,6 +4,7 @@ import { urlFor } from "../../Functions/Functions";
 import { Card } from "../Card/Card";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { SeHabla } from "../SeHabla/SeHabla";
+import { Spinner } from "../Spinner/Spinner";
 
 export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
@@ -18,8 +19,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
     setSeHabla(home);
   }, [home]);
 
-  // console.log(home);
-  if (!home) return <div>Loading...</div>;
+  if (!home) return <Spinner />;
   return (
     <div>
       {/* Hero */}

@@ -71,14 +71,18 @@
     @apply underline decoration-solid bg-[#084126];
   }
 
+  .blog-group {
+    @apply absolute top-0 flex items-center justify-center w-full transition ease-in-out duration-300;
+  }
+
   .card {
     @apply ease-out transition-all duration-300 drop-shadow-md bg-white text-center w-full h-auto flex-auto max-w-2xl py-8 flex flex-col items-center lg:justify-between justify-between;
   }
 
   .card:hover {
-    @apply scale-110 ease-in-out transition-all -translate-y-1 duration-300 cursor-pointer drop-shadow-lg;
+    @apply scale-110 ease-in-out transition-all -translate-y-1 duration-500 cursor-pointer drop-shadow-lg;
     .btn {
-      @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-300;
+      @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-500;
     }
   }
 

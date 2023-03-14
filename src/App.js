@@ -49,7 +49,7 @@ function App() {
             element={
               <Home
                 home={home}
-                contact={contact?.slug.current}
+                contact={contact.slug.current}
                 setSeHabla={setSeHabla}
               />
             }

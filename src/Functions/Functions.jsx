@@ -80,7 +80,21 @@ export function getBuySell(setBuySell) {
     )
     .then((data) => {
       setBuySell(data[0]);
-      // setSell(data[0].sell);
+    })
+    .catch(console.error);
+}
+
+// About fetch
+export function getAbout(setAbout) {
+  sanityClient
+    .fetch(
+      `*[_type == 'about']{
+        webpageTitle,
+        abouts,
+    }`
+    )
+    .then((data) => {
+      setAbout(data[0]);
     })
     .catch(console.error);
 }
@@ -148,6 +162,7 @@ export function getFAQ(setFAQ) {
       `*[_type == 'faqs']{
         title,
         id,
+        slug,
         faq,
       }`
     )
@@ -166,6 +181,7 @@ export function getFooter(setFooter) {
         name,
         phone,
         email,
+        realtorLogo,
      }`
     )
     .then((data) => {

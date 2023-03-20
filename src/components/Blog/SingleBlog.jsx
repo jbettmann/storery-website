@@ -35,7 +35,7 @@ export const SingleBlog = ({ navRef }) => {
       {singleBlog && (
         <article ref={blogSection} className="flex flex-col items-center">
           <h1 className="mt-8 text-center">{singleBlog.title}</h1>
-          <div className="flex flex-col w-full sm:w-2/3 justify-between items-center m-1 mb-20 border-b border-gray-400">
+          <div className="flex flex-col w-full sm:w-2/3 justify-between items-center m-1 mb-20 border-b border-gray-400 relative">
             {singleBlog.author ? (
               <div className="flex m-2 items-center">
                 <img
@@ -57,10 +57,14 @@ export const SingleBlog = ({ navRef }) => {
                 day: "numeric",
               })}
             </p>
+            <button
+              className="link absolute left-[-3rem] bottom-[-3rem]"
+              onClick={goBack}
+            >
+              Back
+            </button>
           </div>
-          <button className="link absolute" onClick={goBack}>
-            Back
-          </button>
+
           <div className="flex-auto w-full h-auto max-h-[30rem] p-1 overflow-hidden flex justify-center items-center ">
             <img
               src={urlFor(singleBlog.mainImage.asset._ref)}

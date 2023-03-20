@@ -9,8 +9,14 @@ import { About } from "./components/About/About";
 import { Resources } from "./components/Resources/Resources";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
-import { getFooter, getHome } from "./Functions/Functions";
-import { getNav } from "./Functions/Functions";
+import {
+  getFooter,
+  getHome,
+  getNav,
+  getFAQ,
+  getTestimonials,
+} from "./Functions/Functions";
+
 import { SingleBlog } from "./components/Blog/SingleBlog";
 import { Spinner } from "./components/Spinner/Spinner";
 
@@ -26,6 +32,9 @@ function App() {
     { slug: { current: "" } },
   ]);
   const [home, setHome] = useState(null);
+
+  const [faqs, setFAQ] = useState([]);
+  const [testimonials, setTestimonials] = useState(null);
   const [footer, setFooter] = useState(null);
   const [seHabla, setSeHabla] = useState("");
 
@@ -34,7 +43,9 @@ function App() {
   useEffect(() => {
     getNav(setNav);
     getHome(setHome);
+    getFAQ(setFAQ);
     getFooter(setFooter);
+    getTestimonials(setTestimonials);
   }, []);
 
   if (!home || !nav) return <Spinner />;
@@ -56,14 +67,23 @@ function App() {
             exact
             path="/"
           />
-          <Route element={<BuySell />} path={`/${buySell.slug.current}`} />
+          <Route
+            element={<BuySell faqs={faqs} testimonials={testimonials} />}
+            path={`/${buySell.slug.current}`}
+          />
           <Route
             element={<InvestmentProp />}
             path={`/${invest.slug.current}`}
           />
           <Route element={<Remodel />} path={`/${remodel.slug.current}`} />
-          <Route element={<About />} path={`/${about.slug.current}`} />
-          <Route element={<Resources />} path={`/${resources.slug.current}`} />
+          <Route
+            element={<About contact={footer} testimonials={testimonials} />}
+            path={`/${about.slug.current}`}
+          />
+          <Route
+            element={<Resources faqs={faqs} />}
+            path={`/${resources.slug.current}`}
+          />
           <Route
             element={<SingleBlog navRef={navRef} />}
             path={`/${resources.slug.current}/blog/:slug`}

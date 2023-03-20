@@ -65,13 +65,13 @@ export const NavBar = ({ nav, logo, navRef }) => {
       }`}
     >
       <div className="lg:flex hidden ">
-        <div className="w-1/3 flex flex-auto justify-around items-center text-storeyGreen-100">
+        <div className="w-1/3 flex flex-auto justify-around items-center">
           {/* First half of Nav*/}
           {firstHalf.map((item, i) => {
             return (
               <NavLink
                 key={i}
-                className={`text-center flex-wrap  px-4 py-3 `}
+                className={`text-center flex-wrap  px-4 py-3 link`}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
@@ -92,12 +92,12 @@ export const NavBar = ({ nav, logo, navRef }) => {
         </div>
 
         {/* Second Half of Nav*/}
-        <div className="w-1/3 flex flex-auto justify-around items-center px-1 text-storeyGreen-100">
+        <div className="w-1/3 flex flex-auto justify-around items-center px-1 ">
           {lastHalf.map((item, i) => {
             return (
               <NavLink
                 key={i}
-                className={`text-center flex-wrap px-4 py-3 ${
+                className={`text-center flex-wrap px-4 py-3 link ${
                   item.slug.current.includes("contact") ? "btn" : ""
                 }`}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -146,7 +146,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
             return (
               <NavLink
                 key={i}
-                className="text-center text-storeyGreen-100 p-4 mt-4"
+                className="text-center text-storeyGreen-100 p-4 mt-4 link"
                 to={`/${item.slug.current}`}
                 onClick={handleClick}
               >

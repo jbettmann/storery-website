@@ -40,6 +40,14 @@
     @apply mb-14;
   }
 
+  .link {
+    @apply text-storeyGreen-100;
+  }
+
+  .link:hover {
+    @apply underline;
+  }
+
   iframe {
     @apply w-full  md:w-[640px] md:h-[360px];
   }
@@ -71,6 +79,20 @@
     @apply underline decoration-solid bg-[#084126];
   }
 
+  .toggle-btn {
+    @apply relative w-full h-full transition-colors duration-300 ease-in-out;
+  }
+
+  .buy-tool__btn {
+    @apply m-1 xs:m-4 text-sm md:text-base p-3 rounded-md;
+  }
+
+  .buy-tool__btn:hover,
+  .focused,
+  .buy-tool__btn:active {
+    @apply no-underline border-2 text-storeyGreen-100 border-storeyGreen-100 bg-storeyGreen-100/10;
+  }
+
   .blog-group {
     @apply absolute top-0 flex items-center justify-center w-full transition ease-in-out duration-300;
   }
@@ -86,6 +108,9 @@
     }
   }
 
+  .green-card {
+    @apply rounded-lg border-2 shadow-md border-storeyGreen-100 bg-storeyGreen-100/10;
+  }
   .dots {
     @apply bg-storeyGreen-100 opacity-70;
   }

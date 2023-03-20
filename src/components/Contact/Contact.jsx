@@ -21,10 +21,15 @@ export const Contact = ({ footer, seHabla }) => {
     },
   };
 
-  console.log(seHabla);
-
   if (state.succeeded) {
-    return <p>Thanks for Sending a message! We'll get back to you shortly</p>;
+    return (
+      <section className="flex justify-center items-center h-screen">
+        <div className="green-card text-center p-16">
+          <h3 className="">Thank you for reach out!</h3>
+          <p> We'll get back to you shortly</p>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -126,7 +131,7 @@ export const Contact = ({ footer, seHabla }) => {
         </section>
 
         {/* Contact Info */}
-        <section className="flex flex-col bg-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto rounded-b-xl lg:rounded-none lg:rounded-r-xl">
+        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto rounded-b-xl lg:rounded-none lg:rounded-r-xl">
           <h2 className="mb-9">Contact Storey</h2>
           {/* Email */}
           <div className="flex items-start gap-3 mb-7">

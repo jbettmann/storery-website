@@ -13,7 +13,7 @@ export const SocialLinks = ({ social, style }) => {
             <a
               key={link._key}
               href={link.url}
-              className="m-3 flex justify-center"
+              className="m-3 flex justify-center rounded-full"
               style={
                 style
                   ? style.zillow

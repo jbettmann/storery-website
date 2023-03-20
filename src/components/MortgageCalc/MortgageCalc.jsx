@@ -10,24 +10,23 @@ export const MortgageCalc = () => {
           rel="noreferrer"
         >
           <img
-            src="https://www.mortgagecalculator.org/images/mortgage-calculator-logo.png"
-            alt="MortgageCalculator.org"
-            className=" w-auto h-auto border-0 "
+            src="https://www.mortgagecalculator.org/free-tools/calc/mortgage-calculator-logo.png"
+            alt="MortgageCalculator.org."
           />
         </a>
-      </p>{" "}
-      <iframe
-        src="https://www.mortgagecalculator.org/webmasters/?downpayment=60000&homevalue=300000&loanamount=240000&interestrate=5&loanterm=30&propertytax=2400&pmi=1&homeinsurance=1000&monthlyhoa=0"
-        className="w-full h-[1000px] border-0 "
-      ></iframe>
-      <a
-        href="https://www.mortgagecalculator.org/free-tools/javascript-mortgage-calculator.php"
-        target="_blank"
-        rel="noreferrer"
-        className="text-xs"
-      >
-        by MortgageCalculator.org Mortgage Calculator
-      </a>
+        <iframe
+          src="https://www.mortgagecalculator.org/free-tools/calc/?value=400000&down=80000&amount=320000&rate=5&years=30&pmi=0.7&insurance=1500&taxes=3000&hoa=0&cur=$"
+          className="w-full h-[400px] m-0 border-0 "
+        ></iframe>
+        <a
+          href="https://www.mortgagecalculator.org/free-tools/javascript-mortgage-calculator.php"
+          target="_blank"
+          rel="noreferrer"
+          className="text-xs"
+        >
+          by MortgageCalculator.org Mortgage Calculator
+        </a>
+      </p>
     </div>
   );
 };

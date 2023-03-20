@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import { getBlog, getFAQ } from "../../Functions/Functions";
+import { getBlog } from "../../Functions/Functions";
 import { Blog } from "../Blog/Blog";
 import { FAQ } from "../FAQs/FAQs";
 
-export const Resources = () => {
+export const Resources = ({ faqs }) => {
   const [blogs, setBlog] = useState(null || []);
-  const [faqs, setFAQ] = useState([]);
 
   // sorts blogs by date, news to oldest
   const sortBlogs = () => {
@@ -23,7 +22,6 @@ export const Resources = () => {
 
   useEffect(() => {
     getBlog(setBlog);
-    getFAQ(setFAQ);
   }, [blogs.length]);
 
   return (

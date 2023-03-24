@@ -12,7 +12,7 @@ export const BuyToolCard = ({ card }) => {
       rel="noreferrer"
     >
       {/* Image or Logo */}
-      <div className="flex justify-center flex-auto w-full h-52 mb-6 overflow-hidden ">
+      <div className="flex justify-center flex-auto w-1/2 md:w-full h-52 mb-6 overflow-hidden ">
         <img
           src={urlFor(card.mainImage?.asset._ref)}
           alt={card.slug?.current}

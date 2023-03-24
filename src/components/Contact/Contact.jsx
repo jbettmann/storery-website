@@ -131,7 +131,7 @@ export const Contact = ({ footer, seHabla }) => {
         </section>
 
         {/* Contact Info */}
-        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto md:rounded-b-xl lg:rounded-none lg:rounded-r-xl">
+        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 pb-12 px-6 mb-0 w-full lg:w-auto md:rounded-b-xl lg:rounded-none lg:rounded-r-xl">
           <h2 className="mb-9">Contact Storey</h2>
           {/* Email */}
           <div className="flex items-start gap-3 mb-7">

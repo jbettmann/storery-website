@@ -71,7 +71,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
             return (
               <NavLink
                 key={i}
-                className={`text-center flex-wrap  px-4 py-3 link`}
+                className={`text-center flex-wrap  px-4 py-3 link nav`}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >
@@ -97,7 +97,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
             return (
               <NavLink
                 key={i}
-                className={`text-center flex-wrap px-4 py-3 link ${
+                className={`text-center flex-wrap px-4 py-3 link nav ${
                   item.slug.current.includes("contact") ? "btn" : ""
                 }`}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -146,7 +146,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
             return (
               <NavLink
                 key={i}
-                className="text-center text-storeyGreen-100 p-4 mt-4 link"
+                className="text-center text-storeyGreen-100 p-4 mt-4 link nav"
                 to={`/${item.slug.current}`}
                 onClick={handleClick}
               >

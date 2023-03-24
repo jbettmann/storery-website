@@ -26,6 +26,7 @@ module.exports = {
       screens: {
         xs: "410px",
         testie: "1041px",
+        "3xl": "1750px",
       },
     },
   },

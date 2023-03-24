@@ -48,6 +48,10 @@
     @apply underline;
   }
 
+  .link.nav {
+    @apply text-xl lg:text-lg 3xl:text-xl;
+  }
+
   iframe {
     @apply w-full  md:w-[640px] md:h-[360px];
   }

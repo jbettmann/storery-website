@@ -40,7 +40,7 @@ export const Card = ({ card, style, urlNav }) => {
         >
           {card.button ? card.button : "Read more..."}
         </NavLink>
-        {card.publishedAt ? (
+        {/* {card.publishedAt ? (
           <p className="absolute p-2 m-0 bottom-0 left-1 text-gray-500 text-xs sm:text-sm italic">
             {new Date(card.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
@@ -50,7 +50,7 @@ export const Card = ({ card, style, urlNav }) => {
           </p>
         ) : (
           ""
-        )}
+        )} */}
       </div>
     </NavLink>
   );

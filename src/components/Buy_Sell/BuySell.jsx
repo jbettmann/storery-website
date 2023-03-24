@@ -78,7 +78,7 @@ export const BuySell = ({ faqs, testimonials }) => {
           {/* Toggle View */}
           <div className="w-full lg:w-3/5 ">
             {/* Toggle Buttons */}
-            <div className="mx-auto lg:mx-0 flex items-center w-full xs:w-1/2 h-16 relative mb-6 justify-around bg-gray-300 rounded-md">
+            <div className="mx-auto lg:mx-0 flex items-center w-full xs:w-2/3 sm:w-1/2 h-16 relative mb-6 justify-around bg-gray-300 rounded-md">
               <div
                 className={`absolute top-0 left-0 w-1/2 h-full btn transition-transform duration-300 ease-in-out  ${
                   viewOption === "buy"

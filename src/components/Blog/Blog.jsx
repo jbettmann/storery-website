@@ -54,6 +54,9 @@ export const Blog = ({ blogs }) => {
     setCurSlide(slide);
     blogArray.current.forEach((s, i) => {
       s.style.transform = `translateX(${(i - slide) * 100}%)`;
+      s.style.transform === `translateX(0%)`
+        ? (s.style.opacity = 1)
+        : (s.style.opacity = 0);
     });
   }
 

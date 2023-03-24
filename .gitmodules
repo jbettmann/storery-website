@@ -1,3 +1,3 @@
 [submodule "storey_sanity_db"]
     path = storey_sanity_db
-    url = https://github.com/jbettmann/storery-website.git
+    url = https://github.com/jbettmann/storery-website/storey_sanity_db.git

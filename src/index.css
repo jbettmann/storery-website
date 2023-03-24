@@ -75,7 +75,7 @@
   }
 
   .btn {
-    @apply  text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md will-change-auto;
+    @apply  text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md will-change-transform;
   }
   .btn:hover {
     @apply will-change-transform underline decoration-solid;
@@ -103,7 +103,7 @@
   }
 
   .card {
-    @apply ease-out transition-all duration-300 drop-shadow-md bg-white text-center w-full h-auto flex-auto max-w-2xl py-8 flex flex-col items-center lg:justify-between justify-between will-change-auto;
+    @apply ease-out transition-all duration-300 drop-shadow-md bg-white text-center w-full h-auto flex-auto max-w-2xl py-8 flex flex-col items-center lg:justify-between justify-between will-change-transform;
   }
 
   .card:hover {

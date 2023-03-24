@@ -46,7 +46,7 @@ export const Testimonials = ({ testimonials }) => {
   function goToSlide(slide) {
     activateDot(slide);
     setCurSlide(slide);
-    testimonialsArray.current?.forEach((s, i) => {
+    testimonialsArray?.current?.forEach((s, i) => {
       s.style.transform = `translateX(${(i - slide) * 100}%)`;
       s.style.transform === `translateX(0%)`
         ? (s.style.opacity = 1)
@@ -100,11 +100,11 @@ export const Testimonials = ({ testimonials }) => {
       <div className="flex flex-col items-center h-auto">
         <h1 className="mt-14">{testimonials.webpageTitle}</h1>
         {/* testimonials Container */}
-        <div className="flex p-6 sm:px-14 w-full relative">
+        <div className="flex p-8 sm:px-14 w-full relative">
           <SlArrowLeft
-            className="cursor-pointer absolute top-1/2 left-1 sm:left-5 "
+            className="cursor-pointer absolute top-1/2 left-3 sm:left-5 "
             onClick={prevSlide}
-            size={smallScreen ? "1.2rem" : "2rem"}
+            size={smallScreen ? "1.5rem" : "2rem"}
           />
           {/* testimonials Slider */}
           <div className="w-full max-w-[1500px] h-[880px] xs:h-[550px] testie:h-[800px] xl:h-[650px] mx-auto relative overflow-hidden flex justify-center">
@@ -146,9 +146,9 @@ export const Testimonials = ({ testimonials }) => {
           </div>
 
           <SlArrowRight
-            className="cursor-pointer absolute top-1/2 right-1 sm:right-5"
+            className="cursor-pointer absolute top-1/2 right-3 sm:right-5"
             onClick={nextSlide}
-            size={smallScreen ? "1.2rem" : "2rem"}
+            size={smallScreen ? "1.5rem" : "2rem"}
           />
         </div>
 

@@ -52,9 +52,9 @@ export const Blog = ({ blogs }) => {
   function goToSlide(slide) {
     activateDot(slide);
     setCurSlide(slide);
-    blogArray.current.forEach((s, i) => {
+    blogArray?.current.forEach((s, i) => {
       s.style.transform = `translateX(${(i - slide) * 100}%)`;
-      s.style.transform === `translateX(0%)`
+      s.style?.transform === `translateX(0%)`
         ? (s.style.opacity = 1)
         : (s.style.opacity = 0);
     });
@@ -107,9 +107,9 @@ export const Blog = ({ blogs }) => {
       {/* Blog Container */}
       <div className="flex p-6 sm:px-14 w-full relative">
         <SlArrowLeft
-          className="cursor-pointer absolute top-1/2 left-1 sm:left-5 "
+          className="cursor-pointer absolute top-1/2 left-3 sm:left-5 "
           onClick={prevSlide}
-          size={smallScreen ? "1.2rem" : "2rem"}
+          size={smallScreen ? "1.5rem" : "2rem"}
         />
         {/* Blog Slider */}
         <div className="w-full max-w-[1500px] h-[500px] md:h-[550px] mx-auto relative overflow-hidden flex justify-center">
@@ -142,7 +142,7 @@ export const Blog = ({ blogs }) => {
                 return (
                   <article
                     ref={(el) => (blogArray.current[i] = el)}
-                    className={`blog-group p-3 mx-3 ${
+                    className={`blog-group p-5 mx-3 ${
                       blogArray.current[i]?.style.transform === "translateX(0%)"
                         ? "opacity-100"
                         : "opacity-0"
@@ -156,9 +156,9 @@ export const Blog = ({ blogs }) => {
         </div>
 
         <SlArrowRight
-          className="cursor-pointer absolute top-1/2 right-1 sm:right-5"
+          className="cursor-pointer absolute top-1/2 right-3 sm:right-5"
           onClick={nextSlide}
-          size={smallScreen ? "1.2rem" : "2rem"}
+          size={smallScreen ? "1.5rem" : "2rem"}
         />
       </div>
 

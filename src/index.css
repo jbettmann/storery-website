@@ -41,18 +41,6 @@
     @apply mb-14;
   }
 
-  .link {
-    @apply text-storeyGreen-100;
-  }
-
-  .link:hover {
-    @apply underline;
-  }
-
-  .link.nav {
-    @apply text-xl lg:text-lg 3xl:text-xl;
-  }
-
   iframe {
     @apply w-full  md:w-[640px] md:h-[360px];
   }
@@ -72,6 +60,18 @@
 
   footer {
     @apply bg-white flex flex-col items-center pt-6 pr-6 pb-0 pl-6 text-center;
+  }
+
+  .link {
+    @apply text-storeyGreen-100;
+  }
+
+  .link:hover {
+    @apply underline;
+  }
+
+  .link.nav {
+    @apply  3xl:text-xl;
   }
 
   .btn {

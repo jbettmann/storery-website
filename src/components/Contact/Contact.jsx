@@ -36,11 +36,11 @@ export const Contact = ({ footer, seHabla }) => {
     <main className="flex flex-col items-center">
       <h1 className="mt-14">Contact Us</h1>
       <form
-        className="flex flex-col items-center lg:flex-row lg:items-stretch justify-between"
+        className="w-screen md:w-4/5 max-w-6xl flex flex-col items-center lg:flex-row lg:items-stretch justify-between"
         onSubmit={handleSubmit}
         id="contact"
       >
-        {/* Form fill out */}
+        {/* Form */}
         <section className="flex flex-col w-full lg:w-2/3 mb-0 p-6 ">
           <h2 className="mb-6">Say Hello!</h2>
           <p className="text-xs m-0 px-0">
@@ -131,7 +131,7 @@ export const Contact = ({ footer, seHabla }) => {
         </section>
 
         {/* Contact Info */}
-        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto rounded-b-xl lg:rounded-none lg:rounded-r-xl">
+        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 px-6 mb-0 w-full lg:w-auto md:rounded-b-xl lg:rounded-none lg:rounded-r-xl">
           <h2 className="mb-9">Contact Storey</h2>
           {/* Email */}
           <div className="flex items-start gap-3 mb-7">

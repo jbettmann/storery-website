@@ -24,12 +24,14 @@ export const Home = ({ home, contact, setSeHabla }) => {
     <div>
       {/* Hero */}
       <header className="my-8 relative text-white">
-        <div className=" h-64 md:h-96 lg:h-[30rem] overflow-hidden object-center ">
-          <img
-            src={urlFor(home.hero?.mainImage.asset._ref)}
-            alt="Beautiful sunny brick home surrounded by green trees that Storey owns"
-            className="mx-auto -translate-y-1/4 md:-translate-y-1/4 lg:-translate-y-1/3 2xl:-translate-y-1/2 w-full brightness-50 "
-          />
+        <div className="h-96 lg:h-[30rem] ">
+          <div className="w-full h-[30rem] overflow-hidden ">
+            <img
+              src={urlFor(home.hero?.mainImage.asset._ref)}
+              alt="Beautiful sunny brick home surrounded by green trees that Storey owns"
+              className="w-full h-full object-cover brightness-50"
+            />
+          </div>
           <article className="absolute top-0 left-0 w-full h-full px-6 flex flex-col text-center justify-center items-center flex-auto">
             {home.hero.title.split("\n").map((t, i) => (
               <h1 key={i} className="mb-0 text-2xl md:text-4xl ">

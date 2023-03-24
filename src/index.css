@@ -108,10 +108,12 @@
 
   .card:hover {
     @apply scale-110 ease-in-out transition-all -translate-y-1 duration-500 cursor-pointer drop-shadow-lg;
-    .btn {
-      @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-500;
-    }
   }
+  
+  .card:hover .btn {
+    @apply bg-storeyGreen-100 text-white ease-in-out transition-all -translate-y-1 duration-500;
+  }
+  
 
   .green-card {
     @apply rounded-lg border-2 shadow-md border-storeyGreen-100 bg-storeyGreen-100/10;

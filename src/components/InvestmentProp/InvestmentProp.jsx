@@ -1,9 +1,176 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { getInvestProps, urlFor } from "../../Functions/Functions";
+import { MyVideo } from "../MyVideo/MyVideo";
+import { FAQ } from "../FAQs/FAQs";
+import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
+import { Testimonials } from "../Testimonials/Testimonials";
+import { Spinner } from "../Spinner/Spinner";
 
-export const InvestmentProp = () => {
+export const InvestmentProp = ({
+  testimonials,
+  faqs,
+  rentalListings,
+  remodel,
+}) => {
+  const [investment, setInvestProps] = useState({});
+  const [active, setActive] = useState(true);
+  const [viewOption, setViewOption] = useState("rental");
+  const [selectedObj, setSelectedObj] = useState(null);
+
+  const handleOptionClick = (option) => {
+    if (option === "rental") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+    setViewOption(option);
+  };
+
+  // fetches data and sets states
+  useEffect(() => {
+    getInvestProps(setInvestProps);
+  }, []);
+
+  //filters investment testimonials
+  const investmentTestimonials = {
+    ...testimonials,
+    testimonialList: testimonials.testimonialList?.filter((testie) =>
+      testie.category.includes("investment")
+    ),
+  };
+
+  //filters propertyManage testimonials
+  const propertyManageTestimonials = {
+    ...testimonials,
+    testimonialList: testimonials.testimonialList?.filter((testie) =>
+      testie.category.includes("property management")
+    ),
+  };
+  console.log(investment);
+
+  // sets state of selectedObj
+  useEffect(() => {
+    // Set selectedObj based on the active state
+    setSelectedObj(active ? investment.rental : investment.fixFlip);
+  }, [investment, active]);
+
+  if (!selectedObj) return <Spinner />;
   return (
-    <div className="flex w-full min-h-screen justify-center items-center">
-      <h1>🚧 🛠️ Under Construction 🛠️ 🚧</h1>
-    </div>
+    selectedObj && (
+      <section className="">
+        {/* Title */}
+        <div className="w-full  text-center">
+          <h1 className=" w-2/3 lg:w-1/2 py-14 mx-auto text-2xl md:text-5xl">
+            {investment.webpageTitle}
+          </h1>
+        </div>
+        {/* Hero Buy / Sell */}
+        <article className="flex flex-col items-center bg-white w-full p-6 md:p-14 gap-10 lg:flex-row lg:items-start">
+          <div className="w-full lg:w-3/5 h-56 sm:h-96">
+            <img
+              className="w-full h-full object-cover rounded-2xl"
+              src={urlFor(selectedObj.hero.mainImage.asset._ref)}
+              alt=""
+            />
+          </div>
+
+          {/* Toggle View */}
+          <div className="w-full lg:w-3/5 ">
+            {/* Toggle Buttons */}
+            <div className="mx-auto lg:mx-0 flex items-center w-full xs:w-2/3 sm:w-1/2 h-16 relative mb-6 justify-around bg-gray-300 rounded-md">
+              <div
+                className={`absolute top-0 left-0 w-1/2 h-full btn transition-transform duration-300 ease-in-out  ${
+                  viewOption === "rental"
+                    ? "transform translate-x-0 "
+                    : "transform translate-x-full "
+                }`}
+              ></div>
+              <button
+                className={`toggle-btn ${
+                  viewOption === "rental"
+                    ? " text-white font-bold"
+                    : " text-black"
+                }`}
+                onClick={() => handleOptionClick("rental")}
+              >
+                <h4>{investment.rental.title}</h4>
+              </button>
+              <button
+                className={`toggle-btn  ml-4 ${
+                  viewOption === "fixFlip"
+                    ? " text-white font-bold"
+                    : " text-black"
+                }`}
+                onClick={() => handleOptionClick("fixFlip")}
+              >
+                <h4>{investment.fixFlip.title}</h4>
+              </button>
+            </div>
+
+            {/* Hero Info */}
+            <div>
+              <h3 className="font-bold ">{selectedObj.hero.description}</h3>
+              <ul>
+                {selectedObj.rentalHelpList
+                  ? selectedObj.rentalHelpList.list.map((list) => {
+                      return (
+                        <li className="flex items-center mt-6">
+                          <div className="mr-3">
+                            <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
+                          </div>
+                          <span className="text-black">{list.item}</span>
+                        </li>
+                      );
+                    })
+                  : null}
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        {active ? (
+          <SellQuickTip selectedObj={selectedObj.propertyManagement} />
+        ) : (
+          // Quick Selling Tip
+          <SellQuickTip selectedObj={selectedObj.remodelPlan} />
+        )}
+
+        {/* Buy / Sell Video */}
+        {selectedObj.videoUrl && (
+          <div className="w-full bg-white text-center py-14">
+            <h1>{selectedObj.videoUrl.title}</h1>
+            <MyVideo url={selectedObj.videoUrl.url} />
+          </div>
+        )}
+
+        {/* Testimonials */}
+        {testimonials && (
+          <article>
+            <Testimonials
+              testimonials={
+                active ? investmentTestimonials : propertyManageTestimonials
+              }
+            />
+          </article>
+        )}
+
+        {/* FAQs */}
+        <div
+          className="bg-white w-screen h-full flex flex-col items-center"
+          id="faqs"
+        >
+          <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
+          {faqs
+            .filter(
+              (faqs) =>
+                faqs.slug.current === investment.slug.current ||
+                faqs.slug.current === "property-management"
+            )
+            .map((faq, i) => {
+              return <FAQ key={i} faq={faq} />;
+            })}
+        </div>
+      </section>
+    )
   );
 };

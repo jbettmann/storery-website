@@ -161,7 +161,7 @@ export const BuySell = ({ faqs, testimonials }) => {
           </article>
         ) : (
           // Quick Selling Tip
-          <SellQuickTip selectedObj={selectedObj} />
+          <SellQuickTip selectedObj={selectedObj.quickSellTip} />
         )}
 
         {/* Buy / Sell Video */}

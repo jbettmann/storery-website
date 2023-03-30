@@ -47,6 +47,7 @@ function App() {
     getFooter(setFooter);
     getTestimonials(setTestimonials);
   }, []);
+  console.log(footer);
 
   if (!home || !nav) return <Spinner />;
 
@@ -72,7 +73,14 @@ function App() {
             path={`/${buySell.slug.current}`}
           />
           <Route
-            element={<InvestmentProp />}
+            element={
+              <InvestmentProp
+                remodel={remodel}
+                faqs={faqs}
+                testimonials={testimonials}
+                rentalListings={footer?.socialLinks}
+              />
+            }
             path={`/${invest.slug.current}`}
           />
           <Route element={<Remodel />} path={`/${remodel.slug.current}`} />

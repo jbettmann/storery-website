@@ -84,6 +84,24 @@ export function getBuySell(setBuySell) {
     .catch(console.error);
 }
 
+// Investment Properties fetch
+export function getInvestProps(setInvestProps) {
+  sanityClient
+    .fetch(
+      `*[_type == 'investment']{
+        webpageTitle,
+        slug,
+        rental,
+        fixFlip,
+        videoUrl
+    }`
+    )
+    .then((data) => {
+      setInvestProps(data[0]);
+    })
+    .catch(console.error);
+}
+
 // About fetch
 export function getAbout(setAbout) {
   sanityClient

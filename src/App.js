@@ -47,7 +47,7 @@ function App() {
     getFooter(setFooter);
     getTestimonials(setTestimonials);
   }, []);
-  console.log(footer);
+ 
 
   if (!home || !nav) return <Spinner />;
 

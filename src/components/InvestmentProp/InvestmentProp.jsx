@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import BlockContent from "@sanity/block-content-to-react";
 import { getInvestProps, urlFor } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { FAQ } from "../FAQs/FAQs";
 import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
 import { Testimonials } from "../Testimonials/Testimonials";
 import { Spinner } from "../Spinner/Spinner";
+import { RentalCard } from "../Card/RentalCard";
 
 export const InvestmentProp = ({
   testimonials,
@@ -16,6 +18,7 @@ export const InvestmentProp = ({
   const [active, setActive] = useState(true);
   const [viewOption, setViewOption] = useState("rental");
   const [selectedObj, setSelectedObj] = useState(null);
+  const [benefitCards, setBenefitCards] = useState(null);
 
   const handleOptionClick = (option) => {
     if (option === "rental") {
@@ -26,27 +29,43 @@ export const InvestmentProp = ({
     setViewOption(option);
   };
 
+  // coverts obj of benefits into array for cards
+  const benefitCardArray = (obj) => {
+    if (!obj) return;
+    let [...newCards] = Object.values(obj);
+    // eliminates element that is just "document"
+    setBenefitCards(newCards.filter((doc, i) => doc !== "document"));
+  };
+
   // fetches data and sets states
   useEffect(() => {
     getInvestProps(setInvestProps);
   }, []);
 
+  // calls benefitCardArray once investment is set
+  useEffect(() => {
+    if (investment.rental) {
+      benefitCardArray(investment.rental.benefits.cards);
+    }
+  }, [investment]);
+
   //filters investment testimonials
+  const investCats = ["investment", "property management"];
   const investmentTestimonials = {
     ...testimonials,
-    testimonialList: testimonials.testimonialList?.filter((testie) =>
-      testie.category.includes("investment")
+    testimonialList: testimonials?.testimonialList?.filter((testie) =>
+      investCats.some((category) => testie.category.includes(category))
     ),
   };
 
   //filters propertyManage testimonials
-  const propertyManageTestimonials = {
+  const fixNFlipCats = ["consulting", "investment", "remodel"];
+  const fixNFlipTestimonials = {
     ...testimonials,
-    testimonialList: testimonials.testimonialList?.filter((testie) =>
-      testie.category.includes("property management")
+    testimonialList: testimonials?.testimonialList?.filter((testie) =>
+      fixNFlipCats.some((category) => testie.category.includes(category))
     ),
   };
-  console.log(investment);
 
   // sets state of selectedObj
   useEffect(() => {
@@ -60,7 +79,7 @@ export const InvestmentProp = ({
       <section className="">
         {/* Title */}
         <div className="w-full  text-center">
-          <h1 className=" w-2/3 lg:w-1/2 py-14 mx-auto text-2xl md:text-5xl">
+          <h1 className="heading w-2/3 xl:w-1/2 py-14 mx-auto">
             {investment.webpageTitle}
           </h1>
         </div>
@@ -110,24 +129,44 @@ export const InvestmentProp = ({
             {/* Hero Info */}
             <div>
               <h3 className="font-bold ">{selectedObj.hero.description}</h3>
-              <ul>
-                {selectedObj.rentalHelpList
-                  ? selectedObj.rentalHelpList.list.map((list) => {
-                      return (
-                        <li className="flex items-center mt-6">
-                          <div className="mr-3">
-                            <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
-                          </div>
-                          <span className="text-black">{list.item}</span>
-                        </li>
-                      );
-                    })
-                  : null}
-              </ul>
+
+              {selectedObj.rentalHelpList ? (
+                <ul>
+                  {selectedObj.rentalHelpList.list.map((list) => {
+                    return (
+                      <li className="flex items-center mt-6">
+                        <div className="mr-3">
+                          <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
+                        </div>
+                        <span className="text-black">{list.item}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <BlockContent
+                  blocks={selectedObj.hero.subDescription}
+                  projectId="k4xvtsjp"
+                  dataset="production"
+                  className="prose-p:m-0 prose-p:pl-0"
+                />
+              )}
             </div>
           </div>
         </article>
-
+        {active ? (
+          <article className="w-full flex flex-col items-center bg-white px-24">
+            {/* Rental Benefits */}
+            <div className="flex w-3/4 justify-evenly h-auto">
+              <h1>{selectedObj?.benefits?.title}</h1>
+            </div>
+            <div className="flex justify-center my-10 gap-10 ">
+              {benefitCards?.map((benefit, i) => {
+                return <RentalCard benefit={benefit} i={i} />;
+              })}
+            </div>
+          </article>
+        ) : null}
         {active ? (
           <SellQuickTip selectedObj={selectedObj.propertyManagement} />
         ) : (
@@ -136,10 +175,10 @@ export const InvestmentProp = ({
         )}
 
         {/* Buy / Sell Video */}
-        {selectedObj.videoUrl && (
+        {investment.videoUrl && (
           <div className="w-full bg-white text-center py-14">
-            <h1>{selectedObj.videoUrl.title}</h1>
-            <MyVideo url={selectedObj.videoUrl.url} />
+            <h1>{investment.videoUrl.title}</h1>
+            <MyVideo url={investment.videoUrl.url} />
           </div>
         )}
 
@@ -148,7 +187,7 @@ export const InvestmentProp = ({
           <article>
             <Testimonials
               testimonials={
-                active ? investmentTestimonials : propertyManageTestimonials
+                active ? investmentTestimonials : fixNFlipTestimonials
               }
             />
           </article>

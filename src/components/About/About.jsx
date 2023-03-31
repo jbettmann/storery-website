@@ -28,7 +28,9 @@ export const About = ({ contact, testimonials }) => {
     about && (
       <section>
         <article className="flex flex-col w-full items-center px-12 md:px-24">
-          <h1 className="w-full my-20 text-center">{about.webpageTitle}</h1>
+          <h1 className="heading w-full my-20 text-center">
+            {about.webpageTitle}
+          </h1>
           <div className="flex flex-col py-10 xl:flex-row gap-8 justify-evenly">
             {/* Bios & Contact Container*/}
             <section className="w-full xl:w-[60%] mb-0">

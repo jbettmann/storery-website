@@ -78,12 +78,12 @@
 
   .btn {
     @apply text-white text-sm md:text-base p-3 rounded-md  ;
-    background: radial-gradient(ellipse, rgb(20 131 78 / var(--tw-bg-opacity)) 20%, #126c36 100%);
+    background: radial-gradient(ellipse, rgb(20 131 78 / var(--tw-bg-opacity)) 20%, #147a3d 100%);
     
   }
   .btn:hover {
     @apply underline decoration-solid;
-    background: radial-gradient(ellipse, #126c36 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
+    background: radial-gradient(ellipse, #147a3d 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
    
    
   }
@@ -125,8 +125,8 @@
   }
   
   .card:hover .btn {
-    @apply  text-white ease-in-out transition-colors duration-300;
-    background: radial-gradient(ellipse, #126c36 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
+    @apply  text-white ease-in-out transition-all duration-300;
+    background: radial-gradient(ellipse, #147a3d 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
   }
   
   .green-card {

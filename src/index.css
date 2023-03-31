@@ -61,7 +61,9 @@
   footer {
     @apply bg-white flex flex-col items-center pt-6 pr-6 pb-0 pl-6 text-center;
   }
-
+  .heading {
+    @apply text-4xl lg:text-5xl
+  }
   .link {
     @apply text-storeyGreen-100;
   }
@@ -75,10 +77,15 @@
   }
 
   .btn {
-    @apply  text-white bg-storeyGreen-100 text-sm md:text-base p-3 rounded-md ;
+    @apply text-white text-sm md:text-base p-3 rounded-md  ;
+    background: radial-gradient(ellipse, rgb(20 131 78 / var(--tw-bg-opacity)) 20%, #126c36 100%);
+    
   }
   .btn:hover {
     @apply underline decoration-solid;
+    background: radial-gradient(ellipse, #126c36 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
+   
+   
   }
   .btn:focus {
     @apply underline decoration-solid bg-[#084126];
@@ -118,7 +125,8 @@
   }
   
   .card:hover .btn {
-    @apply  bg-storeyGreen-100 text-white ease-in-out transition-colors duration-300;
+    @apply  text-white ease-in-out transition-colors duration-300;
+    background: radial-gradient(ellipse, #126c36 20%,  rgb(20 131 78 / var(--tw-bg-opacity)) 100%);
   }
   
   .green-card {
@@ -142,5 +150,7 @@
     @apply bg-white rounded-full;
   }
 
-  
+  .contact-form {
+    background: radial-gradient(ellipse at bottom, rgb(20 131 78 / var(--tw-bg-opacity)) 0%, #116432 50%);
+  }
 }

@@ -103,7 +103,7 @@ export const Blog = ({ blogs }) => {
 
   return (
     <div className="flex flex-col items-center h-auto">
-      <h1 className="mt-14">Blog</h1>
+      <h1 className="heading mt-14">Blog</h1>
       {/* Blog Container */}
       <div className="flex p-6 sm:px-14 w-full relative">
         <SlArrowLeft

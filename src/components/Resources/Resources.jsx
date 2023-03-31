@@ -28,7 +28,9 @@ export const Resources = ({ faqs }) => {
     <section>
       <Blog blogs={blogs} />
       <div className="bg-white w-screen h-full flex flex-col items-center">
-        <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
+        <h1 className="heading mt-14 p-2 text-center">
+          Frequently Asked Questions
+        </h1>
         {faqs.map((faq, i) => {
           return <FAQ key={i} faq={faq} />;
         })}

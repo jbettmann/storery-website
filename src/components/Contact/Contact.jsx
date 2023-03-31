@@ -34,7 +34,7 @@ export const Contact = ({ footer, seHabla }) => {
 
   return (
     <main className="flex flex-col items-center">
-      <h1 className="mt-14">Contact Us</h1>
+      <h1 className="heading mt-14">Contact Us</h1>
       <form
         className="w-screen md:w-4/5 max-w-6xl flex flex-col items-center lg:flex-row lg:items-stretch justify-between"
         onSubmit={handleSubmit}
@@ -131,7 +131,7 @@ export const Contact = ({ footer, seHabla }) => {
         </section>
 
         {/* Contact Info */}
-        <section className="flex flex-col bg-gradient-to-tr from-storeyGreen-100 to-storeyGreen-300 text-white pt-24 pb-12 px-6 mb-0 w-full lg:w-auto md:rounded-b-xl lg:rounded-none lg:rounded-r-xl">
+        <section className="flex flex-col contact-form text-white pt-24 pb-12 px-6 mb-0 w-full lg:w-auto md:rounded-b-xl lg:rounded-none lg:rounded-r-xl">
           <h2 className="mb-9">Contact Storey</h2>
           {/* Email */}
           <div className="flex items-start gap-3 mb-7">

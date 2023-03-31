@@ -12,7 +12,7 @@ export const SellQuickTip = ({ selectedObj }) => {
             blocks={selectedObj.description}
             projectId="k4xvtsjp"
             dataset="production"
-            className="prose prose-p:text-xl"
+            className="prose-p:m-0 prose-p:pl-0"
           />
           <a className="link" href="#faqs" alt="link to FAQS">
             Read More tips in our FAQs

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import BlockContent from "@sanity/block-content-to-react";
 import { getBuySell, urlFor } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { FAQ } from "../FAQs/FAQs";
@@ -61,7 +62,7 @@ export const BuySell = ({ faqs, testimonials }) => {
       <section className="">
         {/* Title */}
         <div className="w-full  text-center">
-          <h1 className=" w-2/3 lg:w-1/2 py-14 mx-auto text-2xl md:text-5xl">
+          <h1 className="heading w-2/3 xl:w-1/2 py-14 mx-auto ">
             {buySell.buySellTitle}
           </h1>
         </div>
@@ -109,18 +110,28 @@ export const BuySell = ({ faqs, testimonials }) => {
             {/* Hero Info */}
             <div>
               <h3 className="font-bold ">{selectedObj.hero.description}</h3>
-              <ul>
-                {selectedObj.whyChecklist.checklist.map((list) => {
-                  return (
-                    <li className="flex items-center mt-6">
-                      <div className="mr-3">
-                        <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
-                      </div>
-                      <span className="text-black">{list.item}</span>
-                    </li>
-                  );
-                })}
-              </ul>
+
+              {selectedObj.whyChecklist ? (
+                <ul>
+                  {selectedObj.whyChecklist.checklist.map((list) => {
+                    return (
+                      <li className="flex items-center mt-6">
+                        <div className="mr-3">
+                          <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
+                        </div>
+                        <span className="text-black">{list.item}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <BlockContent
+                  blocks={selectedObj.hero.subDescription}
+                  projectId="k4xvtsjp"
+                  dataset="production"
+                  className="prose-p:m-0 prose-p:p-0"
+                />
+              )}
             </div>
           </div>
         </article>

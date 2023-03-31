@@ -34,7 +34,7 @@ export const Card = ({ card, style, urlNav }) => {
         )}
         {card.sub ? <p className="pl-0">{card.sub}</p> : null}
         <NavLink
-          className="btn bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
+          className="btn bg-none bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
           to={`/${card.slug?.current}`}
           aria-label="Request a Call link"
         >

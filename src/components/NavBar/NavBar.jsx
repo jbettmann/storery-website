@@ -15,6 +15,7 @@ export const NavBar = ({ nav, logo, navRef }) => {
 
   // Applied when nav link is Active
   let activeStyle = {
+    background: "none",
     backgroundColor: "#E5F1E0",
     color: "#14834E",
     borderRadius: "6px",
@@ -97,9 +98,9 @@ export const NavBar = ({ nav, logo, navRef }) => {
             return (
               <NavLink
                 key={i}
-                className={`text-center flex-wrap px-4 py-3 link nav ${
+                className={`text-center flex-wrap px-4 py-3 ${
                   item.slug.current.includes("contact") ? "btn" : ""
-                }`}
+                } link nav `}
                 style={({ isActive }) => (isActive ? activeStyle : null)}
                 to={`/${item.slug.current}`}
               >

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { urlFor } from "../../Functions/Functions";
+import { urlFor, cardArray } from "../../Functions/Functions";
 import { Card } from "../Card/Card";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { SeHabla } from "../SeHabla/SeHabla";
@@ -9,13 +9,8 @@ import { Spinner } from "../Spinner/Spinner";
 export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
 
-  const setCardArray = (cards) => {
-    if (!cards) return;
-    let [...newCards] = Object.values(cards);
-    setCards(newCards.filter((doc, i) => typeof doc === "object"));
-  };
   useEffect(() => {
-    setCardArray(home?.cards);
+    cardArray(home?.cards, setCards);
     setSeHabla(home);
   }, [home]);
 

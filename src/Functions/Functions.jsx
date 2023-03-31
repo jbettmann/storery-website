@@ -32,6 +32,12 @@ export function urlFor(source) {
   return builder.image(source);
 }
 
+export function cardArray(cards, setCards) {
+  if (!cards) return;
+  let [...newCards] = Object.values(cards);
+  setCards(newCards.filter((doc, i) => typeof doc === "object"));
+}
+
 // fetch Navigation components
 export function getNav(setNav) {
   sanityClient

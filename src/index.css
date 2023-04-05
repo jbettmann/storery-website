@@ -153,4 +153,9 @@
   .contact-form {
     background: radial-gradient(ellipse at bottom, rgb(20 131 78 / var(--tw-bg-opacity)) 0%, #116432 50%);
   }
+
+  .benefit-icon svg path {
+
+    stroke: green;
+  }
 }

@@ -7,11 +7,8 @@ export const RentalCard = ({ benefit, icon, i }) => {
     <div className={`card h-auto px-8 max-w-sm`}>
       {/* Icon and Benefit Title*/}
       <div className="flex justify-center flex-auto w-full  mb-6 overflow-hidden ">
-        {/* <img
-          src={icon[i]}
-          alt={``}
-          className={`mx-auto w-11/12 sm:w-full h-full object-cover`}
-        /> */}
+        <div className="p-3 benefit-icon">{icon}</div>
+
         <h4 className="font-bold">{benefit.title}</h4>
       </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { getInvestProps, urlFor } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
@@ -7,6 +7,9 @@ import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
 import { Testimonials } from "../Testimonials/Testimonials";
 import { Spinner } from "../Spinner/Spinner";
 import { RentalCard } from "../Card/RentalCard";
+import { FaDollarSign } from "react-icons/fa";
+import { BsHouseCheckFill } from "react-icons/bs";
+import { GrLineChart } from "react-icons/gr";
 
 export const InvestmentProp = ({
   testimonials,
@@ -19,6 +22,12 @@ export const InvestmentProp = ({
   const [viewOption, setViewOption] = useState("rental");
   const [selectedObj, setSelectedObj] = useState(null);
   const [benefitCards, setBenefitCards] = useState(null);
+
+  const benefitIcons = [
+    <FaDollarSign size={"2rem"} color={"green"} />,
+    <BsHouseCheckFill size={"2rem"} color={"green"} />,
+    <GrLineChart size={"2rem"} />,
+  ];
 
   const handleOptionClick = (option) => {
     if (option === "rental") {
@@ -162,7 +171,9 @@ export const InvestmentProp = ({
             </div>
             <div className="flex justify-center my-10 gap-10 ">
               {benefitCards?.map((benefit, i) => {
-                return <RentalCard benefit={benefit} i={i} />;
+                return (
+                  <RentalCard benefit={benefit} i={i} icon={benefitIcons[i]} />
+                );
               })}
             </div>
           </article>

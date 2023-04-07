@@ -1,8 +1,10 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { urlFor } from "../../Functions/Functions";
+import { Link } from "react-router-dom";
 
-export const SellQuickTip = ({ selectedObj }) => {
+export const SellQuickTip = ({ selectedObj, navLink }) => {
+  console.log({ selectedObj, navLink });
   return (
     selectedObj && (
       <article className="flex flex-col-reverse items-center  lg:flex-row lg:justify-evenly w-full bg-storeyGreen-100/10 p-6 md:p-14 gap-10 ">
@@ -14,11 +16,33 @@ export const SellQuickTip = ({ selectedObj }) => {
             dataset="production"
             className="prose-p:m-0 prose-p:pl-0"
           />
-          <a className="link" href="#faqs" alt="link to FAQS">
-            Read More tips in our FAQs
+          {/* Link/Button Redirect */}
+          <a
+            className="link"
+            href={
+              navLink?._key
+                ? navLink.url
+                : navLink?.id
+                ? navLink.slug.current
+                : "#faqs"
+            }
+            target={navLink?._key ? "_blank" : "_self"}
+            alt={
+              navLink?._key
+                ? "Link to current rental listing on zillow"
+                : navLink?.id
+                ? "Redirect to remodel consultation page"
+                : "Learn more from the FAQS"
+            }
+            rel="noreferrer"
+          >
+            {navLink?._key || navLink?.id
+              ? selectedObj.buttonText
+              : "Read more tips in our FAQs"}
           </a>
         </div>
 
+        {/* Image */}
         <div className="w-10/12 lg:w-auto h-36 sm:h-96 ">
           <img
             className="w-full h-full object-cover rounded-2xl"

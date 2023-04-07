@@ -23,6 +23,12 @@ export const InvestmentProp = ({
   const [selectedObj, setSelectedObj] = useState(null);
   const [benefitCards, setBenefitCards] = useState(null);
 
+  // Extract Zillow url for current rental listings link
+  [rentalListings] = rentalListings.filter(
+    (social) => social._key == "279a9ac700ed"
+  );
+  console.log(rentalListings);
+
   const benefitIcons = [
     <FaDollarSign size={"2rem"} color={"green"} />,
     <BsHouseCheckFill size={"2rem"} color={"green"} />,
@@ -81,7 +87,7 @@ export const InvestmentProp = ({
     // Set selectedObj based on the active state
     setSelectedObj(active ? investment.rental : investment.fixFlip);
   }, [investment, active]);
-
+  console.log(investment);
   if (!selectedObj) return <Spinner />;
   return (
     selectedObj && (
@@ -164,12 +170,10 @@ export const InvestmentProp = ({
           </div>
         </article>
         {active ? (
-          <article className="w-full flex flex-col items-center bg-white px-24">
+          <article className="w-full flex flex-col items-center bg-white px-6 sm:px-24 text-center">
             {/* Rental Benefits */}
-            <div className="flex w-3/4 justify-evenly h-auto">
-              <h1>{selectedObj?.benefits?.title}</h1>
-            </div>
-            <div className="flex justify-center my-10 gap-10 ">
+            <h1>{selectedObj?.benefits?.title}</h1>
+            <div className="flex flex-col items-center lg:flex-row gap-10 mx-0 sm:mx-9 my-10 justify-center">
               {benefitCards?.map((benefit, i) => {
                 return (
                   <RentalCard benefit={benefit} i={i} icon={benefitIcons[i]} />
@@ -178,11 +182,19 @@ export const InvestmentProp = ({
             </div>
           </article>
         ) : null}
+        {/* Quick Tips */}
         {active ? (
-          <SellQuickTip selectedObj={selectedObj.propertyManagement} />
+          // Property Management Info
+          <SellQuickTip
+            selectedObj={selectedObj.propertyManagement}
+            navLink={rentalListings}
+          />
         ) : (
-          // Quick Selling Tip
-          <SellQuickTip selectedObj={selectedObj.remodelPlan} />
+          // Remodel Info
+          <SellQuickTip
+            selectedObj={selectedObj.remodelPlan}
+            navLink={remodel}
+          />
         )}
 
         {/* Buy / Sell Video */}

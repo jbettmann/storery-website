@@ -110,7 +110,7 @@
   }
 
   .card {
-    @apply ease-out drop-shadow-md bg-white text-center w-full h-auto flex-auto max-w-2xl py-8 flex flex-col items-center lg:justify-between justify-between;
+    @apply ease-out shadow-md bg-white text-center w-full h-auto flex-auto max-w-2xl py-8 flex flex-col items-center lg:justify-between justify-between;
     transform: scale(1);
     transition-property: transform, box-shadow;
     transition-duration: 300ms; 
@@ -118,7 +118,7 @@
   }
 
   .card:hover {
-    @apply cursor-pointer drop-shadow-lg;
+    @apply cursor-pointer shadow-lg;
     transform:  scale(1.1);
     transition-duration: 300ms; 
     transition-timing-function: ease-in-out; 
@@ -132,6 +132,8 @@
   .green-card {
     @apply rounded-lg border-2 shadow-md border-storeyGreen-100 bg-storeyGreen-100/10;
   }
+
+ 
   .dots {
     @apply bg-storeyGreen-100 opacity-70;
   }

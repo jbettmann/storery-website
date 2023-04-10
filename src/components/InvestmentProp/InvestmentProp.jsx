@@ -27,7 +27,6 @@ export const InvestmentProp = ({
   [rentalListings] = rentalListings.filter(
     (social) => social._key == "279a9ac700ed"
   );
-  console.log(rentalListings);
 
   const benefitIcons = [
     <FaDollarSign size={"2rem"} color={"green"} />,
@@ -87,7 +86,7 @@ export const InvestmentProp = ({
     // Set selectedObj based on the active state
     setSelectedObj(active ? investment.rental : investment.fixFlip);
   }, [investment, active]);
-  console.log(investment);
+
   if (!selectedObj) return <Spinner />;
   return (
     selectedObj && (

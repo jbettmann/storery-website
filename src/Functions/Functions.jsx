@@ -108,6 +108,24 @@ export function getInvestProps(setInvestProps) {
     .catch(console.error);
 }
 
+// fetch for Home content
+export function getRemodel(setRemodel) {
+  sanityClient
+    .fetch(
+      `*[_type == 'remodel']{
+        hero,
+        remodelPlan,
+        remodelImg,
+  
+    }`
+    )
+
+    .then((data) => {
+      setRemodel(data[0]);
+    })
+    .catch(console.error);
+}
+
 // About fetch
 export function getAbout(setAbout) {
   sanityClient

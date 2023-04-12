@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getRemodel, urlFor } from "../../Functions/Functions";
-import BlockContect from "@sanity/block-content-to-react";
 import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
+import { Testimonials } from "../Testimonials/Testimonials";
 
-export const Remodel = ({ contact }) => {
+export const Remodel = ({ contact, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
+
+  //filters remodel testimonials
+  const remodelTestimonials = {
+    ...testimonials,
+    testimonialList: testimonials?.testimonialList?.filter(
+      (testie) =>
+        testie.category.includes("remodel") ||
+        testie.category.includes("consulting")
+    ),
+  };
 
   useEffect(() => {
     getRemodel(setRemodel);
@@ -37,6 +47,9 @@ export const Remodel = ({ contact }) => {
           </article>
         </section>
         <SellQuickTip selectedObj={remodel.remodelPlan} />
+        <article>
+          <Testimonials testimonials={remodelTestimonials} />
+        </article>
       </div>
     )
   );

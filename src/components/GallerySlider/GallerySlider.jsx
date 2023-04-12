@@ -106,9 +106,7 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
 
   return (
     <div className="flex flex-col items-center h-auto">
-      <h1 className="heading mt-14">
-        {testies ? "Testimonials" : items.webpageTitle}
-      </h1>
+      <h1 className="heading mt-14">{testies ? "Testimonials" : "Blog"}</h1>
       {/* Container */}
       <div className="flex p-6 sm:px-14 w-full relative">
         <SlArrowLeft

@@ -49,7 +49,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
       {cards && (
         <section className="flex flex-col items-center lg:flex-row gap-10 mx-9 justify-center">
           {cards.map((card, i) => {
-            return <Card key={i} card={card} />;
+            return <Card key={i} item={card} />;
           })}
         </section>
       )}

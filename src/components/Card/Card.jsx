@@ -2,10 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 
-export const Card = ({ card, style, urlNav }) => {
+export const Card = ({ item, style, urlNav }) => {
   return (
     <NavLink
-      to={urlNav ? `${urlNav}/${card.slug?.current}` : `/${card.slug?.current}`}
+      to={urlNav ? `${urlNav}/${item.slug?.current}` : `/${item.slug?.current}`}
       className={`card ${
         style
           ? style.card
@@ -14,8 +14,8 @@ export const Card = ({ card, style, urlNav }) => {
     >
       <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center ">
         <img
-          src={urlFor(card.mainImage?.asset._ref)}
-          alt={card.slug?.current}
+          src={urlFor(item.mainImage?.asset._ref)}
+          alt={item.slug?.current}
           className={`mx-auto ${style ? style.img : " w-52 "}`}
         />
       </div>
@@ -27,22 +27,22 @@ export const Card = ({ card, style, urlNav }) => {
       >
         {style ? (
           <h3 className="my-4 text-base md:text-xl font-medium">
-            {card.title}
+            {item.title}
           </h3>
         ) : (
-          <h1 className="mt-6">{card.title}</h1>
+          <h1 className="mt-6">{item.title}</h1>
         )}
-        {card.sub ? <p className="pl-0">{card.sub}</p> : null}
+        {item.sub ? <p className="pl-0">{item.sub}</p> : null}
         <NavLink
           className="btn bg-none bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-          to={`/${card.slug?.current}`}
+          to={`/${item.slug?.current}`}
           aria-label="Request a Call link"
         >
-          {card.button ? card.button : "Read more..."}
+          {item.button ? item.button : "Read more..."}
         </NavLink>
-        {/* {card.publishedAt ? (
+        {/* {item.publishedAt ? (
           <p className="absolute p-2 m-0 bottom-0 left-1 text-gray-500 text-xs sm:text-sm italic">
-            {new Date(card.publishedAt).toLocaleDateString("en-US", {
+            {new Date(item.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",
               day: "numeric",

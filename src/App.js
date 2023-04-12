@@ -83,7 +83,12 @@ function App() {
             path={`/${invest.slug.current}`}
           />
           <Route
-            element={<Remodel contact={contact.slug.current} />}
+            element={
+              <Remodel
+                contact={contact.slug.current}
+                testimonials={testimonials}
+              />
+            }
             path={`/${remodel.slug.current}`}
           />
           <Route

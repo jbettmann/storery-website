@@ -2,25 +2,37 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getRemodel, urlFor } from "../../Functions/Functions";
 import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
+import { PhotoCard } from "../Card/PhotoCard";
+import { GallerySlider } from "../GallerySlider/GallerySlider";
 import { Testimonials } from "../Testimonials/Testimonials";
 
 export const Remodel = ({ contact, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
 
   //filters remodel testimonials
-  const remodelTestimonials = {
-    ...testimonials,
-    testimonialList: testimonials?.testimonialList?.filter(
-      (testie) =>
-        testie.category.includes("remodel") ||
-        testie.category.includes("consulting")
-    ),
+  // const remodelTestimonials = {
+  //   ...testimonials,
+  //   testimonialList: testimonials?.testimonialList?.filter(
+  //     (testie) =>
+  //       testie.category.includes("remodel") ||
+  //       testie.category.includes("consulting")
+  //   ),
+  // };
+
+  let exampleBeforAfter = {
+    ...remodel?.remodelImg,
+    imgs: [
+      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/Dining_Room_600px.gif",
+      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/Kitchen_01_600px.gif",
+      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/backyard_600px.gif",
+    ],
   };
 
   useEffect(() => {
     getRemodel(setRemodel);
   }, []);
-  console.log(remodel);
+
+  console.log({ remodel, exampleBeforAfter });
   return (
     remodel && (
       <div>
@@ -47,9 +59,12 @@ export const Remodel = ({ contact, testimonials }) => {
           </article>
         </section>
         <SellQuickTip selectedObj={remodel.remodelPlan} />
-        <article>
-          <Testimonials testimonials={remodelTestimonials} />
-        </article>
+        <GallerySlider
+          CardComponent={PhotoCard}
+          items={exampleBeforAfter}
+          beforeAfter={true}
+        />
+        {/* <Testimonials testimonials={remodelTestimonials} /> */}
       </div>
     )
   );

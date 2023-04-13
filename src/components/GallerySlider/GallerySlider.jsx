@@ -3,19 +3,30 @@ import React, { useEffect, useState, useRef } from "react";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Spinner } from "../Spinner/Spinner";
 
-export const GallerySlider = ({ CardComponent, items, testies }) => {
+export const GallerySlider = ({
+  CardComponent,
+  items,
+  testies,
+  beforeAfter,
+}) => {
   const [smallScreen, setSmallScreen] = useState(false);
   const [activeDot, setActiveDot] = useState(0); // state for active dot
   const [curSlide, setCurSlide] = useState(0); // determines blog slide shown
   const itemArray = useRef([]); // ref to blog array
 
   // divides items array into thirds
-  const itemsOfThree = Array.from(
-    { length: Math.ceil(items.length / 3) },
-    (_, i) => items.slice(i * 3, i * 3 + 3)
-  );
+  let itemsOfThree;
+  if (!beforeAfter) {
+    itemsOfThree = Array.from({ length: Math.ceil(items.length / 3) }, (_, i) =>
+      items.slice(i * 3, i * 3 + 3)
+    );
+  }
   // max length for navigating through blog slides
-  let maxSlide = smallScreen ? items.length - 1 : itemsOfThree.length - 1;
+  let maxSlide = smallScreen
+    ? items.length - 1
+    : beforeAfter
+    ? items.imgs.length - 1
+    : itemsOfThree.length - 1;
 
   // Custom styling for Blog card
   const style = {
@@ -27,6 +38,20 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
   // Number of dots displayed for blog slide nav
   const createDots = () => {
     if (smallScreen) return <div></div>; // No dots for mobile
+
+    if (beforeAfter) {
+      return items.imgs.map((_, i) => {
+        return (
+          <button
+            onClick={() => goToSlide(i)}
+            key={i}
+            className={`dots w-5 h-5 m-2 rounded-full ${
+              i === activeDot ? "dot--active" : ""
+            }`}
+          ></button>
+        );
+      });
+    }
 
     return itemsOfThree.map((_, i) => {
       return (
@@ -80,6 +105,9 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
 
   useEffect(() => {
     function handleResize() {
+      if (beforeAfter) {
+        setSmallScreen(true);
+      }
       if (testies) {
         setSmallScreen(window.innerWidth <= 1040);
       } else {
@@ -106,7 +134,9 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
 
   return (
     <div className="flex flex-col items-center h-auto">
-      <h1 className="heading mt-14">{testies ? "Testimonials" : "Blog"}</h1>
+      <h1 className="heading mt-14">
+        {testies ? "Testimonials" : beforeAfter ? items.title : "Blog"}
+      </h1>
       {/* Container */}
       <div className="flex p-6 sm:px-14 w-full relative">
         <SlArrowLeft
@@ -119,10 +149,12 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
           className={`${
             testies
               ? "h-[880px] xs:h-[550px] testie:h-[800px] xl:h-[650px]"
+              : beforeAfter
+              ? " h-56 xs:h-[20rem] 480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"
           } w-full max-w-[1500px] mx-auto relative flex justify-center`}
         >
-          {!smallScreen
+          {!smallScreen && !beforeAfter
             ? itemsOfThree.map((group, i) => {
                 return (
                   <article
@@ -146,6 +178,24 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
                         />
                       );
                     })}
+                  </article>
+                );
+              })
+            : beforeAfter
+            ? items.imgs.map((item, i) => {
+                return (
+                  <article
+                    ref={(el) => (itemArray.current[i] = el)}
+                    className={`blog-group mx-3 ${
+                      testies ? "items-start p-3" : "p-5"
+                    } ${
+                      itemArray.current[i]?.style.transform === "translateX(0%)"
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
+                    key={i}
+                  >
+                    <CardComponent item={item} style={style} urlNav={`blog`} />
                   </article>
                 );
               })
@@ -176,7 +226,7 @@ export const GallerySlider = ({ CardComponent, items, testies }) => {
       </div>
 
       {/* Dots */}
-      <div className="pb-4">{createDots()}</div>
+      <div className="py-4 2xl:pt-14">{createDots()}</div>
     </div>
   );
 };

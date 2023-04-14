@@ -221,15 +221,16 @@ export const InvestmentProp = ({
           id="faqs"
         >
           <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
-          {faqs
-            .filter(
-              (faqs) =>
-                faqs.slug.current === investment.slug.current ||
-                faqs.slug.current === "property-management"
-            )
-            .map((faq, i) => {
-              return <FAQ key={i} faq={faq} />;
-            })}
+          {faqs &&
+            faqs
+              .filter(
+                (faqs) =>
+                  faqs.slug.current === investment.slug.current ||
+                  faqs.slug.current === "property-management"
+              )
+              .map((faq, i) => {
+                return <FAQ key={i} faq={faq} />;
+              })}
         </div>
       </section>
     )

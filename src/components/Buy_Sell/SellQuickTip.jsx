@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { urlFor } from "../../Functions/Functions";
-import { Link } from "react-router-dom";
+import { NavContext } from "../Context/Context";
 
-export const SellQuickTip = ({ selectedObj, navLink }) => {
+export const SellQuickTip = ({ selectedObj, navLink, faqScroll }) => {
+  const navOffSet = useContext(NavContext);
+
+  const handleClick = (e) => {
+    if (navLink) return;
+    else {
+      e.preventDefault();
+
+      const navOffsetHeight = navOffSet.offsetHeight;
+
+      window.scrollTo({
+        top: faqScroll.current.offsetTop - navOffsetHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   console.log({ selectedObj, navLink });
   return (
     selectedObj && (
@@ -24,8 +40,9 @@ export const SellQuickTip = ({ selectedObj, navLink }) => {
                 ? navLink.url
                 : navLink?.id
                 ? navLink.slug.current
-                : "#faqs"
+                : faqScroll
             }
+            onClick={handleClick}
             target={navLink?._key ? "_blank" : "_self"}
             alt={
               navLink?._key

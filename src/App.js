@@ -9,6 +9,7 @@ import { About } from "./components/About/About";
 import { Resources } from "./components/Resources/Resources";
 import { Contact } from "./components/Contact/Contact";
 import { Footer } from "./components/Footer/Footer";
+import { NavContext } from "./components/Context/Context";
 import {
   getFooter,
   getHome,
@@ -53,58 +54,66 @@ function App() {
   return (
     home &&
     nav && (
-      <Router>
-        <NavBar navRef={navRef} nav={nav} logo={home.logo} />
-        <Routes>
-          <Route
-            element={
-              <Home
-                home={home}
-                contact={contact.slug.current}
-                setSeHabla={setSeHabla}
-              />
-            }
-            exact
-            path="/"
-          />
-          <Route
-            element={<BuySell faqs={faqs} testimonials={testimonials} />}
-            path={`/${buySell.slug.current}`}
-          />
-          <Route
-            element={
-              <InvestmentProp
-                remodel={remodel}
-                faqs={faqs}
-                testimonials={testimonials}
-                rentalListings={footer?.socialLinks}
-              />
-            }
-            path={`/${invest.slug.current}`}
-          />
-          <Route
-            element={<Remodel contact={contact.slug.current} />}
-            path={`/${remodel.slug.current}`}
-          />
-          <Route
-            element={<About contact={footer} testimonials={testimonials} />}
-            path={`/${about.slug.current}`}
-          />
-          <Route
-            element={<Resources faqs={faqs} />}
-            path={`/${resources.slug.current}`}
-          />
-          <Route
-            element={<SingleBlog navRef={navRef} />}
-            path={`/${resources.slug.current}/blog/:slug`}
-          />
-          <Route
-            element={<Contact footer={footer} seHabla={seHabla} />}
-            path={`/${contact.slug.current}`}
-          />
-        </Routes>
-        <Footer footer={footer} logo={home.logo} />
-      </Router>
+      <NavContext.Provider value={navRef.current}>
+        <Router>
+          <NavBar navRef={navRef} nav={nav} logo={home.logo} />
+          <Routes>
+            <Route
+              element={
+                <Home
+                  home={home}
+                  contact={contact.slug.current}
+                  setSeHabla={setSeHabla}
+                />
+              }
+              exact
+              path="/"
+            />
+            <Route
+              element={<BuySell faqs={faqs} testimonials={testimonials} />}
+              path={`/${buySell.slug.current}`}
+            />
+            <Route
+              element={
+                <InvestmentProp
+                  remodel={remodel}
+                  faqs={faqs}
+                  testimonials={testimonials}
+                  rentalListings={footer?.socialLinks}
+                />
+              }
+              path={`/${invest.slug.current}`}
+            />
+            <Route
+              element={
+                <Remodel
+                  contact={contact.slug.current}
+                  testimonials={testimonials}
+                  faqs={faqs}
+                />
+              }
+              path={`/${remodel.slug.current}`}
+            />
+            <Route
+              element={<About contact={footer} testimonials={testimonials} />}
+              path={`/${about.slug.current}`}
+            />
+            <Route
+              element={<Resources faqs={faqs} />}
+              path={`/${resources.slug.current}`}
+            />
+            <Route
+              element={<SingleBlog navRef={navRef} />}
+              path={`/${resources.slug.current}/blog/:slug`}
+            />
+            <Route
+              element={<Contact footer={footer} seHabla={seHabla} />}
+              path={`/${contact.slug.current}`}
+            />
+          </Routes>
+          <Footer footer={footer} logo={home.logo} />
+        </Router>
+      </NavContext.Provider>
     )
   );
 }

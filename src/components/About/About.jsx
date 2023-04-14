@@ -23,7 +23,7 @@ export const About = ({ contact, testimonials }) => {
   useEffect(() => {
     getAbout(setAbout);
   }, []);
-  console.log(about, contact);
+
   return (
     about && (
       <section>

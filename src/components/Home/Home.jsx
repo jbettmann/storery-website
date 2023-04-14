@@ -20,7 +20,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
       {/* Hero */}
       <header className="my-8 relative text-white">
         <div className="h-96 lg:h-[30rem] ">
-          <div className="w-full h-[30rem] overflow-hidden ">
+          <div className="w-full h-full overflow-hidden">
             <img
               src={urlFor(home.hero?.mainImage.asset._ref)}
               alt="Beautiful sunny brick home surrounded by green trees that Storey owns"
@@ -49,7 +49,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
       {cards && (
         <section className="flex flex-col items-center lg:flex-row gap-10 mx-9 justify-center">
           {cards.map((card, i) => {
-            return <Card key={i} card={card} />;
+            return <Card key={i} item={card} />;
           })}
         </section>
       )}

@@ -22,11 +22,12 @@ export const GallerySlider = ({
     );
   }
   // max length for navigating through blog slides
-  let maxSlide = smallScreen
-    ? items.length - 1
-    : beforeAfter
-    ? items.imgs.length - 1
-    : itemsOfThree.length - 1;
+  let maxSlide =
+    smallScreen && !beforeAfter
+      ? items.length - 1
+      : beforeAfter
+      ? items.imgs.length - 1
+      : itemsOfThree.length - 1;
 
   // Custom styling for Blog card
   const style = {

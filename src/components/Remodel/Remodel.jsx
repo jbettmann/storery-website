@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { getRemodel, urlFor } from "../../Functions/Functions";
 import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
 import { PhotoCard } from "../Card/PhotoCard";
 import { GallerySlider } from "../GallerySlider/GallerySlider";
+import { FAQ } from "../FAQs/FAQs";
+import { Spinner } from "../Spinner/Spinner";
 import { Testimonials } from "../Testimonials/Testimonials";
 
-export const Remodel = ({ contact, testimonials }) => {
+export const Remodel = ({ contact, faqs, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
+  const faqRef = useRef(null);
 
   //filters remodel testimonials
   // const remodelTestimonials = {
@@ -32,14 +35,14 @@ export const Remodel = ({ contact, testimonials }) => {
     getRemodel(setRemodel);
   }, []);
 
-  console.log({ remodel, exampleBeforAfter });
+  if (!remodel) return <Spinner />;
   return (
     remodel && (
-      <div>
+      <section>
         {/* Hero */}
         <section className="my-8 relative text-white">
           <article className="h-96 lg:h-[30rem] ">
-            <div className="w-full h-[30rem] overflow-hidden ">
+            <div className="w-full h-full overflow-hidden ">
               <img
                 src={urlFor(remodel.hero?.mainImage.asset._ref)}
                 alt="Beautiful sunny brick home surrounded by green trees that Storey owns"
@@ -58,14 +61,28 @@ export const Remodel = ({ contact, testimonials }) => {
             </div>
           </article>
         </section>
-        <SellQuickTip selectedObj={remodel.remodelPlan} />
+        <SellQuickTip selectedObj={remodel.remodelPlan} faqScroll={faqRef} />
         <GallerySlider
           CardComponent={PhotoCard}
           items={exampleBeforAfter}
           beforeAfter={true}
         />
         {/* <Testimonials testimonials={remodelTestimonials} /> */}
-      </div>
+        {/* FAQs */}
+        <div
+          className="bg-white w-screen h-full flex flex-col items-center"
+          id="faqs"
+          ref={faqRef}
+        >
+          <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
+          {faqs &&
+            faqs
+              .filter((faqs) => faqs.slug.current === remodel.slug.current)
+              .map((faq, i) => {
+                return <FAQ key={i} faq={faq} />;
+              })}
+        </div>
+      </section>
     )
   );
 };

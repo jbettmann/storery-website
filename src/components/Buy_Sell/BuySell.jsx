@@ -15,6 +15,8 @@ export const BuySell = ({ faqs, testimonials }) => {
   const [selectedObj, setSelectedObj] = useState(null);
   const [selBuyTool, setSelBuyTool] = useState("1");
 
+  const faqRef = useRef(null);
+
   const handleOptionClick = (option) => {
     if (option === "buy") {
       setActive(true);
@@ -172,7 +174,10 @@ export const BuySell = ({ faqs, testimonials }) => {
           </article>
         ) : (
           // Quick Selling Tip
-          <SellQuickTip selectedObj={selectedObj.quickSellTip} />
+          <SellQuickTip
+            selectedObj={selectedObj.quickSellTip}
+            faqScroll={faqRef}
+          />
         )}
 
         {/* Buy / Sell Video */}
@@ -194,6 +199,7 @@ export const BuySell = ({ faqs, testimonials }) => {
         <div
           className="bg-white w-screen h-full flex flex-col items-center"
           id="faqs"
+          ref={faqRef}
         >
           <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
           {active

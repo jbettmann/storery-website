@@ -72,7 +72,7 @@ export const InvestmentProp = ({
     ),
   };
 
-  //filters propertyManage testimonials
+  //filters propertyManage testimonials going
   const fixNFlipCats = ["consulting", "investment", "remodel"];
   const fixNFlipTestimonials = {
     ...testimonials,

@@ -169,7 +169,7 @@ export const GallerySlider = ({
             testies
               ? "h-[40rem] xs:h-[34rem] md:h-[40rem] testie:h-[800px] xl:h-[650px]"
               : beforeAfter
-              ? " h-64 xs:h-[20rem]  480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
+              ? " h-72 xs:h-[20rem]  480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"
           } slider w-full max-w-[1500px] mx-auto relative flex justify-center overflow-hidden`}
           {...swipeHandlers}

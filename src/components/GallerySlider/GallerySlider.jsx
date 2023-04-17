@@ -13,6 +13,7 @@ export const GallerySlider = ({
   const [activeDot, setActiveDot] = useState(0); // state for active dot
   const [curSlide, setCurSlide] = useState(0); // determines blog slide shown
   const itemArray = useRef([]); // ref to blog array
+  const windowWidthRef = useRef(window.innerWidth); // detect viewport width for resizing
 
   // divides items array into thirds
   let itemsOfThree;
@@ -117,6 +118,8 @@ export const GallerySlider = ({
 
   useEffect(() => {
     function handleResize() {
+      const prevWidth = windowWidthRef.current;
+      const currentWidth = window.innerWidth;
       if (beforeAfter) {
         setSmallScreen(true);
       }
@@ -126,7 +129,11 @@ export const GallerySlider = ({
         setSmallScreen(window.innerWidth <= 768);
       }
 
-      goToSlide(0);
+      if (prevWidth !== currentWidth) {
+        goToSlide(0);
+      }
+
+      windowWidthRef.current = currentWidth;
     }
 
     handleResize();
@@ -160,7 +167,7 @@ export const GallerySlider = ({
         <div
           className={`${
             testies
-              ? "h-[40rem] xs:h-[34rem] testie:h-[800px] xl:h-[650px]"
+              ? "h-[40rem] xs:h-[34rem] md:h-[40rem] testie:h-[800px] xl:h-[650px]"
               : beforeAfter
               ? " h-64 xs:h-[20rem]  480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"

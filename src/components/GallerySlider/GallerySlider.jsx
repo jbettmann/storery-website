@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-
+import { useSwipeable } from "react-swipeable";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Spinner } from "../Spinner/Spinner";
 
@@ -104,6 +104,17 @@ export const GallerySlider = ({
     }
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      nextSlide();
+    },
+    onSwipedRight: () => {
+      prevSlide();
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: false, // Set to false to disable swipe on desktop
+  });
+
   useEffect(() => {
     function handleResize() {
       if (beforeAfter) {
@@ -149,11 +160,12 @@ export const GallerySlider = ({
         <div
           className={`${
             testies
-              ? "h-[880px] xs:h-[550px] testie:h-[800px] xl:h-[650px]"
+              ? "h-[40rem] xs:h-[34rem] h-testie:h-[800px] xl:h-[650px]"
               : beforeAfter
-              ? " h-56 xs:h-[20rem] 480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
+              ? " h-64 xs:h-[20rem]  480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"
-          } w-full max-w-[1500px] mx-auto relative flex justify-center overflow-hidden`}
+          } slider w-full max-w-[1500px] mx-auto relative flex justify-center overflow-hidden`}
+          {...swipeHandlers}
         >
           {!smallScreen && !beforeAfter
             ? itemsOfThree.map((group, i) => {

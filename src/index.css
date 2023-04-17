@@ -133,7 +133,10 @@
     @apply rounded-lg border-2 shadow-md border-storeyGreen-100 bg-storeyGreen-100/10;
   }
 
- 
+  .slider {
+    @apply lg:touch-none
+  }
+
   .dots {
     @apply bg-storeyGreen-100 opacity-70;
   }

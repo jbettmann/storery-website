@@ -160,7 +160,7 @@ export const GallerySlider = ({
         <div
           className={`${
             testies
-              ? "h-[40rem] xs:h-[34rem] h-testie:h-[800px] xl:h-[650px]"
+              ? "h-[40rem] xs:h-[34rem] testie:h-[800px] xl:h-[650px]"
               : beforeAfter
               ? " h-64 xs:h-[20rem]  480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"

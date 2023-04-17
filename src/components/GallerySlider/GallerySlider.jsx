@@ -153,7 +153,7 @@ export const GallerySlider = ({
               : beforeAfter
               ? " h-56 xs:h-[20rem] 480:h-[25rem] sm:h-[30rem] md:h-[38rem] xl:h-[650px]"
               : "h-[500px] md:h-[550px]"
-          } w-full max-w-[1500px] mx-auto relative flex justify-center`}
+          } w-full max-w-[1500px] mx-auto relative flex justify-center overflow-hidden`}
         >
           {!smallScreen && !beforeAfter
             ? itemsOfThree.map((group, i) => {

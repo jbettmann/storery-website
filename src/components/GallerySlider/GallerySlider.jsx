@@ -27,7 +27,7 @@ export const GallerySlider = ({
     smallScreen && !beforeAfter
       ? items.length - 1
       : beforeAfter
-      ? items.imgs.length - 1
+      ? items.length - 1
       : itemsOfThree.length - 1;
 
   // Custom styling for Blog card
@@ -42,7 +42,7 @@ export const GallerySlider = ({
     if (smallScreen) return <div></div>; // No dots for mobile
 
     if (beforeAfter) {
-      return items.imgs.map((_, i) => {
+      return items.map((_, i) => {
         return (
           <button
             onClick={() => goToSlide(i)}
@@ -202,7 +202,7 @@ export const GallerySlider = ({
                 );
               })
             : beforeAfter
-            ? items.imgs.map((item, i) => {
+            ? items.map((item, i) => {
                 return (
                   <article
                     ref={(el) => (itemArray.current[i] = el)}

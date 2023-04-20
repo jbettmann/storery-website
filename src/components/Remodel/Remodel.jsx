@@ -6,7 +6,6 @@ import { PhotoCard } from "../Card/PhotoCard";
 import { GallerySlider } from "../GallerySlider/GallerySlider";
 import { FAQ } from "../FAQs/FAQs";
 import { Spinner } from "../Spinner/Spinner";
-import { Testimonials } from "../Testimonials/Testimonials";
 
 export const Remodel = ({ contact, faqs, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
@@ -22,16 +21,24 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
   //   ),
   // };
 
-  let exampleBeforAfter = {
-    ...remodel?.remodelImg,
-    imgs: [
-      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/Dining_Room_600px.gif",
-      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/Kitchen_01_600px.gif",
-      "https://storeyhomes-colorado.com/wp-content/uploads/2019/03/backyard_600px.gif",
-    ],
-  };
+  const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
+    // loads Before and After gift from asset directory
+    const loadGifs = () => {
+      const context = require.context(
+        "../../assets/before_&_after/",
+        false,
+        /\.gif$/
+      );
+      console.log(context);
+      const gifFiles = context.keys().map((key) => context(key));
+      setGifs(gifFiles);
+    };
+
+    loadGifs();
+
+    // fetch remodel info
     getRemodel(setRemodel);
   }, []);
 
@@ -64,7 +71,7 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
         <SellQuickTip selectedObj={remodel.remodelPlan} faqScroll={faqRef} />
         <GallerySlider
           CardComponent={PhotoCard}
-          items={exampleBeforAfter}
+          items={gifs}
           beforeAfter={true}
         />
         {/* <Testimonials testimonials={remodelTestimonials} /> */}

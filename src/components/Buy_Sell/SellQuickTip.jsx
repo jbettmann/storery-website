@@ -20,7 +20,6 @@ export const SellQuickTip = ({ selectedObj, navLink, faqScroll }) => {
     }
   };
 
-  console.log({ selectedObj, navLink });
   return (
     selectedObj && (
       <article className="flex flex-col-reverse items-center  lg:flex-row lg:justify-evenly w-full bg-storeyGreen-100/10 p-6 md:p-14 gap-10 ">

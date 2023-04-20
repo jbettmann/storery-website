@@ -156,11 +156,15 @@
   }
 
   .contact-form {
-    background: radial-gradient(ellipse at bottom, rgb(20 131 78 / var(--tw-bg-opacity)) 0%, #116432 50%);
+    background: radial-gradient(ellipse at bottom, #167e4b 0%, #116432 100%);
   }
 
   .benefit-icon svg path {
 
     stroke: green;
+  }
+
+  .toggle-container {
+    @apply max-w-[1650px]
   }
 }

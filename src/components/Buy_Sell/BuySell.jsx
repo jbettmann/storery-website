@@ -58,8 +58,8 @@ export const BuySell = ({ faqs, testimonials }) => {
     setSelectedObj(active ? buySell.buy : buySell.sell);
   }, [buySell, active]);
 
-  console.log(selectedObj);
   if (!selectedObj) return <Spinner />;
+
   return (
     selectedObj && (
       <section className="">

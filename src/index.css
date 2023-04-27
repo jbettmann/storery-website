@@ -106,7 +106,7 @@
   }
 
   .blog-group {
-    @apply absolute top-0 flex items-center justify-center w-full transition ease-in-out duration-300;
+    @apply absolute top-0 flex items-center justify-center w-full transition ease-in-out duration-300 ;
   }
 
   .card {

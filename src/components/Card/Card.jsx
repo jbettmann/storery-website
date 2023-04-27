@@ -35,7 +35,11 @@ export const Card = ({ item, style, urlNav }) => {
         {item.sub ? <p className="pl-0">{item.sub}</p> : null}
         <NavLink
           className="btn bg-none bg-transparent text-storeyGreen-100 border border-storeyGreen-100"
-          to={`/${item.slug?.current}`}
+          to={
+            urlNav
+              ? `${urlNav}/${item.slug?.current}`
+              : `/${item.slug?.current}`
+          }
           aria-label="Request a Call link"
         >
           {item.button ? item.button : "Read more..."}

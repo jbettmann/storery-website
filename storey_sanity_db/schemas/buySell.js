@@ -100,6 +100,28 @@ export default defineType({
           ],
         }),
 
+        // Mortgage Calculator *************************
+        defineType({
+          name: 'mortgageCalculators',
+          title: 'Mortgage Calculator',
+          type: 'document',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Mortgage Calculator Title',
+              description: 'Title of tab/button on Buy/Sell web page',
+              type: 'string',
+            }),
+            defineField({
+              name: 'slug',
+              title: 'Mortgage Calculator Slug',
+              type: 'slug',
+              validation: (Rule) => Rule.required(),
+              description: 'Mortgage Calculator title but all lowercase.',
+            }),
+          ],
+        }),
+
         // Lender Referrals *************************
         defineType({
           name: 'lenders',
@@ -109,17 +131,10 @@ export default defineType({
             defineField({
               name: 'title',
               title: 'Lender Referral Title',
+              validation: (Rule) => Rule.required(),
               description: 'Title of tab/button on Buy/Sell web page',
               type: 'string',
             }),
-            defineField({
-              name: 'slug',
-              title: 'Lender Slug',
-              type: 'slug',
-              validation: (Rule) => Rule.required(),
-              description: 'Lender title but all lowercase.',
-            }),
-
             defineType({
               name: 'lendersList',
               title: 'List of referred Lenders',
@@ -134,11 +149,13 @@ export default defineType({
                       title: 'Full Name',
                       name: 'name',
                       type: 'string',
+                      validation: (Rule) => Rule.required(),
                     },
                     {
                       title: 'Company Name',
                       name: 'company',
                       type: 'string',
+                      validation: (Rule) => Rule.required(),
                     },
                     {
                       name: 'mainImage',
@@ -153,11 +170,14 @@ export default defineType({
                       title: 'Website Link',
                       name: 'url',
                       type: 'url',
+                      description: 'URL displayed and links to website when user clicks',
+                      validation: (Rule) => Rule.required(),
                     },
                     {
                       title: 'Email',
                       name: 'email',
                       type: 'email',
+                      validation: (Rule) => Rule.required(),
                     },
                     {
                       title: 'Phone',
@@ -218,6 +238,7 @@ export default defineType({
                       title: 'District',
                       name: 'name',
                       type: 'string',
+                      validation: (Rule) => Rule.required(),
                     },
                     {
                       name: 'mainImage',
@@ -233,6 +254,7 @@ export default defineType({
                       title: 'School District Link',
                       name: 'url',
                       type: 'url',
+                      validation: (Rule) => Rule.required(),
                     },
                   ],
                 },
@@ -263,27 +285,6 @@ export default defineType({
               options: {
                 hotspot: true,
               },
-            }),
-          ],
-        }),
-        // Mortgage Calculator *************************
-        defineType({
-          name: 'mortgageCalculators',
-          title: 'Mortgage Calculator',
-          type: 'document',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Mortgage Calculator Title',
-              description: 'Title of tab/button on Buy/Sell web page',
-              type: 'string',
-            }),
-            defineField({
-              name: 'slug',
-              title: 'Mortgage Calculator Slug',
-              type: 'slug',
-              validation: (Rule) => Rule.required(),
-              description: 'Mortgage Calculator title but all lowercase.',
             }),
           ],
         }),

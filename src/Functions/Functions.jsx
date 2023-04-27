@@ -108,7 +108,7 @@ export function getInvestProps(setInvestProps) {
     .catch(console.error);
 }
 
-// fetch for Home content
+// fetch for Remodel content
 export function getRemodel(setRemodel) {
   sanityClient
     .fetch(

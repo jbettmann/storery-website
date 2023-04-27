@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { getRemodel, urlFor } from "../../Functions/Functions";
 import { SellQuickTip } from "../Buy_Sell/SellQuickTip";
@@ -7,19 +7,9 @@ import { GallerySlider } from "../GallerySlider/GallerySlider";
 import { FAQ } from "../FAQs/FAQs";
 import { Spinner } from "../Spinner/Spinner";
 
-export const Remodel = ({ contact, faqs, testimonials }) => {
+export const Remodel = ({ contact, faqs }) => {
   const [remodel, setRemodel] = useState(null);
   const faqRef = useRef(null);
-
-  //filters remodel testimonials
-  // const remodelTestimonials = {
-  //   ...testimonials,
-  //   testimonialList: testimonials?.testimonialList?.filter(
-  //     (testie) =>
-  //       testie.category.includes("remodel") ||
-  //       testie.category.includes("consulting")
-  //   ),
-  // };
 
   const [gifs, setGifs] = useState([]);
 
@@ -31,7 +21,7 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
         false,
         /\.gif$/
       );
-      console.log(context);
+
       const gifFiles = context.keys().map((key) => context(key));
       setGifs(gifFiles);
     };
@@ -84,7 +74,10 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
           <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
           {faqs &&
             faqs
-              .filter((faqs) => faqs.slug.current === remodel.slug.current)
+              .filter((faqs) => {
+                console.log(faqs.slug.current, remodel.slug.current);
+                return faqs.slug.current === remodel.slug.current;
+              })
               .map((faq, i) => {
                 return <FAQ key={i} faq={faq} />;
               })}

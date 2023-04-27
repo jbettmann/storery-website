@@ -58,6 +58,7 @@ export const BuySell = ({ faqs, testimonials }) => {
     setSelectedObj(active ? buySell.buy : buySell.sell);
   }, [buySell, active]);
 
+  console.log(selectedObj);
   if (!selectedObj) return <Spinner />;
   return (
     selectedObj && (
@@ -185,7 +186,7 @@ export const BuySell = ({ faqs, testimonials }) => {
         )}
 
         {/* Buy / Sell Video */}
-        {selectedObj.videoUrl && (
+        {selectedObj.videoUrl.url && (
           <div className="w-full bg-white text-center py-14">
             <h1>{selectedObj.videoUrl.title}</h1>
             <MyVideo url={selectedObj.videoUrl.url} />

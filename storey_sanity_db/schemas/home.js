@@ -95,7 +95,6 @@ export default defineType({
               title: 'Slug Card 1',
               type: 'slug',
               validation: (Rule) => Rule.required(),
-
               description: '** MUST BE EXACT SAME AS NAVIGATION SLUG **',
               options: {
                 source: 'title',

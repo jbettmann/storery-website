@@ -154,7 +154,7 @@ export const GallerySlider = ({
   return (
     <div className="flex flex-col items-center h-auto">
       <h1 className="heading mt-14">
-        {testies ? "Testimonials" : beforeAfter ? items.title : "Blog"}
+        {testies ? "Testimonials" : beforeAfter ? "Explore Remodels" : "Blog"}
       </h1>
       {/* Container */}
       <div className="flex p-6 sm:px-14 w-full relative">
@@ -206,7 +206,7 @@ export const GallerySlider = ({
                 return (
                   <article
                     ref={(el) => (itemArray.current[i] = el)}
-                    className={`blog-group mx-3 ${
+                    className={`blog-group drop-shadow-md mx-3 ${
                       testies ? "items-start p-3" : "p-5"
                     } ${
                       itemArray.current[i]?.style.transform === "translateX(0%)"

@@ -17,7 +17,7 @@ export default defineType({
       type: 'reference',
       to: {type: 'faqs'},
       validation: (Rule) => Rule.required(),
-      description: '** Slug MUST match the Slug on Remodel FAQ page ***',
+      description: '** Slug MUST match the Slug on Nav page ***',
     }),
     // Hero *************************
     defineType({
@@ -100,40 +100,40 @@ export default defineType({
           title: 'Title',
           type: 'string',
         }),
-        defineField({
-          title: 'Images',
-          name: 'imgs',
-          type: 'array',
-          of: [
-            {
-              title: 'Image',
-              name: 'img',
-              type: 'object',
-              fields: [
-                defineField({
-                  name: 'mainImage',
-                  title: 'Main image',
-                  type: 'image',
-                  description: '** REQUIRED **',
-                  validation: (Rule) => Rule.required(),
-                  options: {
-                    hotspot: true,
-                  },
-                }),
-                {
-                  name: 'description',
-                  title: 'Description',
-                  description:
-                    'Description (if needed). Only displays when user clicks on image ** MAX 120 CHARACTERS **',
-                  type: 'text',
-                  validation: (Rule) => {
-                    Rule.max(120)
-                  },
-                },
-              ],
-            },
-          ],
-        }),
+        // defineField({
+        //   title: 'Images',
+        //   name: 'imgs',
+        //   type: 'array',
+        //   of: [
+        //     {
+        //       title: 'Image',
+        //       name: 'img',
+        //       type: 'object',
+        //       fields: [
+        //         defineField({
+        //           name: 'mainImage',
+        //           title: 'Main image',
+        //           type: 'image',
+        //           description: '** REQUIRED **',
+        //           validation: (Rule) => Rule.required(),
+        //           options: {
+        //             hotspot: true,
+        //           },
+        //         }),
+        //         {
+        //           name: 'description',
+        //           title: 'Description',
+        //           description:
+        //             'Description (if needed). Only displays when user clicks on image ** MAX 120 CHARACTERS **',
+        //           type: 'text',
+        //           validation: (Rule) => {
+        //             Rule.max(120)
+        //           },
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // }),
       ],
     }),
   ],

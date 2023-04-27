@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import { getInvestProps, urlFor } from "../../Functions/Functions";
 import { MyVideo } from "../MyVideo/MyVideo";
@@ -25,7 +25,7 @@ export const InvestmentProp = ({
 
   // Extract Zillow url for current rental listings link
   [rentalListings] = rentalListings.filter(
-    (social) => social._key == "279a9ac700ed"
+    (social) => social._key === "279a9ac700ed"
   );
 
   const benefitIcons = [
@@ -199,7 +199,7 @@ export const InvestmentProp = ({
         )}
 
         {/* Buy / Sell Video */}
-        {investment.videoUrl && (
+        {investment.videoUrl.url && (
           <div className="w-full bg-white text-center py-14">
             <h1>{investment.videoUrl.title}</h1>
             <MyVideo url={investment.videoUrl.url} />

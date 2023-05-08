@@ -39,7 +39,7 @@ export const Home = ({ home, contact, setSeHabla }) => {
               to={`/${contact}`}
               aria-label="Request a Call link"
             >
-              Request A Call
+              {home.hero.heroButton}
             </NavLink>
           </article>
         </div>

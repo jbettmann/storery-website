@@ -14,10 +14,9 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'Remodel Slug',
-      type: 'reference',
-      to: {type: 'faqs'},
+      type: 'slug',
       validation: (Rule) => Rule.required(),
-      description: '** Slug MUST match the Slug on Nav page ***',
+      description: '** Slug MUST match the Slug on Remodel FAQ page **',
     }),
     // Hero *************************
     defineType({

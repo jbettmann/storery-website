@@ -16,7 +16,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       validation: (Rule) => Rule.required(),
-      description: 'Home title but all lowercase. Click "Generate" button --->',
+      description: 'Home title but all lowercase. ** REQUIRED ** ',
       options: {
         source: 'title',
         maxLength: 96,
@@ -28,6 +28,7 @@ export default defineType({
       title: 'Logo Image',
       type: 'image',
       validation: (Rule) => Rule.required(),
+      description: '** REQUIRED ** ',
       options: {
         hotspot: true,
       },
@@ -48,19 +49,14 @@ export default defineType({
           title: 'Hero Slug',
           type: 'slug',
           validation: (Rule) => Rule.required(),
-
-          description: 'Hero title but all lowercase. Click "Generate" button --->',
-          options: {
-            source: 'title',
-            maxLength: 96,
-          },
+          description: 'Hero title but all lowercase. ** REQUIRED **',
         }),
         defineField({
           name: 'mainImage',
           title: 'Hero Main image',
           type: 'image',
           validation: (Rule) => Rule.required(),
-
+          description: '** REQUIRED ** ',
           options: {
             hotspot: true,
           },
@@ -69,6 +65,12 @@ export default defineType({
           name: 'body',
           title: 'Hero Body',
           type: 'text',
+        }),
+        defineField({
+          name: 'heroButton',
+          type: 'string',
+          title: 'Hero Button text to direct user to Contact page ** REQUIRED **',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),
@@ -95,18 +97,14 @@ export default defineType({
               title: 'Slug Card 1',
               type: 'slug',
               validation: (Rule) => Rule.required(),
-              description: '** MUST BE EXACT SAME AS NAVIGATION SLUG **',
-              options: {
-                source: 'title',
-                maxLength: 96,
-              },
+              description: '** REQUIRED ** MUST BE EXACT SAME AS NAVIGATION SLUG **',
             }),
             defineField({
               name: 'mainImage',
               title: 'Main image Card 1',
               type: 'image',
               validation: (Rule) => Rule.required(),
-
+              description: '** REQUIRED ** ',
               options: {
                 hotspot: true,
               },
@@ -115,14 +113,15 @@ export default defineType({
               name: 'sub',
               title: 'Body Card 1',
               type: 'text',
+              validation: (Rule) => Rule.max(180),
+              description: '** MAX 180 CHARACTERS ** ',
             }),
             defineField({
               name: 'button',
               title: 'Button Text Card 1',
               type: 'string',
               validation: (Rule) => Rule.required(),
-
-              description: 'This text will be shown on card button',
+              description: 'This text will be shown on card button ** REQUIRED **',
               options: {
                 source: 'title',
                 maxLength: 20,
@@ -146,19 +145,14 @@ export default defineType({
               title: 'Slug Card 2',
               type: 'slug',
               validation: (Rule) => Rule.required(),
-
-              description: 'Card title but all lowercase. Click "Generate" button --->',
-              options: {
-                source: 'title',
-                maxLength: 96,
-              },
+              description: '** REQUIRED ** MUST BE EXACT SAME AS NAVIGATION SLUG **',
             }),
             defineField({
               name: 'mainImage',
               title: 'Main image Card 2',
               type: 'image',
               validation: (Rule) => Rule.required(),
-
+              description: '** REQUIRED **',
               options: {
                 hotspot: true,
               },
@@ -167,18 +161,15 @@ export default defineType({
               name: 'sub',
               title: 'Body Card 2',
               type: 'text',
+              validation: (Rule) => Rule.max(180),
+              description: '** MAX 180 CHARACTERS ** ',
             }),
             defineField({
               name: 'button',
               title: 'Button Text Card 2',
               type: 'string',
               validation: (Rule) => Rule.required(),
-
-              description: 'This text will be shown on card button',
-              options: {
-                source: 'title',
-                maxLength: 20,
-              },
+              description: 'This text will be shown on card button ** REQUIRED **',
             }),
           ],
         }),
@@ -198,19 +189,14 @@ export default defineType({
               title: 'Slug Card 3',
               type: 'slug',
               validation: (Rule) => Rule.required(),
-
-              description: 'Card title but all lowercase. Click "Generate" button --->',
-              options: {
-                source: 'title',
-                maxLength: 96,
-              },
+              description: '** REQUIRED ** MUST BE EXACT SAME AS NAVIGATION SLUG **',
             }),
             defineField({
               name: 'mainImage',
               title: 'Main image Card 3',
               type: 'image',
               validation: (Rule) => Rule.required(),
-
+              description: '** REQUIRED **',
               options: {
                 hotspot: true,
               },
@@ -219,6 +205,8 @@ export default defineType({
               name: 'sub',
               title: 'Body Card 3',
               type: 'text',
+              validation: (Rule) => Rule.max(180),
+              description: '** MAX 180 CHARACTERS ** ',
             }),
             defineField({
               name: 'button',
@@ -226,11 +214,7 @@ export default defineType({
               type: 'string',
               validation: (Rule) => Rule.required(),
 
-              description: 'This text will be shown on card button',
-              options: {
-                source: 'title',
-                maxLength: 20,
-              },
+              description: 'This text will be shown on card button ** REQUIRED **',
             }),
           ],
         }),
@@ -253,12 +237,7 @@ export default defineType({
           title: 'Slug',
           type: 'slug',
           validation: (Rule) => Rule.required(),
-
-          description: 'About title but all lowercase. Click "Generate" button --->',
-          options: {
-            source: 'title',
-            maxLength: 96,
-          },
+          description: 'About title but all lowercase.',
         }),
         defineField({
           name: 'videoUrl',
@@ -274,6 +253,8 @@ export default defineType({
           name: 'body',
           title: 'About body on Hompage',
           type: 'text',
+          description: '** MAX 300 CHARACTERS **',
+          validation: (Rule) => Rule.max(300),
         }),
         defineField({
           name: 'button',
@@ -281,11 +262,7 @@ export default defineType({
           type: 'string',
           validation: (Rule) => Rule.required(),
 
-          description: 'This text will be shown on button',
-          options: {
-            source: 'title',
-            maxLength: 20,
-          },
+          description: 'This text will be shown on button ** REQUIRED **',
         }),
       ],
     }),
@@ -306,8 +283,7 @@ export default defineType({
           title: 'Slug',
           type: 'slug',
           validation: (Rule) => Rule.required(),
-
-          description: 'Si Habla title but all lowercase. Click "Generate" button --->',
+          description: 'Si Habla title but all lowercase. ** REQUIRED **',
           options: {
             source: 'title',
             maxLength: 96,

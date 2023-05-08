@@ -33,11 +33,11 @@ export const SingleBlog = ({ navRef }) => {
   return (
     <section className="w-full h-full bg-white my-14 p-6">
       {singleBlog && (
-        <article ref={blogSection} className="flex flex-col items-center">
+        <article ref={blogSection} className="flex flex-col items-center ">
           <h1 className="mt-8 text-center">{singleBlog.title}</h1>
-          <div className="flex flex-col w-full sm:w-2/3 justify-between items-center m-1 mb-20 border-b border-gray-400 relative">
+          <div className="flex flex-col w-full sm:w-2/3 justify-between items-center m-1 mb-20 border-b border-gray-400 ">
             {singleBlog.author ? (
-              <div className="flex m-2 items-center">
+              <div className="flex m-2 items-center ">
                 <img
                   src={urlFor(singleBlog.authorImage.asset._ref)}
                   alt={singleBlog.slug.current}
@@ -57,20 +57,21 @@ export const SingleBlog = ({ navRef }) => {
                 day: "numeric",
               })}
             </p>
+          </div>
+          <div className="relative">
+            <div className="flex-auto w-full h-auto max-h-[30rem] p-1 overflow-hidden flex justify-center items-center">
+              <img
+                src={urlFor(singleBlog.mainImage.asset._ref)}
+                alt={singleBlog.slug.current}
+                className=""
+              />
+            </div>
             <button
-              className="link absolute left-[-3rem] bottom-[-3rem]"
+              className="link absolute left-[1rem] top-[-3rem]"
               onClick={goBack}
             >
               Back
             </button>
-          </div>
-
-          <div className="flex-auto w-full h-auto max-h-[30rem] p-1 overflow-hidden flex justify-center items-center ">
-            <img
-              src={urlFor(singleBlog.mainImage.asset._ref)}
-              alt={singleBlog.slug.current}
-              className=""
-            />
           </div>
           <div className="">
             {/* makes all things that can be in description look good */}

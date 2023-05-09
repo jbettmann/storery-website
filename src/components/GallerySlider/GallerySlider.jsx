@@ -117,7 +117,6 @@ export const GallerySlider = ({
     preventDefaultTouchmoveEvent: true,
     trackMouse: false, // Set to false to disable swipe on desktop
   });
-  console.log(items);
 
   // listens for change in items
   useEffect(() => {

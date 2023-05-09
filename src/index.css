@@ -167,4 +167,9 @@
   .toggle-container {
     @apply max-w-[1650px]
   }
+
+  .tags {
+    @apply text-sm p-2 px-3 mx-2 bg-[#E5F1E0] text-[#14834E] rounded-full w-fit
+   
+  }
 }

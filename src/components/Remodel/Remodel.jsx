@@ -63,6 +63,7 @@ export const Remodel = ({ contact, faqs }) => {
           CardComponent={PhotoCard}
           items={gifs}
           beforeAfter={true}
+          pageTitle={remodel.remodelImg.title}
         />
         {/* <Testimonials testimonials={remodelTestimonials} /> */}
         {/* FAQs */}
@@ -75,7 +76,6 @@ export const Remodel = ({ contact, faqs }) => {
           {faqs &&
             faqs
               .filter((faqs) => {
-                console.log(faqs.slug.current, remodel.slug.current);
                 return faqs.slug.current === remodel.slug.current;
               })
               .map((faq, i) => {

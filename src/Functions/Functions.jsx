@@ -113,7 +113,7 @@ export function getRemodel(setRemodel) {
   sanityClient
     .fetch(
       `*[_type == 'remodel']{
-        'slug':slug->slug,
+        slug,
         hero,
         remodelPlan,
         remodelImg,

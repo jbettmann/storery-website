@@ -12,6 +12,7 @@ export const Testimonials = ({ testimonials }) => {
         CardComponent={TestieCard}
         items={testimonials?.testimonialList}
         testies={true}
+        pageTitle={testimonials.webpageTitle}
       />
     )
   );

@@ -8,6 +8,7 @@ export const GallerySlider = ({
   items,
   testies,
   beforeAfter,
+  loading,
 }) => {
   const [smallScreen, setSmallScreen] = useState(false);
   const [activeDot, setActiveDot] = useState(0); // state for active dot
@@ -115,6 +116,12 @@ export const GallerySlider = ({
     preventDefaultTouchmoveEvent: true,
     trackMouse: false, // Set to false to disable swipe on desktop
   });
+  console.log(items);
+
+  // listens for change in items
+  useEffect(() => {
+    goToSlide(0);
+  }, [items]);
 
   useEffect(() => {
     function handleResize() {
@@ -147,8 +154,11 @@ export const GallerySlider = ({
     };
   }, [itemArray.current.length]);
 
-  if (items.length === 0) {
+  if (loading) {
     return <Spinner />;
+  }
+  if (items.length === 0) {
+    return <h6 className="w-full text-center my-48">No Items Found</h6>;
   }
 
   return (

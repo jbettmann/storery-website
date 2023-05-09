@@ -50,6 +50,7 @@ export const SingleBlog = ({ navRef }) => {
             ) : (
               <div></div>
             )}
+
             <p className="text-gray-500 m-0 mb-6 text-right text-sm sm:text-base">
               {new Date(singleBlog.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -58,6 +59,7 @@ export const SingleBlog = ({ navRef }) => {
               })}
             </p>
           </div>
+
           <div className="relative">
             <div className="flex-auto w-full h-auto max-h-[30rem] p-1 overflow-hidden flex justify-center items-center">
               <img
@@ -82,6 +84,13 @@ export const SingleBlog = ({ navRef }) => {
               className="prose"
             />
           </div>
+          {singleBlog.tags && (
+            <div className="flex">
+              {singleBlog.tags.map((tag) => (
+                <p className="tags">{tag}</p>
+              ))}
+            </div>
+          )}
         </article>
       )}
     </section>

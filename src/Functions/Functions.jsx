@@ -166,6 +166,7 @@ export function getBlog(setBlog) {
         slug,
         mainImage,
         publishedAt,
+        projectType,
         tags,
       }`
     )

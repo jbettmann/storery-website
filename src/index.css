@@ -169,7 +169,8 @@
   }
 
   .tags {
-    @apply text-sm p-2 px-3 mx-2 bg-[#E5F1E0] text-[#14834E] rounded-full w-fit
+    @apply text-sm m-0 p-2 px-3 mx-2 bg-[#E5F1E0] bg-opacity-90 text-[#14834E] rounded-full w-fit;
+   
    
   }
 }

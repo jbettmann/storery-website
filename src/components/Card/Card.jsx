@@ -12,12 +12,17 @@ export const Card = ({ item, style, urlNav }) => {
           : "sm:flex-row lg:flex-col 2xl:p-12 px-6 sm:text-left lg:text-center lg:h-[526px] sm:h-auto"
       }`}
     >
-      <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center ">
+      <div className="flex-auto w-full h-full overflow-hidden flex justify-center items-center relative">
         <img
           src={urlFor(item.mainImage?.asset._ref)}
           alt={item.slug?.current}
           className={`mx-auto ${style ? style.img : " w-52 "}`}
         />
+        {item.projectType && (
+          <p className="tags text-xs p-1 px-2 rounded-md absolute top-2 left-0">
+            {item.projectType}
+          </p>
+        )}
       </div>
 
       <div

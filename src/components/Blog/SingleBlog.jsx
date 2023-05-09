@@ -85,9 +85,9 @@ export const SingleBlog = ({ navRef }) => {
             />
           </div>
           {singleBlog.tags && (
-            <div className="flex">
+            <div className="flex my-6">
               {singleBlog.tags.map((tag) => (
-                <p className="tags">{tag}</p>
+                <p className="tags">{tag.toLowerCase()}</p>
               ))}
             </div>
           )}

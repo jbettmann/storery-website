@@ -42,7 +42,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      description: 'REQUIRED',
+      description: '** REQUIRED **',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -54,16 +54,17 @@ export default defineType({
       name: 'projectType', // name to find in fetch
       title: 'Project type', // options that shows on Sanity studio
       type: 'string',
-      description: 'This help with SEO',
+      validation: (Rule) => Rule.required(),
+      description: 'Allows for searching by user ** REQUIRED **',
       options: {
         list: [
           // dropdown options in Sanity to pick from
-          {value: 'buy', title: 'Buy'},
-          {value: 'sell', title: 'Sell'},
-          {value: 'investment', title: 'Investment'},
-          {value: 'remodel', title: 'Remodel'},
-          {value: 'consult', title: 'Consult'},
-          {value: 'property management', title: 'Property Management'},
+          {value: 'Buy', title: 'Buy'},
+          {value: 'Sell', title: 'Sell'},
+          {value: 'Investment', title: 'Investment'},
+          {value: 'Remodel', title: 'Remodel'},
+          {value: 'Consult', title: 'Consult'},
+          {value: 'Property Management', title: 'Property Management'},
         ],
       },
     },
@@ -72,8 +73,7 @@ export default defineType({
       // adds tags
       name: 'tags',
       type: 'array',
-      description: `Add "tags" for SEO. Use single words or small phrases. 
-        ie. Property Management, Investment, Rental, Denver Real Estate, etc.`,
+      description: `Shown at bottom of blog post. Helps with searching. Use single words or small phrases. ie. Property Management, Investment, Rental, Denver Real Estate, etc. `,
       of: [
         {
           type: 'string',

@@ -19,12 +19,13 @@ export const Blog = ({ blogs }) => {
         setFilteredItems(blogs);
       }
       setLoading(false);
-    }, 500);
+    }, 200);
   };
 
   const filterItems = (projectType) => {
     const searchTerm = projectType.toLowerCase();
     return blogs.filter((item) => {
+      console.log(item);
       const itemProjectType = item.projectType
         ? item.projectType.toLowerCase()
         : "";

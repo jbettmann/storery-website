@@ -64,7 +64,7 @@ export default defineType({
         defineField({
           name: 'body',
           title: 'Hero Body',
-          type: 'text',
+          type: 'blockContent',
         }),
         defineField({
           name: 'heroButton',

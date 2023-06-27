@@ -5,6 +5,7 @@ import { Card } from "../Card/Card";
 import { MyVideo } from "../MyVideo/MyVideo";
 import { SeHabla } from "../SeHabla/SeHabla";
 import { Spinner } from "../Spinner/Spinner";
+import BlockContect from "@sanity/block-content-to-react";
 
 export const Home = ({ home, contact, setSeHabla }) => {
   const [cards, setCards] = useState(null);
@@ -33,7 +34,14 @@ export const Home = ({ home, contact, setSeHabla }) => {
                 {t}
               </h1>
             ))}
-            <p className="m-0">{home.hero.body}</p>
+
+            <BlockContect
+              blocks={home.hero.body}
+              projectId="k4xvtsjp"
+              dataset="production"
+              className="prose"
+            />
+
             <NavLink
               className="btn mt-8"
               to={`/${contact}`}

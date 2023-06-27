@@ -15,12 +15,15 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
 
   const [gifs, setGifs] = useState([]);
 
+  // remodel testimonials
+  const remodelTestimonials = testimonials?.testimonialList?.filter((testie) =>
+    testie.category.includes("remodel")
+  );
+
   //filters remodel testimonials
-  const remodelTestimonials = {
+  const newRemodelTestimonials = {
     ...testimonials,
-    testimonialList: testimonials?.testimonialList?.filter(
-      (testie) => testie.category === "remodel"
-    ),
+    testimonialList: remodelTestimonials,
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
     getRemodel(setRemodel);
   }, []);
 
-  console.log(remodel, testimonials);
+  console.log(remodelTestimonials);
 
   if (!remodel) return <Spinner />;
   return (
@@ -85,9 +88,9 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
           </div>
         )}
         {/* Testimonials */}
-        {remodel.testimonials && (
+        {remodelTestimonials && (
           <article>
-            <Testimonials testimonials={remodelTestimonials} />
+            <Testimonials testimonials={newRemodelTestimonials} />
           </article>
         )}
         {/* FAQs */}

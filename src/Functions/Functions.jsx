@@ -117,7 +117,7 @@ export function getRemodel(setRemodel) {
         hero,
         remodelPlan,
         remodelImg,
-  
+        videoUrl
     }`
     )
 

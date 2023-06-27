@@ -99,40 +99,32 @@ export default defineType({
           title: 'Title',
           type: 'string',
         }),
-        // defineField({
-        //   title: 'Images',
-        //   name: 'imgs',
-        //   type: 'array',
-        //   of: [
-        //     {
-        //       title: 'Image',
-        //       name: 'img',
-        //       type: 'object',
-        //       fields: [
-        //         defineField({
-        //           name: 'mainImage',
-        //           title: 'Main image',
-        //           type: 'image',
-        //           description: '** REQUIRED **',
-        //           validation: (Rule) => Rule.required(),
-        //           options: {
-        //             hotspot: true,
-        //           },
-        //         }),
-        //         {
-        //           name: 'description',
-        //           title: 'Description',
-        //           description:
-        //             'Description (if needed). Only displays when user clicks on image ** MAX 120 CHARACTERS **',
-        //           type: 'text',
-        //           validation: (Rule) => {
-        //             Rule.max(120)
-        //           },
-        //         },
-        //       ],
-        //     },
-        //   ],
-        // }),
+      ],
+    }),
+
+    // Remodel YouTube Video ************************
+    defineType({
+      name: 'videoUrl',
+      title: 'Remodel Video URL',
+      type: 'document',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Video Title',
+          description: 'Title on webpage ** MAX 40 CHARACTERS',
+          validation: (Rule) => Rule.max(40),
+          type: 'string',
+        }),
+        defineField({
+          name: 'url',
+          title: 'Video URL',
+          type: 'url',
+          description:
+            'Needs to be in https://www.youtube.com/watch?v=ViDeOID1234 or https://youtu.be/ViDeoId1234 format!',
+          options: {
+            hotspot: true,
+          },
+        }),
       ],
     }),
   ],

@@ -6,12 +6,22 @@ import { PhotoCard } from "../Card/PhotoCard";
 import { GallerySlider } from "../GallerySlider/GallerySlider";
 import { FAQ } from "../FAQs/FAQs";
 import { Spinner } from "../Spinner/Spinner";
+import { MyVideo } from "../MyVideo/MyVideo";
+import { Testimonials } from "../Testimonials/Testimonials";
 
-export const Remodel = ({ contact, faqs }) => {
+export const Remodel = ({ contact, faqs, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
   const faqRef = useRef(null);
 
   const [gifs, setGifs] = useState([]);
+
+  //filters remodel testimonials
+  const remodelTestimonials = {
+    ...testimonials,
+    testimonialList: testimonials?.testimonialList?.filter(
+      (testie) => testie.category === "remodel"
+    ),
+  };
 
   useEffect(() => {
     // loads Before and After gift from asset directory
@@ -31,6 +41,8 @@ export const Remodel = ({ contact, faqs }) => {
     // fetch remodel info
     getRemodel(setRemodel);
   }, []);
+
+  console.log(remodel, testimonials);
 
   if (!remodel) return <Spinner />;
   return (
@@ -65,7 +77,19 @@ export const Remodel = ({ contact, faqs }) => {
           beforeAfter={true}
           pageTitle={remodel.remodelImg.title}
         />
-        {/* <Testimonials testimonials={remodelTestimonials} /> */}
+        {/* Buy / Sell Video */}
+        {remodel.videoUrl.url && (
+          <div className="w-full bg-white text-center py-14">
+            <h1>{remodel.videoUrl.title}</h1>
+            <MyVideo url={remodel.videoUrl.url} />
+          </div>
+        )}
+        {/* Testimonials */}
+        {remodel.testimonials && (
+          <article>
+            <Testimonials testimonials={remodelTestimonials} />
+          </article>
+        )}
         {/* FAQs */}
         <div
           className="bg-white w-screen h-full flex flex-col items-center"

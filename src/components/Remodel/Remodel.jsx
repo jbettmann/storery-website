@@ -76,7 +76,7 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
         <SellQuickTip selectedObj={remodel.remodelPlan} faqScroll={faqRef} />
         <GallerySlider
           CardComponent={PhotoCard}
-          items={gifs}
+          items={remodel.remodelImg.imagePairs}
           beforeAfter={true}
           pageTitle={remodel.remodelImg.title}
         />

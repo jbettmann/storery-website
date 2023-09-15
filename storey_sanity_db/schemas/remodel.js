@@ -99,6 +99,49 @@ export default defineType({
           title: 'Title',
           type: 'string',
         }),
+        defineField({
+          name: 'imagePairs',
+          title: 'Before & After Image Pairs',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'beforeImage',
+                  title: 'Before Remodeling',
+                  type: 'image',
+                  options: {
+                    hotspot: true, // Enables the hotspot functionality if desired
+                  },
+                  description: 'Upload the image of the space before remodeling.',
+                },
+                {
+                  name: 'afterImage',
+                  title: 'After Remodeling',
+                  type: 'image',
+                  options: {
+                    hotspot: true, // Enables the hotspot functionality if desired
+                  },
+                  description: 'Upload the image of the space after remodeling.',
+                },
+              ],
+              preview: {
+                select: {
+                  before: 'beforeImage',
+                  after: 'afterImage',
+                },
+                prepare(selection) {
+                  return {
+                    title: 'Before & After',
+                    media: selection.before, // This is to show just the "before" image in the preview. You can customize this.
+                  }
+                },
+              },
+            },
+          ],
+          description: 'Add pairs of before and after images.',
+        }),
       ],
     }),
 

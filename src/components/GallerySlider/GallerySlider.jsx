@@ -223,7 +223,13 @@ export const GallerySlider = ({
                     }`}
                     key={i}
                   >
-                    <CardComponent item={item} style={style} urlNav={`blog`} />
+                    <CardComponent
+                      item={item}
+                      style={style}
+                      urlNav={`blog`}
+                      isActive={i === curSlide}
+                      beforeAfter={beforeAfter}
+                    />
                   </article>
                 );
               })

@@ -17,15 +17,17 @@ export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
     <>
       {beforeAfter && (
         <div className="relative">
+          {/* Before */}
           <img
-            src={item.before}
+            src={urlFor(item.beforeImage?.asset._ref)}
             alt="Before"
             className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
               showBefore ? "opacity-100" : "opacity-0"
             }`}
           />
+          {/* After */}
           <img
-            src={item.after}
+            src={urlFor(item.afterImage?.asset._ref)}
             alt="After"
             className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
               showBefore ? "opacity-0" : "opacity-100"

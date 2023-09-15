@@ -214,7 +214,7 @@ export const GallerySlider = ({
                 return (
                   <article
                     ref={(el) => (itemArray.current[i] = el)}
-                    className={`blog-group drop-shadow-md mx-3 ${
+                    className={`blog-group h-full drop-shadow-md mx-3 ${
                       testies ? "items-start p-3" : "p-5"
                     } ${
                       itemArray.current[i]?.style.transform === "translateX(0%)"

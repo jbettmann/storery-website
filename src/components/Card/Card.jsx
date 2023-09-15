@@ -13,7 +13,7 @@ export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
       return () => clearInterval(interval); // Cleanup on component unmount or when inactive
     }
   }, [isActive]);
-  console.log({ beforeAfter, item, isActive });
+
   return beforeAfter ? (
     <div className="relative">
       {/* Before */}

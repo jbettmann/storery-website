@@ -1,41 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { urlFor } from "../../Functions/Functions";
 
-export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
-  const [showBefore, setShowBefore] = useState(true);
-  useEffect(() => {
-    console.log({ item });
-    if (isActive) {
-      const interval = setInterval(() => {
-        setShowBefore((prev) => !prev);
-      }, 3000); // Toggle every 3 seconds
-
-      return () => clearInterval(interval); // Cleanup on component unmount or when inactive
-    }
-  }, [isActive]);
-
-  return beforeAfter ? (
-    <div className="relative">
-      {/* Before */}
-      <img
-        src={urlFor(item.beforeImage.asset._ref)}
-        alt="Before"
-        className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
-          showBefore ? "opacity-100" : "opacity-0"
-        }`}
-      />
-      {/* After */}
-      <img
-        src={urlFor(item.afterImage.asset._ref)}
-        alt="After"
-        className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
-          showBefore ? "opacity-0" : "opacity-100"
-        }`}
-      />
-      {/* Other parts of the CardComponent, if any */}
-    </div>
-  ) : (
+export const Card = ({ item, style, urlNav }) => {
+  return (
     <NavLink
       to={urlNav ? `${urlNav}/${item.slug?.current}` : `/${item.slug?.current}`}
       className={`card ${

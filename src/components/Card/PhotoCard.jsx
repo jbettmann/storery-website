@@ -20,7 +20,7 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
         <img
           src={urlFor(item.beforeImage.asset._ref)}
           alt={" Before"}
-          className={` w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
             showBefore ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -28,7 +28,7 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
         <img
           src={urlFor(item.afterImage.asset._ref)}
           alt={"  After"}
-          className={` w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
             showBefore ? "opacity-0" : "opacity-100"
           }`}
         />

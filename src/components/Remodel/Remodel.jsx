@@ -45,8 +45,6 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
     getRemodel(setRemodel);
   }, []);
 
-  console.log(remodelTestimonials);
-
   if (!remodel) return <Spinner />;
   return (
     remodel && (

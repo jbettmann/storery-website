@@ -211,7 +211,7 @@ export const GallerySlider = ({
               })
             : beforeAfter
             ? items.map((item, i) => {
-                console.log({ beforeAfter, item });
+                console.log({ beforeAfter, item }, i === curSlide);
                 return (
                   <article
                     ref={(el) => (itemArray.current[i] = el)}

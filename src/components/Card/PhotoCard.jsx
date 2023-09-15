@@ -14,24 +14,25 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
     }
   }, [isActive]);
   return (
-    <div className="flex-auto w-1/2 h-full flex justify-center items-center p-2 sm:p-0 bg-white rounded-2xl overflow-hidden">
-      <div className="flex flex-col w-full md:w-5/6 lg:w-2/3 xl:w-1/2 sm:py-8 sm:px-6">
+    <div className="flex-auto w-1/2 h-full items-stretch overflow-hidden flex justify-center  p-2 sm:p-0 bg-white rounded-2xl">
+      <div className="relative  w-full md:w-5/6 lg:w-2/3 xl:w-1/2 sm:py-8 sm:px-6">
         {/* Before */}
         <img
           src={urlFor(item.beforeImage.asset._ref)}
-          alt="Before"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+          alt={" Before"}
+          className={` w-full h-full object-cover transition-opacity duration-1000 ${
             showBefore ? "opacity-100" : "opacity-0"
           }`}
         />
         {/* After */}
         <img
           src={urlFor(item.afterImage.asset._ref)}
-          alt="After"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+          alt={"  After"}
+          className={` w-full h-full object-cover transition-opacity duration-1000 ${
             showBefore ? "opacity-0" : "opacity-100"
           }`}
         />
+        {/* Other parts of the CardComponent, if any */}
       </div>
     </div>
   );

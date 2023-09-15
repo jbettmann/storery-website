@@ -60,7 +60,7 @@ export const SellQuickTip = ({ selectedObj, navLink, faqScroll }) => {
           </div>
 
           {/* Image */}
-          <div className="w-10/12 lg:w-auto h-36 sm:h-96 ">
+          <div className="w-10/12 lg:w-1/2 h-36 sm:h-96 ">
             <img
               className="w-full h-full object-cover rounded-2xl"
               src={urlFor(selectedObj.mainImage.asset._ref)}

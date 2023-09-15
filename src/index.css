@@ -168,6 +168,12 @@
     @apply max-w-[1650px]
   }
 
+  .remodel::before {
+    content: "";
+    display: block;
+    padding-top: 100%; // This sets a 1:1 aspect ratio. Adjust as needed.
+  }
+
   .tags {
     @apply text-sm m-0 p-2 px-3 mx-2 bg-[#E5F1E0] bg-opacity-90 text-[#14834E] rounded-full w-fit;
    

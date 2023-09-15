@@ -19,7 +19,7 @@ export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
         <div className="relative">
           {/* Before */}
           <img
-            src={urlFor(item.beforeImage?.asset._ref)}
+            src={urlFor(item.beforeImage.asset._ref)}
             alt="Before"
             className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
               showBefore ? "opacity-100" : "opacity-0"
@@ -27,7 +27,7 @@ export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
           />
           {/* After */}
           <img
-            src={urlFor(item.afterImage?.asset._ref)}
+            src={urlFor(item.afterImage.asset._ref)}
             alt="After"
             className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
               showBefore ? "opacity-0" : "opacity-100"

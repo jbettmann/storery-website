@@ -16,7 +16,9 @@ export const Card = ({ item, style, urlNav }) => {
         <img
           src={urlFor(item.mainImage?.asset._ref)}
           alt={item.slug?.current}
-          className={`mx-auto ${style ? style.img : " w-52 "}`}
+          className={`object-contain object-center max-w-full max-h-full ${
+            style ? style.img : " w-auto "
+          }`}
         />
         {item.projectType && (
           <p className="tags text-xs p-1 px-2 rounded-md absolute top-2 left-0">

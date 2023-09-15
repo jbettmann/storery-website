@@ -227,7 +227,6 @@ export const GallerySlider = ({
                     <CardComponent
                       item={item}
                       style={style}
-                      urlNav={`blog`}
                       isActive={i === curSlide}
                       beforeAfter={beforeAfter}
                     />

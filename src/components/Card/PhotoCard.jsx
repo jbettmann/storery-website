@@ -27,7 +27,7 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
         <img
           src={urlFor(item.afterImage.asset._ref)}
           alt={"  After"}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[3000ms] bg-white  rounded-2xl p-8 sm:p-6  ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[3000ms] bg-white  rounded-2xl  p-0  sm:p-6  ${
             showBefore ? "opacity-0" : "opacity-100"
           }`}
         />

@@ -14,13 +14,13 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
     }
   }, [isActive]);
   return (
-    <div className="flex-auto w-1/2 h-full items-stretch overflow-hidden flex justify-center  p-2 sm:p-0 bg-white rounded-2xl">
-      <div className="relative remodel w-full md:w-5/6 lg:w-2/3 xl:w-1/2 sm:py-8 sm:px-6">
+    <div className="flex-auto w-1/2 h-full items-center overflow-hidden flex justify-center  sm:p-0  rounded-2xl">
+      <div className="relative remodel w-full md:w-5/6 lg:w-2/3 xl:w-1/2 ">
         {/* Before */}
         <img
           src={urlFor(item.beforeImage.asset._ref)}
           alt={" Before"}
-          className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[3000ms] bg-white  rounded-2xl p-0 sm:p-6  ${
             showBefore ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -28,7 +28,7 @@ export const PhotoCard = ({ item, beforeAfter, isActive }) => {
         <img
           src={urlFor(item.afterImage.asset._ref)}
           alt={"  After"}
-          className={`absolute top-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[3000ms] bg-white  rounded-2xl p-8 sm:p-6  ${
             showBefore ? "opacity-0" : "opacity-100"
           }`}
         />

@@ -35,7 +35,7 @@ export const GallerySlider = ({
   // Custom styling for Blog card
   const style = {
     card: "h-[437px] lg:w-[388px] rounded-lg p-2 sm:py-8 sm:px-6 max-w-lg",
-    img: "",
+    img: "max-h-none",
     body: "h-2/3 sm:items-center",
   };
 
@@ -211,7 +211,6 @@ export const GallerySlider = ({
               })
             : beforeAfter
             ? items.map((item, i) => {
-                console.log({ beforeAfter, item }, i === curSlide);
                 return (
                   <article
                     ref={(el) => (itemArray.current[i] = el)}

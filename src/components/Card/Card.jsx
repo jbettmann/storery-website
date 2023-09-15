@@ -5,6 +5,7 @@ import { urlFor } from "../../Functions/Functions";
 export const Card = ({ item, style, urlNav, beforeAfter, isActive }) => {
   const [showBefore, setShowBefore] = useState(true);
   useEffect(() => {
+    console.log({ item });
     if (isActive) {
       const interval = setInterval(() => {
         setShowBefore((prev) => !prev);

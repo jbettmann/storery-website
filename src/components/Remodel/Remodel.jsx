@@ -13,8 +13,6 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
   const [remodel, setRemodel] = useState(null);
   const faqRef = useRef(null);
 
-  const [gifs, setGifs] = useState([]);
-
   // remodel testimonials
   const remodelTestimonials = testimonials?.testimonialList?.filter((testie) =>
     testie.category.includes("remodel")
@@ -27,20 +25,6 @@ export const Remodel = ({ contact, faqs, testimonials }) => {
   };
 
   useEffect(() => {
-    // loads Before and After gift from asset directory
-    const loadGifs = () => {
-      const context = require.context(
-        "../../assets/before_&_after/",
-        false,
-        /\.gif$/
-      );
-
-      const gifFiles = context.keys().map((key) => context(key));
-      setGifs(gifFiles);
-    };
-
-    loadGifs();
-
     // fetch remodel info
     getRemodel(setRemodel);
   }, []);

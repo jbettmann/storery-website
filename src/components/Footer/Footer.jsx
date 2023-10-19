@@ -38,15 +38,14 @@ export const Footer = ({ footer, logo }) => {
             </a>
           </p>
           <p className="m-0 text-sm">
-            Copyright © 2023{" "}
+            Copyright © 2023 Storey Real Estate |
             <a
               target="_blank"
               href="https://www.jordanbettmann.com"
               rel="noreferrer"
             >
-              Jordan Bettmann{" "}
+              Site by Jordan Bettmann
             </a>
-            All Rights Reserved.
           </p>
         </div>
       </footer>

@@ -2,25 +2,47 @@ import React from "react";
 import sanityClient from "../client";
 import imageUrlBuilder from "@sanity/image-url";
 
-// Splits id from Youtube url
-export function getYoutubeVideoId(youtubeURL) {
-  let videoId;
+const YT_ID_RE = /^[a-zA-Z0-9_-]{11}$/;
 
-  // If url includes v=
-  if (youtubeURL.includes("v=")) {
-    // Splits url into array and sets videoID to second element
-    videoId = youtubeURL.split("v=")[1];
-  } else {
-    // Splits url into array and sets videoID to third element
-    videoId = youtubeURL.split("/")[3];
+export function getYoutubeVideoId(input) {
+  if (!input) return null;
+  const s = String(input).trim();
+
+  // Already an ID?
+  if (YT_ID_RE.test(s)) return s;
+
+  // Try URL parsing
+  try {
+    const u = new URL(s);
+    const host = u.hostname.replace(/^www\./, "");
+
+    // youtu.be/<id>?si=...
+    if (host === "youtu.be") {
+      const id = u.pathname.split("/").filter(Boolean)[0];
+      return YT_ID_RE.test(id) ? id : null;
+    }
+
+    // *.youtube.com
+    if (host.endsWith("youtube.com")) {
+      // watch?v=<id>
+      const v = u.searchParams.get("v");
+      if (YT_ID_RE.test(v)) return v;
+
+      // /embed/<id>, /shorts/<id>
+      const parts = u.pathname.split("/").filter(Boolean);
+      const maybe =
+        parts[0] === "embed" || parts[0] === "shorts" ? parts[1] : null;
+      if (YT_ID_RE.test(maybe)) return maybe;
+    }
+  } catch (err) {
+    // Not a URL (string like "something"), or URL constructor failed.
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("getYoutubeVideoId: invalid URL input", input, err);
+    }
+    // fall through
   }
-  // checks if videoID includes &
-  let ampersandPosition = videoId.indexOf("&");
-  // if & does exists, set videoID
-  if (ampersandPosition != -1) {
-    videoId = videoId.substring(0, ampersandPosition);
-  }
-  return videoId;
+
+  return null;
 }
 
 // image conversion function for Sanity

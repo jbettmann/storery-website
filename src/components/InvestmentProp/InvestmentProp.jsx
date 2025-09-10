@@ -24,9 +24,10 @@ export const InvestmentProp = ({
   const [benefitCards, setBenefitCards] = useState(null);
 
   // Extract Zillow url for current rental listings link
-  [rentalListings] = rentalListings.filter(
-    (social) => social._key === "279a9ac700ed"
-  );
+  [rentalListings] =
+    (rentalListings &&
+      rentalListings.filter((social) => social._key === "279a9ac700ed")) ||
+    [];
 
   const benefitIcons = [
     <FaDollarSign size={"2rem"} color={"green"} />,
@@ -48,7 +49,7 @@ export const InvestmentProp = ({
     if (!obj) return;
     let [...newCards] = Object.values(obj);
     // eliminates element that is just "document"
-    setBenefitCards(newCards.filter((doc, i) => doc !== "document"));
+    setBenefitCards(newCards?.filter((doc, i) => doc !== "document"));
   };
 
   // fetches data and sets states
@@ -147,9 +148,9 @@ export const InvestmentProp = ({
 
                 {selectedObj.rentalHelpList ? (
                   <ul>
-                    {selectedObj.rentalHelpList.list.map((list) => {
+                    {selectedObj.rentalHelpList.list.map((list, i) => {
                       return (
-                        <li className="flex items-center mt-6">
+                        <li key={i} className="flex items-center mt-6">
                           <div className="mr-3">
                             <span className="inline-block h-2 w-2 rounded-full bg-storeyGreen-100 "></span>
                           </div>
@@ -225,7 +226,7 @@ export const InvestmentProp = ({
           <h1 className="mt-14 p-2 text-center">Frequently Asked Questions</h1>
           {faqs &&
             faqs
-              .filter(
+              ?.filter(
                 (faqs) =>
                   faqs.slug.current === investment.slug.current ||
                   faqs.slug.current === "property-management"

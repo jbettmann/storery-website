@@ -25,7 +25,7 @@ export const Contact = ({ footer, seHabla }) => {
     return (
       <section className="flex justify-center items-center h-screen">
         <div className="green-card text-center p-16">
-          <h3 className="">Thank you for reach out!</h3>
+          <h3 className="">Thank you for reaching out!</h3>
           <p> We'll get back to you shortly</p>
         </div>
       </section>
